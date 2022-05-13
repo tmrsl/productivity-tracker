@@ -9,7 +9,6 @@ import {
   updateEmail,
   updatePassword,
   updateProfile,
-  // updateProfile
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
@@ -53,14 +52,11 @@ export default function AuthProvider({ children }) {
       promises.push(updateProfile(currentUser, { displayName }));
     }
 
-    return Promise.all(promises).then((res) => {
-      console.log("user updated", res);
-    });
+    return Promise.all(promises);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("user: ", user);
       setCurrentUser(user);
       setLoading(false);
     });
