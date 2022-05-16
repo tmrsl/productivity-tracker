@@ -29,7 +29,7 @@ export default function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, pass);
   };
 
-  const logOut = () => {
+  const logOut = async () => {
     return signOut(auth);
   };
 

@@ -10,7 +10,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Key from "@mui/icons-material/Key";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Button from "@mui/material/Button";
+
+import { SubmitButton } from "../components/Button/Button";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -125,15 +126,9 @@ const SignIn = () => {
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          disabled={loading}
-          sx={{ mt: 3, mb: 2 }}
-        >
+        <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
           Sign In
-        </Button>
+        </SubmitButton>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Link to="/forgot-password" variant="body2" underline="hover">
             Forgot password?

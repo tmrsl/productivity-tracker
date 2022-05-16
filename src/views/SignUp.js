@@ -6,7 +6,6 @@ import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
@@ -14,6 +13,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
+import { SubmitButton } from "../components/Button/Button.styled";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -176,15 +176,9 @@ const SignUp = () => {
           control={<Checkbox value="remember" color="primary" />}
           label="I allow send me notifications by email"
         />
-        <Button
-          disabled={loading}
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
+        <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
           Sign Up
-        </Button>
+        </SubmitButton>
         <Link to="/sign-in" variant="body2" underline="hover">
           Already have an account? Sign in
         </Link>

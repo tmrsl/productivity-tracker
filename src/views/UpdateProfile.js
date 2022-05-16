@@ -6,14 +6,14 @@ import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import Key from "@mui/icons-material/Key";
-import Button from "@mui/material/Button";
 
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { useAuth } from "../context/AuthContext";
+
+import { SubmitButton } from "../components/Button/Button.styled";
+import { AccountCircleIcon } from "../components/Icon/Icon";
 
 export default function UpdateProfile() {
   const [displayName, setDisplayName] = useState("");
@@ -83,12 +83,12 @@ export default function UpdateProfile() {
           }}
           severity="success"
         >
-          Пізмік чірт кіт педестріан
+          Successfully update
         </Alert>
       )}
       <Box component="form" sx={{ mt: 3 }} onSubmit={submitHandler}>
         <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-          <AccountCircle sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+          <AccountCircleIcon sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
           <TextField
             id="displayName"
             label="Full name"
@@ -102,7 +102,7 @@ export default function UpdateProfile() {
           />
         </Box>
         <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-          <AccountCircle sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+          <AccountCircleIcon sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
           <TextField
             id="email"
             label="E-mail"
@@ -143,15 +143,9 @@ export default function UpdateProfile() {
             onInput={(evt) => setPassConfrim(evt.target.value)}
           />
         </Box>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          disabled={loading}
-          sx={{ mt: 3, mb: 2 }}
-        >
+        <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
           Update
-        </Button>
+        </SubmitButton>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Link to="/" variant="body2" underline="hover">
             Cancel

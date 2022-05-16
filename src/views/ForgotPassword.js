@@ -7,12 +7,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Button from "@mui/material/Button";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useAuth } from "../context/AuthContext";
+import { SubmitButton } from "../components/Button/Button.styled";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -81,16 +81,8 @@ export default function ForgotPassword() {
           >
             "Check your inbox for further instructions"
           </Alert>
-          <Link to="/sign-in" variant="body2" underline="none">
-            <Button
-              type="button"
-              fullWidth
-              variant="contained"
-              disabled={loading}
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
+          <Link to="/sign-in" variant="body2" underline="hover">
+            Sign In
           </Link>
         </>
       ) : (
@@ -110,15 +102,9 @@ export default function ForgotPassword() {
               onChange={enteredEmailHandler}
             />
           </Box>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            disabled={loading}
-            sx={{ mt: 3, mb: 2 }}
-          >
+          <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
             Reset Password
-          </Button>
+          </SubmitButton>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Link to="/sign-in" variant="body2" underline="hover">
               Sign In
