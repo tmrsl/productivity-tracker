@@ -1,43 +1,102 @@
 import React from "react";
-import { IconButton } from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import StyledButton from "../components/Button/Button";
-import { AccountCircle } from "@mui/icons-material";
-import { StyledNavbar, StyledToolbar } from "./styles/Navbar.styled";
+import { useAuth } from "../context/AuthContext";
 
-// const StyledToolbar = styled(Toolbar)({
-//   display: "flex",
-//   justifyContent: "space-between",
-//   alignItems: "center",
-// });
+import { StyledHeader } from "../components/styles/Header.styled";
+
+import {
+  StyledNavbar,
+  StyledToolbar,
+  RightBlock,
+  LogoutIcon,
+  PersonAddIcon,
+  SettingsIcon,
+  StyledTooltip,
+  StyledMenu,
+  StyledMenuItem,
+  StyledListItemIcon,
+  StyledAvatar,
+  StyledDivider,
+  StyledIconButton,
+} from "./styles/Navbar.styled";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
+  const { currentUser } = useAuth();
+
+  const navigate = useNavigate();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const onEditProfileHandler = () => {
+    navigate("/update-profile");
+  };
+
+  const onClickHandler = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const onCloseHandler = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <StyledNavbar>
       <StyledToolbar>
-        <Typography component="h6">
+        <StyledHeader component="h6">
           <strong>Welcome to Activity Tracker</strong>
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: 2,
-          }}
-        >
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-haspopup="true"
-            color="inherit"
+        </StyledHeader>
+        <RightBlock>
+          <StyledHeader component="h6">{currentUser.email}</StyledHeader>
+          <StyledTooltip title="Account settings">
+            <StyledIconButton onClick={onClickHandler}>
+              <StyledAvatar>
+                {currentUser.email.slice(0, 1).toUpperCase()}
+              </StyledAvatar>
+            </StyledIconButton>
+          </StyledTooltip>
+          <StyledMenu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={onCloseHandler}
+            onClick={onCloseHandler}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
-            <AccountCircle />
-          </IconButton>
-          <StyledButton onClick={props.onLogout}>Log out</StyledButton>
-        </Box>
+            <StyledMenuItem onClick={onEditProfileHandler}>
+              <StyledAvatar>
+                {currentUser.email.slice(0, 1).toUpperCase()}
+              </StyledAvatar>
+              Update Profile
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <StyledAvatar>
+                {currentUser.email.slice(0, 1).toUpperCase()}
+              </StyledAvatar>
+              My account
+            </StyledMenuItem>
+            <StyledDivider />
+            <StyledMenuItem>
+              <StyledListItemIcon>
+                <PersonAddIcon />
+              </StyledListItemIcon>
+              Add another account
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <StyledListItemIcon>
+                <SettingsIcon />
+              </StyledListItemIcon>
+              Settings
+            </StyledMenuItem>
+            <StyledMenuItem onClick={props.onLogout}>
+              <StyledListItemIcon>
+                <LogoutIcon />
+              </StyledListItemIcon>
+              Logout
+            </StyledMenuItem>
+          </StyledMenu>
+        </RightBlock>
       </StyledToolbar>
     </StyledNavbar>
   );
