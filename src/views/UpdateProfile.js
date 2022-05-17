@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
-import { SubmitButton } from "../components/Button/Button.styled";
+import { StyledButton } from "../components/styles/Button.styled";
 import { AccountCircleIcon } from "../components/Icon/Icon";
 
 export default function UpdateProfile() {
@@ -53,7 +53,7 @@ export default function UpdateProfile() {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 2,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -143,9 +143,9 @@ export default function UpdateProfile() {
             onInput={(evt) => setPassConfrim(evt.target.value)}
           />
         </Box>
-        <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+        <StyledButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
           Update
-        </SubmitButton>
+        </StyledButton>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Link to="/" variant="body2" underline="hover">
             Cancel

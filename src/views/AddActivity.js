@@ -5,7 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 export default function AddActivity() {
   return (
     <div>
-      AddActivity{" "}
+      AddActivity
       <Fab sx={{ mt: 3, mb: 1 }} size="medium" color="primary" aria-label="add">
         <AddIcon />
       </Fab>

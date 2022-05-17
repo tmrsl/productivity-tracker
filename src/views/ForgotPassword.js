@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useAuth } from "../context/AuthContext";
-import { SubmitButton } from "../components/Button/Button.styled";
+import { StyledButton } from "../components/styles/Button.styled";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -102,9 +102,9 @@ export default function ForgotPassword() {
               onChange={enteredEmailHandler}
             />
           </Box>
-          <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+          <StyledButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
             Reset Password
-          </SubmitButton>
+          </StyledButton>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Link to="/sign-in" variant="body2" underline="hover">
               Sign In

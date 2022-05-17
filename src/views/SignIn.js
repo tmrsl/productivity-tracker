@@ -1,7 +1,6 @@
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
-import CssBaseline from "@mui/material/CssBaseline";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -11,7 +10,7 @@ import Key from "@mui/icons-material/Key";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-import { SubmitButton } from "../components/Button/Button";
+import { StyledButton } from "../components/styles/Button.styled";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -67,7 +66,7 @@ const SignIn = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <Box
         sx={{
           marginTop: 8,
@@ -126,9 +125,14 @@ const SignIn = () => {
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
-        <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+        <StyledButton
+          type="submit"
+          fullWidth
+          disabled={loading}
+          sx={{ mt: 3, mb: 2 }}
+        >
           Sign In
-        </SubmitButton>
+        </StyledButton>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Link to="/forgot-password" variant="body2" underline="hover">
             Forgot password?

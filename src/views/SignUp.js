@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
-import { SubmitButton } from "../components/Button/Button.styled";
+import { StyledButton } from "../components/styles/Button.styled";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -176,9 +176,9 @@ const SignUp = () => {
           control={<Checkbox value="remember" color="primary" />}
           label="I allow send me notifications by email"
         />
-        <SubmitButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+        <StyledButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
           Sign Up
-        </SubmitButton>
+        </StyledButton>
         <Link to="/sign-in" variant="body2" underline="hover">
           Already have an account? Sign in
         </Link>

@@ -1,21 +1,32 @@
-import { AppBar, Container } from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Fab from "@mui/material/Fab";
-import { Link } from "react-router-dom";
-import EditIcon from "@mui/icons-material/Edit";
+// import { Container } from "@mui/material";
+// import Box from "@mui/material/Box";
+// import Typography from "@mui/material/Typography";
+// import Fab from "@mui/material/Fab";
+// import { Link } from "react-router-dom";
+// import EditIcon from "@mui/icons-material/Edit";
 
-import StyledButton from "../components/Button/Button";
+import { Stack } from "@mui/material";
+import { Box } from "@mui/system";
+import Feed from "../components/Feed";
+import Rightbar from "../components/Rightbar";
+import Sidebar from "../components/Sidebar";
 
-import { useAuth } from "../context/AuthContext";
+// import { StyledButton } from "../components/styles/Button.styled";
+
+// import { useAuth } from "../context/AuthContext";s
 
 const Home = () => {
-  const { currentUser } = useAuth();
+  // const { currentUser } = useAuth();
 
   return (
-    <>
-      {/* <Navbar onClick={logOutHandler}></Navbar> */}
-      <Container component="main" maxWidth="xs">
+    <Box>
+      <Stack direction="row" spacing={2}>
+        {/* <Sidebar></Sidebar> */}
+        <Feed></Feed>
+        <Rightbar></Rightbar>
+      </Stack>
+
+      {/* <Container component="main" maxWidth="xs">
         <Box
           sx={{
             marginTop: 8,
@@ -44,8 +55,8 @@ const Home = () => {
         <StyledButton fullWidth sx={{ mt: 3, mb: 2 }}>
           <Link to="/add-activity">Add Activity</Link>
         </StyledButton>
-      </Container>
-    </>
+      </Container> */}
+    </Box>
   );
 };
 
