@@ -1,18 +1,6 @@
 import styled from "styled-components";
-import {
-  AppBar,
-  Avatar,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Tooltip,
-} from "@mui/material";
+import { AppBar, Button, Toolbar } from "@mui/material";
 import Box from "@mui/material/Box";
-import { Logout, PersonAdd, Settings } from "@mui/icons-material";
-// import EditIcon from "@mui/icons-material/Edit";
 
 export const StyledNavbar = styled(AppBar).attrs({
   position: "fixed",
@@ -21,39 +9,56 @@ export const StyledNavbar = styled(AppBar).attrs({
 
 export const StyledToolbar = styled(Toolbar)`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
+
+export const LogoBlock = styled(Box).attrs({
+  sx: {
+    display: {
+      xs: "none",
+      md: "flex",
+      alignItems: "center",
+      gap: "4px",
+    },
+  },
+})``;
+
+export const LogoXsBlock = styled(Box).attrs({
+  sx: {
+    display: {
+      xs: "flex",
+      alignItems: "center",
+      gap: "4px",
+      md: "none",
+    },
+    mr: 1,
+  },
+})``;
+
+export const MenuXsBlock = styled(Box).attrs({
+  sx: {
+    display: { xs: "flex", md: "none" },
+  },
+})``;
+
+export const PagesBlock = styled(Box).attrs({
+  sx: {
+    display: {
+      xs: "none",
+      md: "flex",
+    },
+    ml: 2,
+  },
+})``;
 
 export const RightBlock = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  margin-left: auto;
+  gap: 8px;
 `;
 
-export const StyledTooltip = styled(Tooltip)``;
-export const StyledDivider = styled(Divider)``;
-export const StyledIconButton = styled(IconButton)``;
-
-export const StyledMenu = styled(Menu)``;
-export const StyledMenuItem = styled(MenuItem)``;
-export const StyledListItemIcon = styled(ListItemIcon)``;
-
-export const StyledAvatar = styled(Avatar).attrs({
-  sx: { width: 32, height: 32, ml: -0.5, mr: 1 },
+export const StyledPageButton = styled(Button).attrs({
+  sx: { color: "white", display: "block", fontWeight: 600 },
 })``;
-
-// export const ProfileIcon = styled(AccountCircle).attrs({
-//   color: "info",
-// })``;
-
-// export const EditProfileIcon = styled(EditIcon).attrs({
-//   color: "info",
-// })``;
-
-export const LogoutIcon = styled(Logout)``;
-
-export const PersonAddIcon = styled(PersonAdd)``;
-
-export const SettingsIcon = styled(Settings)``;
