@@ -5,4 +5,5 @@ export const MobileMenuBlock = styled(Box).attrs({
   sx: {
     display: { xs: "flex", md: "none" },
   },
+  mr: "auto",
 })``;

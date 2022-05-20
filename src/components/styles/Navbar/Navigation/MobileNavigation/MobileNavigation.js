@@ -1,10 +1,10 @@
 import React from "react";
 import { StyledIconButton } from "../../../Button/Button.styled";
 import {
-  StyledMenuIcon,
   StyledBoardIcon,
   StyledCalendarMonthIcon,
   StyledListIcon,
+  StyledViewIcon,
 } from "../../../Icons/Icons.styled";
 import { StyledListItemIcon } from "../../../List/List.styled";
 import { StyledMenu, StyledMenuItem } from "../../../Menu/Menu.styled";
@@ -30,7 +30,7 @@ export default function Navigation() {
         onClick={handleOpenNavMenu}
         color="inherit"
       >
-        <StyledMenuIcon />
+        <StyledViewIcon />
       </StyledIconButton>
       <StyledMenu
         id="menu-appbar"

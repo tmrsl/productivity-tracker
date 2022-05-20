@@ -9,6 +9,5 @@ export const MobileLogoBlock = styled(Box).attrs({
       gap: "4px",
       md: "none",
     },
-    mr: 1,
   },
 })``;

@@ -6,6 +6,7 @@ export const LogoBlock = styled(Box).attrs({
     display: {
       xs: "none",
       md: "flex",
+      justifyContent: "center",
       alignItems: "center",
       gap: "4px",
     },

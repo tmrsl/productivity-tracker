@@ -12,6 +12,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 
 export const AccountCircleIcon = styled(AccountCircle)``;
 
@@ -42,3 +43,5 @@ export const StyledFolderIcon = styled(FolderIcon)``;
 export const StyledDeleteIcon = styled(DeleteIcon)``;
 
 export const StyledGoalsIcon = styled(AssignmentTurnedInIcon)``;
+
+export const StyledViewIcon = styled(GridViewRoundedIcon)``;
