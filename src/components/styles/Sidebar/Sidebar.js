@@ -3,6 +3,7 @@ import React from "react";
 import { SidebarBlock, StyledListItemIcon } from "./Sidebar.styled";
 import {
   StyledList,
+  StyledListItem,
   StyledListItemButton,
   StyledListItemText,
 } from "../List/List.styled";
@@ -13,6 +14,8 @@ import {
 } from "../Icons/Icons.styled";
 import { StyledDivider } from "../Divider/Divider.styled";
 import SidebarListItem from "./SidebarListItem/SidebarListItem";
+import { Switch } from "@mui/material";
+import Brightness2Icon from "@mui/icons-material/Brightness2";
 
 const folders = [
   {
@@ -37,7 +40,7 @@ export default function SideBar() {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <StyledListItemButton>
+        <StyledListItemButton component="a">
           <StyledListItemIcon>
             <StyledHomeIcon />
           </StyledListItemIcon>
@@ -56,6 +59,13 @@ export default function SideBar() {
           <StyledListItemText primary="Goals" />
         </StyledListItemButton>
       </StyledList>
+      <StyledListItem>
+        <StyledListItemIcon>
+          <Brightness2Icon />
+        </StyledListItemIcon>
+        <StyledListItemText primary="Dark mode" />
+        <Switch />
+      </StyledListItem>
       <StyledDivider />
       <StyledList component="nav" aria-label="secondary mailbox folder">
         {folders.map((folder) => {
