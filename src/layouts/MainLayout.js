@@ -5,11 +5,14 @@ import Sidebar from "../components/styles/Sidebar/Sidebar";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import { useAuth } from "../context/AuthContext";
+import { useColorMode } from "../context/ColorModeContext";
 import { useState } from "react";
 
+const drawerWidth = 240;
+
 export default function MainLayout() {
-  const drawerWidth = 240;
   const { logOut, currentUser } = useAuth();
+  const { toggleColorMode, mode } = useColorMode();
 
   const [openMobileDrawer, setOpenMobileDraver] = useState(false);
 
@@ -19,6 +22,10 @@ export default function MainLayout() {
 
   const handleDrawerToggle = () => {
     setOpenMobileDraver(!openMobileDrawer);
+  };
+
+  const colorModeHandler = () => {
+    toggleColorMode();
   };
 
   return (
@@ -39,7 +46,7 @@ export default function MainLayout() {
         }}
       >
         <Toolbar />
-        <Sidebar />
+        <Sidebar mode={mode} onToggle={colorModeHandler} />
       </Drawer>
       <Drawer
         variant="temporary"
@@ -56,13 +63,14 @@ export default function MainLayout() {
         }}
       >
         <Toolbar />
-        <Sidebar />
+        <Sidebar mode={mode} onToggle={colorModeHandler} />
       </Drawer>
 
       <Box component="main" sx={{ flexGrow: 1 }}>
         <Box sx={{ display: { xs: "inline-block", md: "none" } }}>
           <Toolbar />
           <Button onClick={handleDrawerToggle}>
+            Menu
             <KeyboardArrowRightIcon />
           </Button>
         </Box>
