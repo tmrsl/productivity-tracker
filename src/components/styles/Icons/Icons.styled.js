@@ -13,6 +13,8 @@ import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
+import Brightness2Icon from "@mui/icons-material/Brightness2";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 export const AccountCircleIcon = styled(AccountCircle)``;
 
@@ -45,3 +47,7 @@ export const StyledDeleteIcon = styled(DeleteIcon)``;
 export const StyledGoalsIcon = styled(AssignmentTurnedInIcon)``;
 
 export const StyledViewIcon = styled(GridViewRoundedIcon)``;
+
+export const StyledBrightness2Icon = styled(Brightness2Icon)``;
+
+export const StyledLightModeIcon = styled(LightModeIcon)``;

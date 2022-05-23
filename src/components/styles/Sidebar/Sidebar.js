@@ -1,6 +1,10 @@
 import React from "react";
 
-import { SidebarBlock, StyledListItemIcon } from "./Sidebar.styled";
+import {
+  SidebarBlock,
+  StyledListItemIcon,
+  StyledSidebarListItem,
+} from "./Sidebar.styled";
 import {
   StyledList,
   StyledListItem,
@@ -8,14 +12,14 @@ import {
   StyledListItemText,
 } from "../List/List.styled";
 import {
+  StyledBrightness2Icon,
   StyledEventsIcon,
   StyledGoalsIcon,
   StyledHomeIcon,
+  StyledLightModeIcon,
 } from "../Icons/Icons.styled";
 import { StyledDivider } from "../Divider/Divider.styled";
-import SidebarListItem from "./SidebarListItem/SidebarListItem";
-import { Switch } from "@mui/material";
-import Brightness2Icon from "@mui/icons-material/Brightness2";
+import { StyledSwitch } from "../Switch/Switch.styled";
 
 const folders = [
   {
@@ -32,7 +36,7 @@ const folders = [
   },
 ];
 
-export default function SideBar() {
+export default function SideBar({ mode, onToggle }) {
   return (
     <SidebarBlock>
       <StyledList
@@ -61,16 +65,22 @@ export default function SideBar() {
       </StyledList>
       <StyledListItem>
         <StyledListItemIcon>
-          <Brightness2Icon />
+          {mode === "dark" ? (
+            <StyledLightModeIcon />
+          ) : (
+            <StyledBrightness2Icon />
+          )}
         </StyledListItemIcon>
-        <StyledListItemText primary="Dark mode" />
-        <Switch />
+        <StyledListItemText
+          primary={mode === "dark" ? "Light Mode" : "Dark Mode"}
+        />
+        <StyledSwitch checked={mode === "dark"} onChange={onToggle} />
       </StyledListItem>
       <StyledDivider />
       <StyledList component="nav" aria-label="secondary mailbox folder">
         {folders.map((folder) => {
           return (
-            <SidebarListItem
+            <StyledSidebarListItem
               key={folder.name}
               name={folder.name}
               date={folder.date}
