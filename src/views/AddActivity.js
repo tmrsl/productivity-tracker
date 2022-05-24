@@ -1,48 +1,50 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
-import { Box, Container, TextField, Typography } from "@mui/material";
-import { StyledTooltip } from "../components/styles/Tooltip/Tooltip.styled";
-import { StyledHomeIcon } from "../components/styles/Icons/Icons.styled";
-import { Key } from "@mui/icons-material";
-import { StyledHeader } from "../components/styles/Header.styled";
+import React from "react";
+import { Avatar, Box, Container, TextField, Typography } from "@mui/material";
 import { StyledButton } from "../components/styles/Button/Button.styled";
-import { DatePicker, TimePicker, DateRangePicker } from "@mui/lab";
+import { DateTimePicker } from "@mui/lab";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useActivities } from "../context/UserActivitiesContext";
 
-const priorities = [
+const categories = [
   {
-    value: "low",
-    label: "low",
+    value: "event",
+    label: "event",
   },
   {
-    value: "medium",
-    label: "medium",
+    value: "task",
+    label: "task",
   },
   {
-    value: "hight",
-    label: "hight",
+    value: "reminder",
+    label: "reminder",
   },
 ];
 
-export default function AddActivity() {
-  const [priority, setPriority] = useState("medium");
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
-  // const [selectedDateInterval, setSelectedDateInterval] = React.useState([
-  //   null,
-  //   null,
-  // ]);
+export default function AddActivity({ onClose }) {
+  const { addActivity } = useActivities();
 
-  const handleChange = (event) => {
-    setPriority(event.target.value);
-  };
-
-  // const navigate = useNavigate();
-
-  // const goToHomePageHandler = () => {
-  //   navigate("/");
-  // };
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      note: "",
+      category: "events",
+      selectedDateTime: new Date(),
+    },
+    validationSchema: Yup.object({
+      title: Yup.string().required("Required"),
+      note: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+      category: Yup.string().required("Required"),
+      selectedDateTime: Yup.date().required("Required"),
+    }),
+    onSubmit: async (values) => {
+      await addActivity(values);
+      onClose();
+    },
+  });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -54,86 +56,76 @@ export default function AddActivity() {
           alignItems: "center",
         }}
       >
+        <Avatar sx={{ mb: 1, bgcolor: "primary.main" }} variant="circular">
+          <PendingActionsIcon />
+        </Avatar>
         <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
           Add Activity
         </Typography>
       </Box>
-      <Box component="form">
+      <Box component="form" onSubmit={formik.handleSubmit}>
         <TextField
           id="title"
-          label="Enter Activity"
+          label="Enter Title"
           type="text"
           variant="outlined"
           sx={{ mb: 3 }}
           fullWidth
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          error={formik.touched.title && Boolean(formik.errors.title)}
+          helperText={formik.touched.title && formik.errors.title}
         />
         <TextField
-          id="standard-textarea"
+          id="note"
           label="Enter Note"
-          placeholder="Enter Note"
+          type="text"
           multiline
           fullWidth
           variant="outlined"
           sx={{ mb: 3 }}
+          value={formik.values.note}
+          onChange={formik.handleChange}
+          error={formik.touched.note && Boolean(formik.errors.note)}
+          helperText={formik.touched.note && formik.errors.note}
         />
         <TextField
-          id="priority"
+          id="category"
           select
           fullWidth
-          label="Set priority"
-          value={priority}
-          onChange={handleChange}
+          label="Choose category"
+          value={formik.values.category}
+          onChange={formik.handleChange}
+          error={formik.touched.category && Boolean(formik.errors.category)}
+          helperText={formik.touched.category && formik.errors.category}
           SelectProps={{
             native: true,
           }}
           variant="outlined"
           sx={{ mb: 3 }}
         >
-          {priorities.map((option) => (
+          {categories.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </TextField>
-        <DatePicker
-          label="Select Date"
-          renderInput={(params) => (
-            <TextField fullWidth sx={{ mb: 3 }} {...params} />
-          )}
-          value={selectedDate}
-          onChange={(newValue) => {
-            setSelectedDate(newValue);
-          }}
-        />
-        <TimePicker
-          label="Select Time"
+        <DateTimePicker
+          label="Select Date and Time"
           renderInput={(params) => <TextField fullWidth {...params} />}
-          value={selectedTime}
-          onChange={(newValue) => {
-            setSelectedTime(newValue);
+          value={formik.values.selectedDateTime}
+          onChange={(value) => {
+            formik.setFieldValue("selectedDateTime", Date.parse(value));
           }}
+          error={
+            formik.touched.selectedDateTime &&
+            Boolean(formik.errors.selectedDateTime)
+          }
+          helperText={
+            formik.touched.selectedDateTime && formik.errors.selectedDateTime
+          }
         />
-        {/* <DateRangePicker
-          startText="from"
-          endTExt="to"
-          value={selectedDateInterval}
-          onChange={(newValue) => {
-            setSelectedDateInterval(newValue);
-          }}
-          renderInput={(startProps, endProps) => (
-            <div>
-              <TextField {...startProps} />
-              <Box sm={{ mx: 2 }}> to </Box>
-              <TextField {...endProps} />
-            </div>
-          )}
-        ></DateRangePicker> */}
-        <StyledButton
-          type="submit"
-          fullWidth
-          // disabled={loading}
-          sx={{ mt: 3, mb: 2 }}
-        >
+        <StyledButton type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
           Add
         </StyledButton>
       </Box>
