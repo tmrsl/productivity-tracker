@@ -7,6 +7,7 @@ import MainLayout from "./layouts/MainLayout";
 
 import { useAuth } from "./context/AuthContext";
 import UpdateProfile from "./views/UpdateProfile";
+import AuthLayout from "./layouts/AuthLayout";
 
 function App() {
   const { currentUser } = useAuth();
@@ -15,9 +16,11 @@ function App() {
     <Routes>
       {!currentUser && (
         <>
-          <Route path="sign-in" element={<SignIn />} />
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="forgot-password" element={<ForgotPassword />} />
+          <Route element={<AuthLayout />}>
+            <Route path="sign-in" element={<SignIn />} />
+            <Route path="sign-up" element={<SignUp />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+          </Route>
         </>
       )}
       {currentUser && (

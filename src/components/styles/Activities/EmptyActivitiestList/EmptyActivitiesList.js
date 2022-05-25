@@ -10,7 +10,7 @@ export default function EmptyActivitiesList() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alightItems: "center",
       }}
     >

@@ -29,7 +29,7 @@ export default function MainLayout() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", width: "100%" }}>
       <CssBaseline />
       <Navbar currentUser={currentUser} onLogout={logOutHandler}></Navbar>
 
