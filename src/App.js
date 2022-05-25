@@ -7,7 +7,6 @@ import MainLayout from "./layouts/MainLayout";
 
 import { useAuth } from "./context/AuthContext";
 import UpdateProfile from "./views/UpdateProfile";
-import AddActivity from "./views/AddActivity";
 
 function App() {
   const { currentUser } = useAuth();
@@ -26,7 +25,6 @@ function App() {
           <Route element={<MainLayout />}>
             <Route exact path="/" element={<Home />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
-            <Route path="/add-activity" element={<AddActivity />} />
           </Route>
         </>
       )}

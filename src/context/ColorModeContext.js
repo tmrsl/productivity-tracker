@@ -29,11 +29,6 @@ export const ColorModeContextProvider = ({ children }) => {
     [mode]
   );
 
-  // const value = {
-  //   colorMode,
-  //   theme,
-  // };
-
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

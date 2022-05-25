@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useAuth } from "../context/AuthContext";
-import { StyledButton } from "../components/styles/Button.styled";
+import { StyledButton } from "../components/styles/Button/Button.styled";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");

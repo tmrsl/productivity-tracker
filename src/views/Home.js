@@ -7,55 +7,23 @@
 
 import { Stack } from "@mui/material";
 import { Box } from "@mui/system";
-import Feed from "../components/Feed";
-import Rightbar from "../components/Rightbar";
-import Sidebar from "../components/Sidebar";
+import Feed from "../components/styles/Feed/Feed";
+// import Rightbar from "../components/styles/Rightbar/Rightbar";
+// import Sidebar from "../components/styles/Sidebar/Sidebar";
 
-// import { StyledButton } from "../components/styles/Button.styled";
-
-// import { useAuth } from "../context/AuthContext";s
+import { useActivities } from "../context/UserActivitiesContext";
 
 const Home = () => {
   // const { currentUser } = useAuth();
+  const { activities } = useActivities();
 
   return (
     <Box>
       <Stack direction="row" spacing={2}>
         {/* <Sidebar></Sidebar> */}
-        <Feed></Feed>
-        <Rightbar></Rightbar>
+        <Feed activities={activities}></Feed>
+        {/* <Rightbar></Rightbar> */}
       </Stack>
-
-      {/* <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            <strong>{currentUser.email}</strong>
-          </Typography>
-          <Typography component="h1" variant="h5">
-            Edit your profile
-          </Typography>
-          <Link to="/update-profile">
-            <Fab
-              sx={{ mt: 3, mb: 1 }}
-              size="medium"
-              color="secondary"
-              aria-label="edit"
-            >
-              <EditIcon />
-            </Fab>
-          </Link>
-        </Box>
-        <StyledButton fullWidth sx={{ mt: 3, mb: 2 }}>
-          <Link to="/add-activity">Add Activity</Link>
-        </StyledButton>
-      </Container> */}
     </Box>
   );
 };

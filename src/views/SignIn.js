@@ -10,7 +10,7 @@ import Key from "@mui/icons-material/Key";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-import { StyledButton } from "../components/styles/Button.styled";
+import { StyledButton } from "../components/styles/Button/Button.styled";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";

@@ -7,7 +7,7 @@ import {
   StyledListIcon,
   StyledCalendarMonthIcon,
 } from "../../Icons/Icons.styled";
-import { ButtonGroup } from "@mui/material";
+// import { ButtonGroup } from "@mui/material";
 
 export default function Menu() {
   const [alignment, setAlignment] = React.useState("web");
@@ -18,22 +18,22 @@ export default function Menu() {
 
   return (
     <MenuBlock>
-      <ButtonGroup value={alignment} onChange={handleChange}>
-        <StyledPageButton value="list" startIcon={<StyledListIcon />}>
-          List
-        </StyledPageButton>
-        {/* <StyledDivider orientation="vertical" variant="middle" flexItem /> */}
-        <StyledPageButton value="board" startIcon={<StyledBoardIcon />}>
-          Board
-        </StyledPageButton>
-        {/* <StyledDivider orientation="vertical" variant="middle" flexItem /> */}
-        <StyledPageButton
-          value="calendar"
-          startIcon={<StyledCalendarMonthIcon />}
-        >
-          Calendar
-        </StyledPageButton>
-      </ButtonGroup>
+      {/* <ButtonGroup value={alignment} onChange={handleChange}> */}
+      <StyledPageButton value="list" startIcon={<StyledListIcon />}>
+        List
+      </StyledPageButton>
+      <StyledDivider orientation="vertical" variant="middle" flexItem />
+      <StyledPageButton value="board" startIcon={<StyledBoardIcon />}>
+        Board
+      </StyledPageButton>
+      <StyledDivider orientation="vertical" variant="middle" flexItem />
+      <StyledPageButton
+        value="calendar"
+        startIcon={<StyledCalendarMonthIcon />}
+      >
+        Calendar
+      </StyledPageButton>
+      {/* </ButtonGroup> */}
     </MenuBlock>
   );
 }

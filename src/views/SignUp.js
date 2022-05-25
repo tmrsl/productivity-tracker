@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
-import { StyledButton } from "../components/styles/Button.styled";
+import { StyledButton } from "../components/styles/Button/Button.styled";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");

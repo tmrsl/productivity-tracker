@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
-import { StyledButton } from "../components/styles/Button.styled";
-import { AccountCircleIcon } from "../components/Icon/Icon";
+import { StyledButton } from "../components/styles/Button/Button.styled";
+import { AccountCircleIcon } from "../components/styles/Icons/Icons.styled";
 
 export default function UpdateProfile() {
   const [displayName, setDisplayName] = useState("");
