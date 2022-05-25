@@ -1,14 +1,14 @@
 import React from "react";
 
 import { LogoBlock } from "./Logo.styled";
-import { StyledHeader } from "../../Header.styled";
+import { StyledTypography } from "../../Typography/Typography.styled";
 import { LogoIcon } from "../../Icons/Icons.styled";
 
 export default function Logo() {
   return (
     <LogoBlock>
       <LogoIcon />
-      <StyledHeader
+      <StyledTypography
         variant="h6"
         noWrap
         component="a"
@@ -20,7 +20,7 @@ export default function Logo() {
         }}
       >
         Productivity Tracker
-      </StyledHeader>
+      </StyledTypography>
     </LogoBlock>
   );
 }

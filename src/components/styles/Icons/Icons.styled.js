@@ -15,6 +15,8 @@ import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import Brightness2Icon from "@mui/icons-material/Brightness2";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const AccountCircleIcon = styled(AccountCircle)``;
 
@@ -51,3 +53,7 @@ export const StyledViewIcon = styled(GridViewRoundedIcon)``;
 export const StyledBrightness2Icon = styled(Brightness2Icon)``;
 
 export const StyledLightModeIcon = styled(LightModeIcon)``;
+
+export const StyledAddActivityIcon = styled(PendingActionsIcon)``;
+
+export const StyledExpandMoreIcon = styled(ExpandMoreIcon)``;

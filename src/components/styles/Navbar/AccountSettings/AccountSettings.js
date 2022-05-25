@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { StyledAvatar, StyledListItemAvatar } from "../../Avatar/Avatar.styled";
 import { StyledDivider } from "../../Divider/Divider.styled";
 import { StyledMenu, StyledMenuItem } from "../../Menu/Menu.styled";
-import { StyledHeader } from "../../Header.styled";
+import { StyledTypography } from "../../Typography/Typography.styled";
 import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
 import {
   EditProfileIcon,
@@ -40,12 +40,12 @@ export default function AccountSettings({ currentUser, onLogout }) {
   };
   return (
     <AccountSettingsBlock>
-      <StyledHeader
+      <StyledTypography
         sx={{ display: { xs: "none", md: "block" }, fontWeight: 600 }}
         component="h5"
       >
         {currentUser.email}
-      </StyledHeader>
+      </StyledTypography>
       <StyledTooltip title="Account settings">
         <StyledIconButton onClick={onClickHandler}>
           <StyledAvatar>

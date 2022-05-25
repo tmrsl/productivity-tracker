@@ -1,4 +1,4 @@
 import styled from "styled-components";
 import { Typography } from "@mui/material";
 
-export const StyledHeader = styled(Typography)``;
+export const StyledTypography = styled(Typography)``;
