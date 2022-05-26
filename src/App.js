@@ -8,6 +8,8 @@ import MainLayout from "./layouts/MainLayout";
 import { useAuth } from "./context/AuthContext";
 import UpdateProfile from "./views/UpdateProfile";
 import AuthLayout from "./layouts/AuthLayout";
+import Calendar from "./components/styles/Calendar/Calendar";
+import ActivitiesList from "./components/styles/Activities/ActivitiesList/ActivitiesList";
 
 function App() {
   const { currentUser } = useAuth();
@@ -28,6 +30,8 @@ function App() {
           <Route element={<MainLayout />}>
             <Route exact path="/" element={<Home />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
+            <Route path="/list" element={<ActivitiesList />} />
+            <Route path="/calendar" element={<Calendar />} />
           </Route>
         </>
       )}

@@ -20,6 +20,7 @@ import {
 } from "../Icons/Icons.styled";
 import { StyledDivider } from "../Divider/Divider.styled";
 import { StyledSwitch } from "../Switch/Switch.styled";
+import { useNavigate } from "react-router-dom";
 
 const folders = [
   {
@@ -37,6 +38,10 @@ const folders = [
 ];
 
 export default function SideBar({ mode, onToggle }) {
+  const navigate = useNavigate();
+
+  const navigateHamdler = () => navigate("/");
+
   return (
     <SidebarBlock>
       <StyledList
@@ -44,7 +49,7 @@ export default function SideBar({ mode, onToggle }) {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <StyledListItemButton component="a">
+        <StyledListItemButton onClick={navigateHamdler} component="a">
           <StyledListItemIcon>
             <StyledHomeIcon />
           </StyledListItemIcon>
