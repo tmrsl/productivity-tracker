@@ -14,6 +14,8 @@ import {
   StyledTitleBlock,
 } from "../components/styles/Activities/AddActivity/AddActivity.styled";
 import { StyledTypography } from "../components/styles/Typography/Typography.styled";
+import { Box } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
@@ -32,13 +34,15 @@ const categories = [
 
 export default function AddActivity({ onClose }) {
   const { addActivity } = useActivities();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
       title: "",
       note: "",
       category: "events",
-      selectedDateTime: new Date(),
+      startDate: new Date(),
+      endDate: new Date(),
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Required"),
@@ -46,11 +50,13 @@ export default function AddActivity({ onClose }) {
         .max(20, "Must be 20 characters or less")
         .required("Required"),
       category: Yup.string().required("Required"),
-      selectedDateTime: Yup.date().required("Required"),
+      startDate: Yup.date().required("Required"),
+      endDate: Yup.date().required("Required"),
     }),
     onSubmit: async (values) => {
       await addActivity(values);
       onClose();
+      navigate("/list");
     },
   });
 
@@ -114,21 +120,29 @@ export default function AddActivity({ onClose }) {
             </option>
           ))}
         </StyledTextField>
-        <StyledDateTimePicker
-          label="Select Date and Time"
-          renderInput={(params) => <StyledTextField fullWidth {...params} />}
-          value={formik.values.selectedDateTime}
-          onChange={(value) => {
-            formik.setFieldValue("selectedDateTime", Date.parse(value));
-          }}
-          error={
-            formik.touched.selectedDateTime &&
-            Boolean(formik.errors.selectedDateTime)
-          }
-          helperText={
-            formik.touched.selectedDateTime && formik.errors.selectedDateTime
-          }
-        />
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <StyledDateTimePicker
+            label="Start"
+            renderInput={(params) => <StyledTextField {...params} />}
+            value={formik.values.startDate}
+            onChange={(value) => {
+              formik.setFieldValue("startDate", Date.parse(value));
+            }}
+            error={formik.touched.startDate && Boolean(formik.errors.startDate)}
+            helperText={formik.touched.startDate && formik.errors.startDate}
+          />
+          <StyledDateTimePicker
+            label="End"
+            renderInput={(params) => <StyledTextField {...params} />}
+            value={formik.values.endDate}
+            onChange={(value) => {
+              formik.setFieldValue("endDate", Date.parse(value));
+            }}
+            error={formik.touched.endDate && Boolean(formik.errors.endDate)}
+            helperText={formik.touched.endDate && formik.errors.endDate}
+          />
+        </Box>
+
         <StyledButton type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
           Add
         </StyledButton>

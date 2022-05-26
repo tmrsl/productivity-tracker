@@ -66,7 +66,10 @@ export default function MainLayout() {
         <Sidebar mode={mode} onToggle={colorModeHandler} />
       </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box
+        component="main"
+        sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
+      >
         <Box sx={{ display: { xs: "inline-block", md: "none" } }}>
           <Toolbar />
           <Button onClick={handleDrawerToggle}>
@@ -75,7 +78,9 @@ export default function MainLayout() {
           </Button>
         </Box>
         <Toolbar />
-        <Outlet />
+        <Box sx={{ overflow: "hidden", padding: 2, height: "100%" }}>
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );

@@ -16,7 +16,11 @@ export const StyledTitle = styled(Typography).attrs({
   sx: { mr: "auto" },
 })``;
 
-export const StyledDate = styled(Typography).attrs({
+export const StyledDateStart = styled(Typography).attrs({
+  sx: { color: "text.secondary", mr: 2 },
+})``;
+
+export const StyledDateEnd = styled(Typography).attrs({
   sx: { color: "text.secondary", mr: 2 },
 })``;
 

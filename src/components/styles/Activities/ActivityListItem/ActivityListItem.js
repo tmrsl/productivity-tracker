@@ -6,7 +6,8 @@ import {
   StyledAccordion,
   StyledAccordionDetails,
   StyledAccordionSummary,
-  StyledDate,
+  StyledDateStart,
+  StyledDateEnd,
   StyledTitle,
   StyledNote,
 } from "./ActivityListItem.styled";
@@ -22,18 +23,23 @@ export default function ActivityListItem({ activity }) {
   return (
     <StyledListItem>
       <StyledAccordion
-        expanded={expanded === activity.title}
-        onChange={handleChange(activity.title)}
+        expanded={expanded === activity.id}
+        onChange={handleChange(activity.id)}
       >
         <StyledAccordionSummary
           expandIcon={<StyledExpandMoreIcon />}
-          aria-controls={activity.title}
-          id={activity.title}
+          aria-controls={activity.id}
+          id={activity.id}
         >
           <StyledTitle>{activity.title}</StyledTitle>
-          <StyledDate>
-            {format(activity.selectedDateTime, "H:mm, MMMM do yyyy")}
-          </StyledDate>
+          <StyledDateStart>
+            from
+            {format(activity.startDate, "H:mm, MMMM do yyyy")}
+          </StyledDateStart>
+          <StyledDateEnd>
+            to
+            {format(activity.endDate, "H:mm, MMMM do yyyy")}
+          </StyledDateEnd>
         </StyledAccordionSummary>
         <StyledAccordionDetails>
           <StyledNote sx={{ color: "text.secondary" }}>Note:</StyledNote>
