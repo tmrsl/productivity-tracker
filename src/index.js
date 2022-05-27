@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import { HashRouter } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
-// import MainTheme from "./theme";
 import { LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { ColorModeContextProvider } from "./context/ColorModeContext";
