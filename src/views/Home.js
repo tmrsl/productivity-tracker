@@ -14,17 +14,10 @@ import {
   StyledModal,
   StyledModalBlock,
 } from "../components/styles/Modal/Modal.styled";
-import ActivitiesList from "../components/styles/Activities/ActivitiesList/ActivitiesList";
-import { Stack } from "@mui/material";
-import Feed from "../components/styles/Feed/Feed";
-// import Rightbar from "../components/styles/Rightbar/Rightbar";
-// import Sidebar from "../components/styles/Sidebar/Sidebar";
-
 import { useActivities } from "../context/UserActivitiesContext";
 import EmptyActivitiesList from "../components/styles/Activities/EmptyActivitiestList/EmptyActivitiesList";
 
 const Home = () => {
-  // const { currentUser } = useAuth();
   const { activities } = useActivities();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);

@@ -17,48 +17,32 @@ import { StyledTypography } from "../components/styles/Typography/Typography.sty
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 
-const categories = [
-  {
-    value: "event",
-    label: "event",
-  },
-  {
-    value: "task",
-    label: "task",
-  },
-  {
-    value: "reminder",
-    label: "reminder",
-  },
-];
-
 export default function AddActivity({ onClose }) {
   const { addActivity } = useActivities();
   const navigate = useNavigate();
 
-  const formik = useFormik({
-    initialValues: {
-      title: "",
-      note: "",
-      category: "events",
-      startDate: new Date(),
-      endDate: new Date(),
-    },
-    validationSchema: Yup.object({
-      title: Yup.string().required("Required"),
-      note: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
-      category: Yup.string().required("Required"),
-      startDate: Yup.date().required("Required"),
-      endDate: Yup.date().required("Required"),
-    }),
-    onSubmit: async (values) => {
-      await addActivity(values);
-      onClose();
-      navigate("/list");
-    },
-  });
+  const { values, errors, touched, handleSubmit, handleChange, setFieldValue } =
+    useFormik({
+      initialValues: {
+        startDate: new Date(),
+        endDate: new Date(),
+        title: "",
+        notes: "",
+      },
+      validationSchema: Yup.object({
+        title: Yup.string().required("Required"),
+        notes: Yup.string()
+          .max(20, "Must be 20 characters or less")
+          .required("Required"),
+        startDate: Yup.date().required("Required"),
+        endDate: Yup.date().required("Required"),
+      }),
+      onSubmit: async (values) => {
+        await addActivity(values);
+        onClose();
+        navigate("/list");
+      },
+    });
 
   return (
     <StyledMainBlock component="main" maxWidth="xs">
@@ -73,7 +57,7 @@ export default function AddActivity({ onClose }) {
           Add Activity
         </StyledTypography>
       </StyledTitleBlock>
-      <StyledFormBlock component="form" onSubmit={formik.handleSubmit}>
+      <StyledFormBlock component="form" onSubmit={handleSubmit}>
         <StyledTextField
           id="title"
           label="Enter Title"
@@ -81,65 +65,44 @@ export default function AddActivity({ onClose }) {
           variant="outlined"
           sx={{ mb: 3 }}
           fullWidth
-          value={formik.values.title}
-          onChange={formik.handleChange}
-          error={formik.touched.title && Boolean(formik.errors.title)}
-          helperText={formik.touched.title && formik.errors.title}
+          value={values.title}
+          onChange={handleChange}
+          error={touched.title && Boolean(errors.title)}
+          helperText={touched.title && errors.title}
         />
         <StyledTextField
-          id="note"
+          id="notes"
           label="Enter Note"
           type="text"
           multiline
           fullWidth
           variant="outlined"
           sx={{ mb: 3 }}
-          value={formik.values.note}
-          onChange={formik.handleChange}
-          error={formik.touched.note && Boolean(formik.errors.note)}
-          helperText={formik.touched.note && formik.errors.note}
+          value={values.notes}
+          onChange={handleChange}
+          error={touched.notes && Boolean(errors.notes)}
+          helperText={touched.notes && errors.notes}
         />
-        <StyledTextField
-          id="category"
-          select
-          fullWidth
-          label="Choose category"
-          value={formik.values.category}
-          onChange={formik.handleChange}
-          error={formik.touched.category && Boolean(formik.errors.category)}
-          helperText={formik.touched.category && formik.errors.category}
-          SelectProps={{
-            native: true,
-          }}
-          variant="outlined"
-          sx={{ mb: 3 }}
-        >
-          {categories.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </StyledTextField>
         <Box sx={{ display: "flex", gap: 1 }}>
           <StyledDateTimePicker
             label="Start"
             renderInput={(params) => <StyledTextField {...params} />}
-            value={formik.values.startDate}
+            value={values.startDate}
             onChange={(value) => {
-              formik.setFieldValue("startDate", Date.parse(value));
+              setFieldValue("startDate", new Date(value));
             }}
-            error={formik.touched.startDate && Boolean(formik.errors.startDate)}
-            helperText={formik.touched.startDate && formik.errors.startDate}
+            error={touched.startDate && Boolean(errors.startDate)}
+            helperText={touched.startDate && errors.startDate}
           />
           <StyledDateTimePicker
             label="End"
             renderInput={(params) => <StyledTextField {...params} />}
-            value={formik.values.endDate}
+            value={values.endDate}
             onChange={(value) => {
-              formik.setFieldValue("endDate", Date.parse(value));
+              setFieldValue("endDate", new Date(value));
             }}
-            error={formik.touched.endDate && Boolean(formik.errors.endDate)}
-            helperText={formik.touched.endDate && formik.errors.endDate}
+            error={touched.endDate && Boolean(errors.endDate)}
+            helperText={touched.endDate && errors.endDate}
           />
         </Box>
 

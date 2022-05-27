@@ -4,7 +4,6 @@ import { useActivities } from "../../../../context/UserActivitiesContext";
 import { StyledTypography } from "../../Typography/Typography.styled";
 
 import ActivityListItem from "../ActivityListItem/ActivityListItem";
-import EmptyActivitiesList from "../EmptyActivitiestList/EmptyActivitiesList";
 import {
   StyledActivitiesList,
   StyledListBox,

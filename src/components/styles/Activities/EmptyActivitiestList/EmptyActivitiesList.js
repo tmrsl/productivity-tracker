@@ -1,4 +1,3 @@
-import { ImageList, ImageListItem } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { StyledTypography } from "../../Typography/Typography.styled";
@@ -11,9 +10,6 @@ export default function EmptyActivitiesList() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        // justifyContent: "center",
-        // alightItems: "center",
-        // gap: 40,
       }}
     >
       <Box>

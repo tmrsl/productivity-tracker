@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { StyledIconButton } from "../../../Button/Button.styled";
 import {
   StyledBoardIcon,
@@ -12,6 +14,7 @@ import { MobileMenuBlock } from "./MobileNavigation.styled";
 
 export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,7 +50,7 @@ export default function Navigation() {
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
       >
-        <StyledMenuItem onClick={handleCloseNavMenu}>
+        <StyledMenuItem onClick={() => navigate("/list")}>
           <StyledListItemIcon>
             <StyledListIcon />
           </StyledListItemIcon>

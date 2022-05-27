@@ -43,7 +43,7 @@ export default function ActivityListItem({ activity }) {
         </StyledAccordionSummary>
         <StyledAccordionDetails>
           <StyledNote sx={{ color: "text.secondary" }}>Note:</StyledNote>
-          <StyledTypography>{activity.note}</StyledTypography>
+          <StyledTypography>{activity.notes}</StyledTypography>
         </StyledAccordionDetails>
       </StyledAccordion>
     </StyledListItem>

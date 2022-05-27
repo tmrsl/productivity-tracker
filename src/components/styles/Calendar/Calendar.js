@@ -14,6 +14,7 @@ import {
   AppointmentTooltip,
   AppointmentForm,
   TodayButton,
+  ConfirmationDialog,
   CurrentTimeIndicator,
   AllDayPanel,
 } from "@devexpress/dx-react-scheduler-material-ui";
@@ -24,6 +25,8 @@ export default function Calendar() {
     useActivities();
 
   const commitChanges = ({ changed, deleted, added }) => {
+    console.log("channged: ", changed);
+
     if (added) {
       addActivity(added);
     }
@@ -49,7 +52,7 @@ export default function Calendar() {
 
   return (
     <Paper>
-      <Scheduler height={660} data={activities}>
+      <Scheduler height={850} data={activities}>
         <ViewState />
         <WeekView startDayHour={9} endDayHour={19} />
         <Toolbar />
@@ -60,6 +63,7 @@ export default function Calendar() {
         <IntegratedEditing />
         <AppointmentTooltip showDeleteButton showOpenButton />
         <AppointmentForm />
+        <ConfirmationDialog />
         <AllDayPanel />
         <CurrentTimeIndicator />
       </Scheduler>
