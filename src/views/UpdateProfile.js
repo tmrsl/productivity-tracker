@@ -29,6 +29,7 @@ export default function UpdateProfile() {
   useEffect(() => {
     setEmail(currentUser.email);
     setDisplayName(currentUser.displayName || "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function submitHandler(e) {

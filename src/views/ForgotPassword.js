@@ -1,7 +1,6 @@
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
-import CssBaseline from "@mui/material/CssBaseline";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -45,7 +44,6 @@ export default function ForgotPassword() {
 
   return (
     <Container component="main" maxWidth="xs">
-      {/* <CssBaseline /> */}
       <Box
         sx={{
           display: "flex",

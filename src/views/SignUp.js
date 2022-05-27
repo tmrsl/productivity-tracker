@@ -1,7 +1,6 @@
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
-import CssBaseline from "@mui/material/CssBaseline";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -86,7 +85,6 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      {/* <CssBaseline /> */}
       <Box
         sx={{
           display: "flex",
