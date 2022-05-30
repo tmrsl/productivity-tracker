@@ -30,17 +30,18 @@ export default function Calendar() {
     }
 
     if (changed) {
-      const toUpdate = activities.map((activity) => {
-        const changedActivity = changed[activity.id];
+      const [id] = Object.keys(changed);
+      const updatedFields = changed[id];
 
-        if (changedActivity) {
-          return { ...activity, ...changedActivity };
+      const updatedActivities = activities.map((activity) => {
+        if (activity.id === id) {
+          return { ...activity, ...updatedFields };
         }
 
         return activity;
       });
 
-      updateActivities(toUpdate);
+      updateActivities({ id, updatedFields, updatedActivities });
     }
 
     if (deleted !== undefined) {
