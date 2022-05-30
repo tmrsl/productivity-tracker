@@ -10,6 +10,7 @@ import UpdateProfile from "./views/UpdateProfile";
 import AuthLayout from "./layouts/AuthLayout";
 import Calendar from "./components/styles/Calendar/Calendar";
 import ActivitiesList from "./components/styles/Activities/ActivitiesList/ActivitiesList";
+import UserActivitiesProvider from "./context/UserActivitiesContext";
 
 function App() {
   const { currentUser } = useAuth();
@@ -27,7 +28,13 @@ function App() {
       )}
       {currentUser && (
         <>
-          <Route element={<MainLayout />}>
+          <Route
+            element={
+              <UserActivitiesProvider>
+                <MainLayout />
+              </UserActivitiesProvider>
+            }
+          >
             <Route exact path="/" element={<Home />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
             <Route path="/list" element={<ActivitiesList />} />

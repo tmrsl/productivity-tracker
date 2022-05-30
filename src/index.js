@@ -7,7 +7,6 @@ import AuthProvider from "./context/AuthContext";
 import { LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { ColorModeContextProvider } from "./context/ColorModeContext";
-import UserActivitiesProvider from "./context/UserActivitiesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,11 +14,9 @@ root.render(
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <ColorModeContextProvider>
         <AuthProvider>
-          <UserActivitiesProvider>
-            <HashRouter>
-              <App />
-            </HashRouter>
-          </UserActivitiesProvider>
+          <HashRouter>
+            <App />
+          </HashRouter>
         </AuthProvider>
       </ColorModeContextProvider>
     </LocalizationProvider>
