@@ -53,6 +53,7 @@ const SignUp = () => {
     if (pass !== confirmPass) {
       return setError("Passwords do not match");
     }
+    console.log("waiting");
 
     try {
       setError("");
@@ -173,7 +174,12 @@ const SignUp = () => {
           control={<Checkbox value="remember" color="primary" />}
           label="I allow send me notifications by email"
         />
-        <StyledButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+        <StyledButton
+          type="submit"
+          fullWidth
+          disabled={loading}
+          sx={{ mt: 3, mb: 2 }}
+        >
           Sign Up
         </StyledButton>
         <Link to="/sign-in" variant="body2" underline="hover">
