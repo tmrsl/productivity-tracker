@@ -12,4 +12,11 @@ export const StyledTitleBlock = styled(Box).attrs({
   },
 })``;
 
+export const StyledDateBlock = styled(Box).attrs({
+  sx: {
+    display: "flex",
+    gap: 1,
+  },
+})``;
+
 export const StyledFormBlock = styled(Box)``;

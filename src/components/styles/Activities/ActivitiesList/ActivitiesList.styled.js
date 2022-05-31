@@ -16,9 +16,9 @@ export const StyledListBox = styled(Box).attrs({
 export const StyledTitle = styled(Typography).attrs({
   sx: {
     fontWeight: 500,
-    color: "inherit",
     textDecoration: "none",
     textAlign: "center",
+    color: "text.secondary",
   },
 })``;
 
@@ -31,5 +31,12 @@ export const StyledActivitiesList = styled(List).attrs({
     maxWidth: "800px",
     width: "100%",
     justifySelf: "center",
+  },
+})``;
+
+export const StyledTitleBox = styled(Box).attrs({
+  sx: {
+    display: "flex",
+    flexDirection: "column",
   },
 })``;
