@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteActivityModal from "../DeleteActivityModal/DeleteActivityModal";
 
 import { format } from "date-fns";
@@ -27,10 +27,10 @@ import { StyledDivider } from "../../Divider/Divider.styled";
 import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
 import { StyledIconButton } from "../../Button/Button.styled";
 
-export default function ActivityListItem({ activity }) {
-  const [expanded, setExpanded] = React.useState("");
+export default function ActivityListItem({ activity, deleteActivity }) {
+  const [expanded, setExpanded] = useState("");
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -113,6 +113,7 @@ export default function ActivityListItem({ activity }) {
 
       <DeleteActivityModal
         activity={activity}
+        deleteActivity={deleteActivity}
         open={open}
         handleClose={handleClose}
       />

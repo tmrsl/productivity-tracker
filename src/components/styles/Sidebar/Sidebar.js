@@ -4,6 +4,7 @@ import {
   SidebarBlock,
   StyledListItemIcon,
   StyledSidebarListItem,
+  StyledBadge,
 } from "./Sidebar.styled";
 import {
   StyledList,
@@ -37,10 +38,8 @@ const folders = [
   },
 ];
 
-export default function SideBar({ mode, onToggle }) {
+export default function SideBar({ mode, onToggle, activities }) {
   const navigate = useNavigate();
-
-  const navigateHamdler = () => navigate("/");
 
   return (
     <SidebarBlock>
@@ -49,15 +48,17 @@ export default function SideBar({ mode, onToggle }) {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <StyledListItemButton onClick={navigateHamdler} component="a">
+        <StyledListItemButton onClick={() => navigate("/")} component="a">
           <StyledListItemIcon>
             <StyledHomeIcon />
           </StyledListItemIcon>
           <StyledListItemText primary="Home" />
         </StyledListItemButton>
-        <StyledListItemButton>
+        <StyledListItemButton onClick={() => navigate("/list")}>
           <StyledListItemIcon>
-            <StyledGoalsIcon />
+            <StyledBadge badgeContent={activities.length} color="info">
+              <StyledGoalsIcon />
+            </StyledBadge>
           </StyledListItemIcon>
           <StyledListItemText primary="Tasks" />
         </StyledListItemButton>

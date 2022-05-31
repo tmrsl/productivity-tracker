@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useActivities } from "../context/UserActivitiesContext";
@@ -12,10 +13,9 @@ import {
   StyledFormBlock,
   StyledMainBlock,
   StyledTitleBlock,
+  StyledDateBlock,
 } from "../components/styles/Activities/AddActivity/AddActivity.styled";
 import { StyledTypography } from "../components/styles/Typography/Typography.styled";
-import { Box } from "@mui/system";
-import { useNavigate } from "react-router-dom";
 
 export default function AddActivity({ onClose }) {
   const { addActivity } = useActivities();
@@ -83,7 +83,7 @@ export default function AddActivity({ onClose }) {
           error={touched.notes && Boolean(errors.notes)}
           helperText={touched.notes && errors.notes}
         />
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <StyledDateBlock>
           <StyledDateTimePicker
             label="Start"
             renderInput={(params) => <StyledTextField {...params} />}
@@ -104,7 +104,7 @@ export default function AddActivity({ onClose }) {
             error={touched.endDate && Boolean(errors.endDate)}
             helperText={touched.endDate && errors.endDate}
           />
-        </Box>
+        </StyledDateBlock>
 
         <StyledButton type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
           Add

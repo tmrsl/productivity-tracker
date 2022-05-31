@@ -1,32 +1,39 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogTitle from "@mui/material/DialogTitle";
 
-import { useActivities } from "../../../../context/UserActivitiesContext";
+import {
+  StyledModal,
+  StyledModalActions,
+  StyledModalTitle,
+  StyledModalButton,
+} from "./DeleteActivityModal.styled";
 
-export default function DeleteActivityModal({ handleClose, open, activity }) {
-  const { deleteActivity } = useActivities();
-
+export default function DeleteActivityModal({
+  handleClose,
+  open,
+  activity,
+  deleteActivity,
+}) {
   return (
-    <div>
-      <Dialog
+    <>
+      <StyledModal
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
+        <StyledModalTitle id="alert-dialog-title">
           {"Are you sure you want to delete this appointment?"}
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose}>Cansel</Button>
-          <Button onClick={() => deleteActivity(activity.id)} autoFocus>
+        </StyledModalTitle>
+        <StyledModalActions>
+          <StyledModalButton onClick={handleClose}>Cansel</StyledModalButton>
+          <StyledModalButton
+            onClick={() => deleteActivity(activity.id)}
+            autoFocus
+          >
             Delete
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+          </StyledModalButton>
+        </StyledModalActions>
+      </StyledModal>
+    </>
   );
 }

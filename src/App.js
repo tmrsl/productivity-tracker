@@ -1,16 +1,16 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import UserActivitiesProvider from "./context/UserActivitiesContext";
+import { useAuth } from "./context/AuthContext";
+
+import MainLayout from "./layouts/MainLayout";
+import AuthLayout from "./layouts/AuthLayout";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
 import Home from "./views/Home";
 import ForgotPassword from "./views/ForgotPassword";
-import MainLayout from "./layouts/MainLayout";
-
-import { useAuth } from "./context/AuthContext";
 import UpdateProfile from "./views/UpdateProfile";
-import AuthLayout from "./layouts/AuthLayout";
 import Calendar from "./components/styles/Calendar/Calendar";
-import ActivitiesList from "./components/styles/Activities/ActivitiesList/ActivitiesList";
-import UserActivitiesProvider from "./context/UserActivitiesContext";
+import ActivitiesList from "./views/ActivitiesList";
 
 function App() {
   const { currentUser } = useAuth();

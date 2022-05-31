@@ -7,12 +7,14 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useAuth } from "../context/AuthContext";
 import { useColorMode } from "../context/ColorModeContext";
 import { useState } from "react";
+import { useActivities } from "../context/UserActivitiesContext";
 
 const drawerWidth = 240;
 
 export default function MainLayout() {
   const { logOut, currentUser } = useAuth();
   const { toggleColorMode, mode } = useColorMode();
+  const { activities } = useActivities();
 
   const [openMobileDrawer, setOpenMobileDraver] = useState(false);
 
@@ -46,7 +48,11 @@ export default function MainLayout() {
         }}
       >
         <Toolbar />
-        <Sidebar mode={mode} onToggle={colorModeHandler} />
+        <Sidebar
+          mode={mode}
+          onToggle={colorModeHandler}
+          activities={activities}
+        />
       </Drawer>
       <Drawer
         variant="temporary"
