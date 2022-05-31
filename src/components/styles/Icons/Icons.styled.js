@@ -17,6 +17,10 @@ import Brightness2Icon from "@mui/icons-material/Brightness2";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import EditLocationAltOutlinedIcon from "@mui/icons-material/EditLocationAltOutlined";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export const AccountCircleIcon = styled(AccountCircle)``;
 
@@ -57,3 +61,11 @@ export const StyledLightModeIcon = styled(LightModeIcon)``;
 export const StyledAddActivityIcon = styled(PendingActionsIcon)``;
 
 export const StyledExpandMoreIcon = styled(ExpandMoreIcon)``;
+
+export const StyledAssignmentIcon = styled(AssignmentIcon)``;
+
+export const StyledScheduleIcon = styled(ScheduleIcon)``;
+
+export const StyledNoteIcon = styled(EditLocationAltOutlinedIcon)``;
+
+export const StyledCancelIcon = styled(CancelIcon)``;
