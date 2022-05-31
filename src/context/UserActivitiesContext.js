@@ -82,8 +82,8 @@ export default function UserActivitiesProvider({ children }) {
       setLoading(true);
 
       try {
-        const q = query(collection(db, USERS, currentUser.uid, ACTIVITIES));
-        const collectionSnap = await getDocs(q);
+        const que = query(collection(db, USERS, currentUser.uid, ACTIVITIES));
+        const collectionSnap = await getDocs(que);
         const list = collectionSnap.docs.map((doc) => ({
           id: doc.id,
           title: doc.get("title"),
