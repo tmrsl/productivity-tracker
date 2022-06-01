@@ -19,6 +19,8 @@ import {
   AllDayPanel,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { useActivities } from "../../../context/UserActivitiesContext";
+import { Box } from "@mui/system";
+import { StyledTitle } from "../Activities/ActivitiesList/ActivitiesList.styled";
 
 export default function Calendar() {
   const { activities, updateActivities, deleteActivity, addActivity } =
@@ -50,22 +52,44 @@ export default function Calendar() {
   };
 
   return (
-    <Paper>
-      <Scheduler height={850} data={activities}>
-        <ViewState />
-        <WeekView startDayHour={9} endDayHour={19} />
-        <Toolbar />
-        <DateNavigator />
-        <TodayButton />
-        <Appointments />
-        <EditingState onCommitChanges={commitChanges} />
-        <IntegratedEditing />
-        <AppointmentTooltip showDeleteButton showOpenButton />
-        <AppointmentForm />
-        <ConfirmationDialog />
-        <AllDayPanel />
-        <CurrentTimeIndicator />
-      </Scheduler>
-    </Paper>
+    <Box
+      sx={{
+        mt: 2,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        bgcolor: "background.paper",
+        gap: 4,
+      }}
+    >
+      <StyledTitle
+        variant="h5"
+        sx={{
+          display: { xs: "inline-block", md: "none" },
+          mb: 4,
+        }}
+      >
+        Calendar
+      </StyledTitle>
+      <Paper>
+        <Scheduler height={850} data={activities}>
+          <ViewState />
+          <WeekView startDayHour={9} endDayHour={19} />
+          <Toolbar />
+          <DateNavigator />
+          <TodayButton />
+          <Appointments />
+          <EditingState onCommitChanges={commitChanges} />
+          <IntegratedEditing />
+          <AppointmentTooltip showDeleteButton showOpenButton />
+          <AppointmentForm />
+          <ConfirmationDialog />
+          <AllDayPanel />
+          <CurrentTimeIndicator />
+        </Scheduler>
+      </Paper>
+    </Box>
   );
 }
