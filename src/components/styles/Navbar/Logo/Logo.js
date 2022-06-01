@@ -7,15 +7,18 @@ import { LogoIcon } from "../../Icons/Icons.styled";
 export default function Logo() {
   return (
     <LogoBlock>
-      <LogoIcon />
+      <LogoIcon
+        sx={{
+          color: "text.secondary",
+        }}
+      />
       <StyledTypography
         variant="h6"
         noWrap
         component="a"
-        href="/"
         sx={{
           fontWeight: 500,
-          color: "inherit",
+          color: "text.secondary",
           textDecoration: "none",
         }}
       >

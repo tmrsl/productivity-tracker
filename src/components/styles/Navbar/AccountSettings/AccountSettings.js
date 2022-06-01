@@ -41,7 +41,11 @@ export default function AccountSettings({ currentUser, onLogout }) {
   return (
     <AccountSettingsBlock>
       <StyledTypography
-        sx={{ display: { xs: "none", md: "block" }, fontWeight: 600 }}
+        sx={{
+          color: "text.secondary",
+          display: { xs: "none", md: "block" },
+          fontWeight: 600,
+        }}
         component="h5"
       >
         {currentUser.email}

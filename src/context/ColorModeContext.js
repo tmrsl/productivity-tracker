@@ -24,6 +24,9 @@ export const ColorModeContextProvider = ({ children }) => {
       createTheme({
         palette: {
           mode,
+          primary: {
+            main: "#7a9dff",
+          },
         },
       }),
     [mode]

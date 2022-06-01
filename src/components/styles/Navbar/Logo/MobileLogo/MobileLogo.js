@@ -7,7 +7,7 @@ import { StyledIconButton } from "../../../Button/Button.styled";
 export default function MobileLogo() {
   return (
     <MobileLogoBlock>
-      <StyledIconButton href="/" color="inherit">
+      <StyledIconButton>
         <LogoIcon />
       </StyledIconButton>
     </MobileLogoBlock>

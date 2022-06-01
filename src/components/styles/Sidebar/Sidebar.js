@@ -38,7 +38,7 @@ const folders = [
   },
 ];
 
-export default function SideBar({ mode, onToggle, activities }) {
+export default function SideBar({ mode, onToggle, activities }, anchor) {
   const navigate = useNavigate();
 
   return (
@@ -56,7 +56,7 @@ export default function SideBar({ mode, onToggle, activities }) {
         </StyledListItemButton>
         <StyledListItemButton onClick={() => navigate("/list")}>
           <StyledListItemIcon>
-            <StyledBadge badgeContent={activities.length} color="info">
+            <StyledBadge badgeContent={activities.length} color="primary">
               <StyledGoalsIcon />
             </StyledBadge>
           </StyledListItemIcon>
