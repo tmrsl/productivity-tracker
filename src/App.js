@@ -11,6 +11,7 @@ import ForgotPassword from "./views/ForgotPassword";
 import UpdateProfile from "./views/UpdateProfile";
 import Calendar from "./components/styles/Calendar/Calendar";
 import ActivitiesList from "./views/ActivitiesList";
+import Main from "./views/Main";
 
 function App() {
   const { currentUser } = useAuth();
@@ -20,6 +21,7 @@ function App() {
       {!currentUser && (
         <>
           <Route element={<AuthLayout />}>
+            <Route path="start" element={<Main />} />
             <Route path="sign-in" element={<SignIn />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
@@ -42,10 +44,7 @@ function App() {
           </Route>
         </>
       )}
-      <Route
-        path="*"
-        element={<Navigate to={currentUser ? "/" : "sign-in"} />}
-      />
+      <Route path="*" element={<Navigate to={currentUser ? "/" : "start"} />} />
     </Routes>
   );
 }
