@@ -136,7 +136,7 @@ const SignIn = () => {
             Forgot password?
           </Link>
           <Link to="/sign-up" variant="body2" underline="hover">
-            Need an account? Sign Up
+            Sign Up
           </Link>
         </Box>
       </Box>
