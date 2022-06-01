@@ -26,13 +26,7 @@ export default function Navigation() {
 
   return (
     <MobileMenuBlock>
-      <StyledIconButton
-        // aria-label="account of current user"
-        // aria-controls="menu-appbar"
-        // aria-haspopup="true"
-        onClick={handleOpenNavMenu}
-        color="inherit"
-      >
+      <StyledIconButton onClick={handleOpenNavMenu}>
         <StyledViewIcon />
       </StyledIconButton>
       <StyledMenu
@@ -48,7 +42,7 @@ export default function Navigation() {
           horizontal: "left",
         }}
         open={Boolean(anchorElNav)}
-        onClose={handleCloseNavMenu}
+        onClick={handleCloseNavMenu}
       >
         <StyledMenuItem onClick={() => navigate("/list")}>
           <StyledListItemIcon>
@@ -62,7 +56,7 @@ export default function Navigation() {
           </StyledListItemIcon>
           Board
         </StyledMenuItem>
-        <StyledMenuItem onClick={handleCloseNavMenu}>
+        <StyledMenuItem onClick={() => navigate("/calendar")}>
           <StyledListItemIcon>
             <StyledCalendarMonthIcon />
           </StyledListItemIcon>

@@ -13,8 +13,8 @@ const drawerWidth = 240;
 
 export default function MainLayout() {
   const { logOut, currentUser } = useAuth();
-  const { toggleColorMode, mode } = useColorMode();
   const { activities } = useActivities();
+  const { toggleColorMode, mode } = useColorMode();
 
   const [openMobileDrawer, setOpenMobileDraver] = useState(false);
 
@@ -57,7 +57,7 @@ export default function MainLayout() {
       <Drawer
         variant="temporary"
         open={openMobileDrawer}
-        onClose={handleDrawerToggle}
+        onClick={handleDrawerToggle}
         sx={{
           width: drawerWidth,
           display: { xs: "flex", md: "none" },
@@ -69,14 +69,23 @@ export default function MainLayout() {
         }}
       >
         <Toolbar />
-        <Sidebar mode={mode} onToggle={colorModeHandler} />
+        <Sidebar
+          mode={mode}
+          onToggle={colorModeHandler}
+          activities={activities}
+        />
       </Drawer>
 
       <Box
         component="main"
         sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
       >
-        <Box sx={{ display: { xs: "inline-block", md: "none" } }}>
+        <Box
+          sx={{
+            display: { xs: "inline-block", md: "none" },
+            position: "absolute",
+          }}
+        >
           <Toolbar />
           <Button onClick={handleDrawerToggle}>
             Menu
