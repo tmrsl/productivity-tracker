@@ -27,6 +27,7 @@ export default function Calendar() {
     useActivities();
 
   const commitChanges = ({ changed, deleted, added }) => {
+    console.log(changed);
     if (added) {
       addActivity(added);
     }

@@ -8,6 +8,8 @@ export default function AuthLayout() {
       sx={{
         width: "100%",
         height: "100%",
+        margin: "0 auto",
+        padding: "0 40px",
         background: "rgb(225,228,240)",
         background:
           "radial-gradient(circle, rgba(225,228,240,1) 0%, rgba(190,188,233,1) 100%)",
@@ -30,8 +32,6 @@ export default function AuthLayout() {
             xs: "1fr",
             md: "1fr 1fr",
           },
-          margin: "0 auto",
-          padding: "0 40px",
         }}
       >
         <Box

@@ -27,6 +27,9 @@ export const ColorModeContextProvider = ({ children }) => {
           primary: {
             main: "#7a9dff",
           },
+          secondary: {
+            main: "#8c9ce6",
+          },
         },
       }),
     [mode]

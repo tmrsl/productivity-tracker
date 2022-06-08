@@ -93,8 +93,17 @@ export default function MainLayout() {
           </Button>
         </Box>
         <Toolbar />
-        <Box sx={{ overflow: "hidden", padding: 2, height: "100%" }}>
+        <Box
+          sx={{
+            scrollBehavior: "auto",
+            overflow: "auto",
+            padding: 2,
+            height: "100%",
+          }}
+        >
+          {/* <AlbumProvider> */}
           <Outlet />
+          {/* </AlbumProvider> */}
         </Box>
       </Box>
     </Box>
