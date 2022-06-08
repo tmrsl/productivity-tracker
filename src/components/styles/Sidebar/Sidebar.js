@@ -62,11 +62,11 @@ export default function SideBar({ mode, onToggle, activities }, anchor) {
           </StyledListItemIcon>
           <StyledListItemText primary="Tasks" />
         </StyledListItemButton>
-        <StyledListItemButton>
+        <StyledListItemButton onClick={() => navigate("/album")}>
           <StyledListItemIcon>
             <StyledEventsIcon />
           </StyledListItemIcon>
-          <StyledListItemText primary="Goals" />
+          <StyledListItemText primary="Album" />
         </StyledListItemButton>
       </StyledList>
       <StyledListItem>

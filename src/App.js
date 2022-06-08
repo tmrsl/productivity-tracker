@@ -12,6 +12,9 @@ import UpdateProfile from "./views/UpdateProfile";
 import Calendar from "./components/styles/Calendar/Calendar";
 import ActivitiesList from "./views/ActivitiesList";
 import Main from "./views/Main";
+import Chart from "./components/styles/Chart/Chart";
+import Album from "./components/styles/Album/Album";
+import AlbumProvider from "./context/AlbumContext";
 
 function App() {
   const { currentUser } = useAuth();
@@ -33,7 +36,9 @@ function App() {
           <Route
             element={
               <UserActivitiesProvider>
-                <MainLayout />
+                <AlbumProvider>
+                  <MainLayout />
+                </AlbumProvider>
               </UserActivitiesProvider>
             }
           >
@@ -41,6 +46,8 @@ function App() {
             <Route path="/update-profile" element={<UpdateProfile />} />
             <Route path="/list" element={<ActivitiesList />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/chart" element={<Chart />} />
+            <Route path="/album" element={<Album />} />
           </Route>
         </>
       )}
