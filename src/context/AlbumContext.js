@@ -71,9 +71,9 @@ export default function AlbumProvider({ children }) {
         console.log("e: ", e);
       }
     }
-    console.log("[useEffect] in AllbumContext");
 
     fetchAlbumContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = {

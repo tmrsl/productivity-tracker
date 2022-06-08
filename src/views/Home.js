@@ -24,8 +24,21 @@ const Home = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box sx={{ height: "100%" }}>
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {activities.length === 0 && <EmptyActivitiesList />}
+      <img
+        src="/home-page.svg"
+        srcSet=""
+        alt=""
+        loading="lazy"
+        style={{ width: 600, height: 700, alignSelf: "center" }}
+      />
       <StyledTooltip title="Add new activity" onClick={handleOpen}>
         <Fab
           sx={{

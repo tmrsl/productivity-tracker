@@ -13,8 +13,6 @@ import { StyledModal, StyledModalBlock } from "../Modal/Modal.styled";
 import AddCard from "./AddCard";
 import { useAlbum } from "../../../context/AlbumContext";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 export default function Album() {
   const [open, setOpen] = React.useState(false);
   const { album } = useAlbum();

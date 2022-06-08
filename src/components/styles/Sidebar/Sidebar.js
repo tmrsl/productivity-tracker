@@ -13,8 +13,8 @@ import {
   StyledListItemText,
 } from "../List/List.styled";
 import {
+  StyledAlbumIcon,
   StyledBrightness2Icon,
-  StyledEventsIcon,
   StyledGoalsIcon,
   StyledHomeIcon,
   StyledLightModeIcon,
@@ -64,7 +64,7 @@ export default function SideBar({ mode, onToggle, activities }, anchor) {
         </StyledListItemButton>
         <StyledListItemButton onClick={() => navigate("/album")}>
           <StyledListItemIcon>
-            <StyledEventsIcon />
+            <StyledAlbumIcon />
           </StyledListItemIcon>
           <StyledListItemText primary="Album" />
         </StyledListItemButton>

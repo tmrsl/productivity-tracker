@@ -38,13 +38,12 @@ export default function AddCard({ onClose }) {
       initialValues: initialVal,
       validationSchema: validation,
       onSubmit: async (values) => {
-        console.log(values);
         await addAlbumCard(values);
         onClose();
         navigate("/album");
       },
     });
-  console.log(values);
+
   return (
     <StyledMainBlock component="main" maxWidth="xs">
       <StyledTitleBlock>
