@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { StyledIconButton } from "../../../Button/Button.styled";
 import {
-  StyledBoardIcon,
   StyledCalendarMonthIcon,
   StyledListIcon,
   StyledViewIcon,
+  StyledChartIcon,
 } from "../../../Icons/Icons.styled";
 import { StyledListItemIcon } from "../../../List/List.styled";
 import { StyledMenu, StyledMenuItem } from "../../../Menu/Menu.styled";
@@ -50,11 +50,11 @@ export default function Navigation() {
           </StyledListItemIcon>
           List
         </StyledMenuItem>
-        <StyledMenuItem onClick={handleCloseNavMenu}>
+        <StyledMenuItem onClick={() => navigate("/chart")}>
           <StyledListItemIcon>
-            <StyledBoardIcon />
+            <StyledChartIcon />
           </StyledListItemIcon>
-          Board
+          Charts
         </StyledMenuItem>
         <StyledMenuItem onClick={() => navigate("/calendar")}>
           <StyledListItemIcon>

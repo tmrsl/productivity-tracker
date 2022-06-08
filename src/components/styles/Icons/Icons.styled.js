@@ -21,6 +21,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import EditLocationAltOutlinedIcon from "@mui/icons-material/EditLocationAltOutlined";
 import CancelIcon from "@mui/icons-material/Cancel";
+import BarChartIcon from "@mui/icons-material/BarChart";
 
 export const AccountCircleIcon = styled(AccountCircle)``;
 
@@ -69,3 +70,5 @@ export const StyledScheduleIcon = styled(ScheduleIcon)``;
 export const StyledNoteIcon = styled(EditLocationAltOutlinedIcon)``;
 
 export const StyledCancelIcon = styled(CancelIcon)``;
+
+export const StyledChartIcon = styled(BarChartIcon)``;

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { StyledDivider } from "../../Divider/Divider.styled";
 import { MenuBlock, StyledPageButton } from "./Navigation.styled";
 import {
-  StyledBoardIcon,
+  StyledChartIcon,
   StyledListIcon,
   StyledCalendarMonthIcon,
 } from "../../Icons/Icons.styled";
@@ -23,8 +23,12 @@ export default function Menu() {
       </StyledPageButton>
 
       <StyledDivider orientation="vertical" variant="middle" flexItem />
-      <StyledPageButton value="board" startIcon={<StyledBoardIcon />}>
-        Board
+      <StyledPageButton
+        onClick={() => navigate("/chart")}
+        value="board"
+        startIcon={<StyledChartIcon />}
+      >
+        Charts
       </StyledPageButton>
       <StyledDivider orientation="vertical" variant="middle" flexItem />
 
