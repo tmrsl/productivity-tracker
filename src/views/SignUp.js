@@ -1,18 +1,18 @@
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Container } from "@mui/material";
-import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useAuth } from "../context/AuthContext";
 import { StyledButton } from "../components/styles/Button/Button.styled";
+import { useAuth } from "../context/AuthContext";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -53,7 +53,6 @@ const SignUp = () => {
     if (pass !== confirmPass) {
       return setError("Passwords do not match");
     }
-    console.log("waiting");
 
     try {
       setError("");
@@ -62,18 +61,17 @@ const SignUp = () => {
       navigate("/");
     } catch (e) {
       switch (e.code) {
-        case "auth/credential-already-in-use":
-          setError("Account already exist");
-          break;
-        case "auth/invalid-email":
-          setError("Invalid email");
-          break;
-        case "auth/weak-password":
-          setError("Weak-password");
-          break;
-        default:
-          console.log(error.code);
-          setError("Failed to create an account");
+      case "auth/credential-already-in-use":
+        setError("Account already exist");
+        break;
+      case "auth/invalid-email":
+        setError("Invalid email");
+        break;
+      case "auth/weak-password":
+        setError("Weak-password");
+        break;
+      default:
+        setError("Failed to create an account");
       }
     }
     setLoading(false);
@@ -120,7 +118,6 @@ const SignUp = () => {
           fullWidth
           required
           autoComplete="given-name"
-          autoFocus
           value={firstName}
           onChange={enteredFirstNameHandler}
         />

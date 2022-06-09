@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Box, Modal } from "@mui/material";
+import styled from "styled-components";
 
 export const StyledModal = styled(Modal)``;
 

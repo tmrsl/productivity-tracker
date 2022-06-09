@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { AppBar, Toolbar } from "@mui/material";
+import styled from "styled-components";
 
 export const StyledNavbar = styled(AppBar).attrs({
   position: "fixed",

@@ -1,9 +1,9 @@
 import { Box } from "@mui/system";
 import React from "react";
-import { StyledButton } from "../components/styles/Button/Button.styled";
-import { StyledTypography } from "../components/styles/Typography/Typography.styled";
-import { LogoIcon } from "../components/styles/Icons/Icons.styled";
 import { useNavigate } from "react-router-dom";
+import { StyledButton } from "../components/styles/Button/Button.styled";
+import { LogoIcon } from "../components/styles/Icons/Icons.styled";
+import { StyledTypography } from "../components/styles/Typography/Typography.styled";
 
 export default function Main() {
   const navigate = useNavigate();

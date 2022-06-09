@@ -1,17 +1,17 @@
-import React from "react";
+import AddIcon from "@mui/icons-material/Add";
+import { Fab } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 
-import { Fab } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import { StyledTooltip } from "../Tooltip/Tooltip.styled";
-import { StyledModal, StyledModalBlock } from "../Modal/Modal.styled";
+import React from "react";
 import AddCard from "./AddCard";
 import { useAlbum } from "../../../context/AlbumContext";
+import { StyledModal, StyledModalBlock } from "../Modal/Modal.styled";
+import { StyledTooltip } from "../Tooltip/Tooltip.styled";
 
 export default function Album() {
   const [open, setOpen] = React.useState(false);

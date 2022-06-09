@@ -1,5 +1,3 @@
-import React from "react";
-import { Paper } from "@mui/material";
 import {
   ViewState,
   EditingState,
@@ -18,8 +16,10 @@ import {
   CurrentTimeIndicator,
   AllDayPanel,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { useActivities } from "../../../context/UserActivitiesContext";
+import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
+import React from "react";
+import { useActivities } from "../../../context/UserActivitiesContext";
 import { StyledTitle } from "../Activities/ActivitiesList/ActivitiesList.styled";
 
 export default function Calendar() {
@@ -27,7 +27,6 @@ export default function Calendar() {
     useActivities();
 
   const commitChanges = ({ changed, deleted, added }) => {
-    console.log(changed);
     if (added) {
       addActivity(added);
     }

@@ -1,19 +1,19 @@
+import { Box, TextField } from "@mui/material";
+import { useFormik } from "formik";
 import React from "react";
 
-import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { Box, TextField } from "@mui/material";
-import { StyledButton } from "../Button/Button.styled";
-import { StyledTextField } from "../Form/TextField/TextField.styled";
+import { useAlbum } from "../../../context/AlbumContext";
 import {
   StyledMainBlock,
   StyledTitleBlock,
 } from "../Activities/AddActivity/AddActivity.styled";
 import { StyledAvatar } from "../Avatar/Avatar.styled";
+import { StyledButton } from "../Button/Button.styled";
+import { StyledTextField } from "../Form/TextField/TextField.styled";
 import { StyledAddActivityIcon } from "../Icons/Icons.styled";
 import { StyledTypography } from "../Typography/Typography.styled";
-import { useAlbum } from "../../../context/AlbumContext";
-import { useNavigate } from "react-router-dom";
 
 const initialVal = {
   title: "",

@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import React from "react";
-import { StyledTypography } from "../../Typography/Typography.styled";
 import Logo from "../../Navbar/Logo/Logo";
+import { StyledTypography } from "../../Typography/Typography.styled";
 
 export default function EmptyActivitiesList() {
   return (
@@ -33,7 +33,7 @@ export default function EmptyActivitiesList() {
             textAlign: "center",
           }}
         >
-          Let's create your first activity
+          Create your first activity
         </StyledTypography>
       </Box>
 

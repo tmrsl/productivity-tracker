@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { StyledDivider } from "../../Divider/Divider.styled";
 import { MenuBlock, StyledPageButton } from "./Navigation.styled";
+import { StyledDivider } from "../../Divider/Divider.styled";
 import {
   StyledChartIcon,
   StyledListIcon,

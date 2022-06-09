@@ -26,10 +26,7 @@ export default function DeleteActivityModal({
         </StyledModalTitle>
         <StyledModalActions>
           <StyledModalButton onClick={handleClose}>Cansel</StyledModalButton>
-          <StyledModalButton
-            onClick={() => deleteActivity(activity.id)}
-            autoFocus
-          >
+          <StyledModalButton onClick={() => deleteActivity(activity.id)}>
             Delete
           </StyledModalButton>
         </StyledModalActions>

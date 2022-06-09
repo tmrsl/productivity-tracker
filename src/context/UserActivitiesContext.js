@@ -1,4 +1,3 @@
-import React, { useContext, useEffect, useState } from "react";
 import {
   addDoc,
   collection,
@@ -8,9 +7,10 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
 import { USERS, ACTIVITIES } from "../app.consts";
+import { db } from "../firebase";
 
 const UserActivitiesContext = React.createContext();
 
@@ -114,6 +114,7 @@ export default function UserActivitiesProvider({ children }) {
 
     // return unsubscribe;
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = {

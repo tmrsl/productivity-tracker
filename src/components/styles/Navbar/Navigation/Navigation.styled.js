@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import styled from "styled-components";
 
 export const MenuBlock = styled(Box).attrs({
   sx: {
     display: {
-      xs: "none",
-      md: "flex",
       gap: 8,
+      md: "flex",
+      xs: "none",
     },
     ml: 8,
   },

@@ -1,8 +1,8 @@
 import React from "react";
 
 import { LogoBlock } from "./Logo.styled";
-import { StyledTypography } from "../../Typography/Typography.styled";
 import { LogoIcon } from "../../Icons/Icons.styled";
+import { StyledTypography } from "../../Typography/Typography.styled";
 
 export default function Logo() {
   return (

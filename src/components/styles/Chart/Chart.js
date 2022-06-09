@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { useActivities } from "../../../context/UserActivitiesContext";
-import { isThisWeek } from "date-fns";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,12 +9,15 @@ import {
   Legend,
   PointElement,
 } from "chart.js";
+import { isThisWeek } from "date-fns";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { DAYS, MONTHS, WEEK, MONTH } from "../../../app.consts";
 
 import { StyledButtonBox, StyledChartBox } from "./Chart.styled";
-import { StyledButton, StyledButtonGroup } from "../Button/Button.styled";
+import { DAYS, MONTHS, WEEK, MONTH } from "../../../app.consts";
+import { useActivities } from "../../../context/UserActivitiesContext";
 import { StyledTitle } from "../Activities/ActivitiesList/ActivitiesList.styled";
+import { StyledButton, StyledButtonGroup } from "../Button/Button.styled";
 
 ChartJS.register(
   CategoryScale,
@@ -27,7 +27,7 @@ ChartJS.register(
   PointElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export const options = {
@@ -73,7 +73,7 @@ function buildDataForWeek(dIndex, activities) {
     .filter(
       (activity) =>
         dIndex === new Date(activity.startDate).getDay() &&
-        isThisWeek(new Date(activity.startDate), { weekStartsOn: 1 })
+        isThisWeek(new Date(activity.startDate), { weekStartsOn: 1 }),
     )
     .reduce(calcTotalHours, 0);
 }

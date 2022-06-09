@@ -1,9 +1,9 @@
 import React from "react";
 
-import { StyledListItem, StyledListItemText } from "../../List/List.styled";
-import { StyledIconButton } from "../../Button/Button.styled";
 import { StyledAvatar } from "../../Avatar/Avatar.styled";
+import { StyledIconButton } from "../../Button/Button.styled";
 import { StyledFolderIcon, StyledDeleteIcon } from "../../Icons/Icons.styled";
+import { StyledListItem, StyledListItemText } from "../../List/List.styled";
 import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
 
 export default function SidebarListItem(props) {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { MobileMenuBlock } from "./MobileNavigation.styled";
 import { StyledIconButton } from "../../../Button/Button.styled";
 import {
   StyledCalendarMonthIcon,
@@ -10,7 +11,6 @@ import {
 } from "../../../Icons/Icons.styled";
 import { StyledListItemIcon } from "../../../List/List.styled";
 import { StyledMenu, StyledMenuItem } from "../../../Menu/Menu.styled";
-import { MobileMenuBlock } from "./MobileNavigation.styled";
 
 export default function Navigation() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

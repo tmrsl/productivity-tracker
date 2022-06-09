@@ -1,20 +1,20 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import UserActivitiesProvider from "./context/UserActivitiesContext";
+import Album from "./components/styles/Album/Album";
+import Calendar from "./components/styles/Calendar/Calendar";
+import Chart from "./components/styles/Chart/Chart";
+import AlbumProvider from "./context/AlbumContext";
 import { useAuth } from "./context/AuthContext";
+import UserActivitiesProvider from "./context/UserActivitiesContext";
 
-import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
+import MainLayout from "./layouts/MainLayout";
+import ActivitiesList from "./views/ActivitiesList";
+import ForgotPassword from "./views/ForgotPassword";
+import Home from "./views/Home";
+import Main from "./views/Main";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
-import Home from "./views/Home";
-import ForgotPassword from "./views/ForgotPassword";
 import UpdateProfile from "./views/UpdateProfile";
-import Calendar from "./components/styles/Calendar/Calendar";
-import ActivitiesList from "./views/ActivitiesList";
-import Main from "./views/Main";
-import Chart from "./components/styles/Chart/Chart";
-import Album from "./components/styles/Album/Album";
-import AlbumProvider from "./context/AlbumContext";
 
 function App() {
   const { currentUser } = useAuth();

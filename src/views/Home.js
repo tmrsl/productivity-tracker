@@ -4,18 +4,18 @@
 // import Fab from "@mui/material/Fab";
 // import { Link } from "react-router-dom";
 // import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import { Box, Fab } from "@mui/material";
 import React from "react";
 
-import { Box, Fab } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import { StyledTooltip } from "../components/styles/Tooltip/Tooltip.styled";
-import AddActivity from "../views/AddActivity";
+import EmptyActivitiesList from "../components/styles/Activities/EmptyActivitiestList/EmptyActivitiesList";
 import {
   StyledModal,
   StyledModalBlock,
 } from "../components/styles/Modal/Modal.styled";
+import { StyledTooltip } from "../components/styles/Tooltip/Tooltip.styled";
 import { useActivities } from "../context/UserActivitiesContext";
-import EmptyActivitiesList from "../components/styles/Activities/EmptyActivitiestList/EmptyActivitiesList";
+import AddActivity from "../views/AddActivity";
 
 const Home = () => {
   const { activities } = useActivities();

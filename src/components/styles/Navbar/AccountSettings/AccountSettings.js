@@ -1,20 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { AccountSettingsBlock } from "./AccountSettings.styled";
 import { StyledAvatar, StyledListItemAvatar } from "../../Avatar/Avatar.styled";
+import { StyledIconButton } from "../../Button/Button.styled";
 import { StyledDivider } from "../../Divider/Divider.styled";
-import { StyledMenu, StyledMenuItem } from "../../Menu/Menu.styled";
-import { StyledTypography } from "../../Typography/Typography.styled";
-import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
 import {
   EditProfileIcon,
   LogoutIcon,
   PersonAddIcon,
   SettingsIcon,
 } from "../../Icons/Icons.styled";
-import { AccountSettingsBlock } from "./AccountSettings.styled";
 import { StyledListItemIcon } from "../../List/List.styled";
-import { StyledIconButton } from "../../Button/Button.styled";
+import { StyledMenu, StyledMenuItem } from "../../Menu/Menu.styled";
+import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
+import { StyledTypography } from "../../Typography/Typography.styled";
 
 export default function AccountSettings({ currentUser, onLogout }) {
   const navigate = useNavigate();

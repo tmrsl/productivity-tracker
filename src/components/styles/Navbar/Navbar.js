@@ -1,11 +1,11 @@
 import React from "react";
 
-import { StyledNavbar, StyledToolbar } from "./Navbar.styled";
+import AccountSettings from "./AccountSettings/AccountSettings";
 import Logo from "./Logo/Logo";
 import MobileLogo from "./Logo/MobileLogo/MobileLogo";
-import Navigation from "./Navigation/Navigation";
+import { StyledNavbar, StyledToolbar } from "./Navbar.styled";
 import MobileNavigation from "./Navigation/MobileNavigation/MobileNavigation";
-import AccountSettings from "./AccountSettings/AccountSettings";
+import Navigation from "./Navigation/Navigation";
 
 export default function Navbar({ currentUser, onLogout }) {
   return (

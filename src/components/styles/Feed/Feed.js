@@ -1,11 +1,11 @@
-import React from "react";
 
-import { Box, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { StyledTooltip } from "../Tooltip/Tooltip.styled";
+import { Box, Fab } from "@mui/material";
+import React from "react";
 import AddActivity from "../../../views/AddActivity";
-import { StyledModal, StyledModalBlock } from "../Modal/Modal.styled";
 import ActivitiesList from "../Activities/ActivitiesList/ActivitiesList";
+import { StyledModal, StyledModalBlock } from "../Modal/Modal.styled";
+import { StyledTooltip } from "../Tooltip/Tooltip.styled";
 
 export default function Feed({ activities }) {
   const [open, setOpen] = React.useState(false);

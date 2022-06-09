@@ -1,16 +1,7 @@
-import React, { useState } from "react";
-import DeleteActivityModal from "../DeleteActivityModal/DeleteActivityModal";
 
 import { format } from "date-fns";
+import React, { useState } from "react";
 
-import { StyledListItem, StyledListItemIcon } from "../../List/List.styled";
-import {
-  StyledExpandMoreIcon,
-  StyledAssignmentIcon,
-  StyledScheduleIcon,
-  StyledNoteIcon,
-  StyledCancelIcon,
-} from "../../Icons/Icons.styled";
 import {
   StyledAccordion,
   StyledAccordionDetails,
@@ -22,10 +13,19 @@ import {
   StyledNote,
   StyledNoteBox,
 } from "./ActivityListItem.styled";
-import { StyledTypography } from "../../Typography/Typography.styled";
-import { StyledDivider } from "../../Divider/Divider.styled";
-import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
 import { StyledIconButton } from "../../Button/Button.styled";
+import { StyledDivider } from "../../Divider/Divider.styled";
+import {
+  StyledExpandMoreIcon,
+  StyledAssignmentIcon,
+  StyledScheduleIcon,
+  StyledNoteIcon,
+  StyledCancelIcon,
+} from "../../Icons/Icons.styled";
+import { StyledListItem, StyledListItemIcon } from "../../List/List.styled";
+import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
+import { StyledTypography } from "../../Typography/Typography.styled";
+import DeleteActivityModal from "../DeleteActivityModal/DeleteActivityModal";
 
 export default function ActivityListItem({ activity, deleteActivity }) {
   const [expanded, setExpanded] = useState("");

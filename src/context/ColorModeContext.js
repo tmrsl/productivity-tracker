@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useContext } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import React, { useState, useMemo, useContext } from "react";
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
@@ -16,7 +16,7 @@ export const ColorModeContextProvider = ({ children }) => {
       },
       mode,
     }),
-    [mode]
+    [mode],
   );
 
   const theme = React.useMemo(
@@ -32,7 +32,7 @@ export const ColorModeContextProvider = ({ children }) => {
           },
         },
       }),
-    [mode]
+    [mode],
   );
 
   return (

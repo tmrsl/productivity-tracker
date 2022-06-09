@@ -1,17 +1,13 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
 import {
   SidebarBlock,
   StyledListItemIcon,
   StyledSidebarListItem,
   StyledBadge,
 } from "./Sidebar.styled";
-import {
-  StyledList,
-  StyledListItem,
-  StyledListItemButton,
-  StyledListItemText,
-} from "../List/List.styled";
+import { StyledDivider } from "../Divider/Divider.styled";
 import {
   StyledAlbumIcon,
   StyledBrightness2Icon,
@@ -19,9 +15,13 @@ import {
   StyledHomeIcon,
   StyledLightModeIcon,
 } from "../Icons/Icons.styled";
-import { StyledDivider } from "../Divider/Divider.styled";
+import {
+  StyledList,
+  StyledListItem,
+  StyledListItemButton,
+  StyledListItemText,
+} from "../List/List.styled";
 import { StyledSwitch } from "../Switch/Switch.styled";
-import { useNavigate } from "react-router-dom";
 
 const folders = [
   {
@@ -38,7 +38,7 @@ const folders = [
   },
 ];
 
-export default function SideBar({ mode, onToggle, activities }, anchor) {
+export default function SideBar({ mode, onToggle, activities }) {
   const navigate = useNavigate();
 
   return (

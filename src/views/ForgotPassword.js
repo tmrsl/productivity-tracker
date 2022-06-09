@@ -1,17 +1,17 @@
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import Typography from "@mui/material/Typography";
 
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { useAuth } from "../context/AuthContext";
 import { StyledButton } from "../components/styles/Button/Button.styled";
+import { useAuth } from "../context/AuthContext";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -76,7 +76,7 @@ export default function ForgotPassword() {
             }}
             severity="success"
           >
-            "Check your inbox for further instructions"
+            Check your inbox for further instructions
           </Alert>
           <Link to="/sign-in" variant="body2" underline="hover">
             Sign In
@@ -94,7 +94,6 @@ export default function ForgotPassword() {
               fullWidth
               required
               autoComplete="email"
-              autoFocus
               value={email}
               onChange={enteredEmailHandler}
             />

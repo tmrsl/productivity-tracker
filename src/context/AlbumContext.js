@@ -1,5 +1,3 @@
-import React, { useContext, useEffect, useState } from "react";
-import { storage } from "../firebase";
 import {
   ref,
   uploadBytes,
@@ -7,9 +5,11 @@ import {
   getDownloadURL,
   getMetadata,
 } from "firebase/storage";
-import { USERS } from "../app.consts";
-import { useAuth } from "./AuthContext";
+import React, { useContext, useEffect, useState } from "react";
 import { v4 as uid } from "uuid";
+import { useAuth } from "./AuthContext";
+import { USERS } from "../app.consts";
+import { storage } from "../firebase";
 
 const getImageObject = async (imageRef) => {
   const imgUrl = await getDownloadURL(imageRef);

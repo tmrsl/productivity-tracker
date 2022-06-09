@@ -1,21 +1,21 @@
+import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useActivities } from "../context/UserActivitiesContext";
-
-import { StyledButton } from "../components/styles/Button/Button.styled";
-import { StyledTextField } from "../components/styles/Form/TextField/TextField.styled";
-import { StyledAvatar } from "../components/styles/Avatar/Avatar.styled";
-import { StyledAddActivityIcon } from "../components/styles/Icons/Icons.styled";
-import { StyledDateTimePicker } from "../components/styles/Form/DateTimePicker/DateTimePicker.styled";
 import {
   StyledFormBlock,
   StyledMainBlock,
   StyledTitleBlock,
   StyledDateBlock,
 } from "../components/styles/Activities/AddActivity/AddActivity.styled";
+import { StyledAvatar } from "../components/styles/Avatar/Avatar.styled";
+import { StyledButton } from "../components/styles/Button/Button.styled";
+
+import { StyledDateTimePicker } from "../components/styles/Form/DateTimePicker/DateTimePicker.styled";
+import { StyledTextField } from "../components/styles/Form/TextField/TextField.styled";
+import { StyledAddActivityIcon } from "../components/styles/Icons/Icons.styled";
 import { StyledTypography } from "../components/styles/Typography/Typography.styled";
+import { useActivities } from "../context/UserActivitiesContext";
 
 export default function AddActivity({ onClose }) {
   const { addActivity } = useActivities();

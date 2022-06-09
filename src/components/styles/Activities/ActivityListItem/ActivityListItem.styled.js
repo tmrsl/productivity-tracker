@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import { Box } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import { Box } from "@mui/material";
+import styled from "styled-components";
 
 export const StyledAccordion = styled(Accordion).attrs({
   sx: { width: "100%" },

@@ -1,12 +1,12 @@
 import React from "react";
-import { useActivities } from "../context/UserActivitiesContext";
-import ActivityListItem from "../components/styles/Activities/ActivityListItem/ActivityListItem";
 import {
   StyledActivitiesList,
   StyledListBox,
   StyledTitle,
   StyledTitleBox,
 } from "../components/styles/Activities/ActivitiesList/ActivitiesList.styled";
+import ActivityListItem from "../components/styles/Activities/ActivityListItem/ActivityListItem";
+import { useActivities } from "../context/UserActivitiesContext";
 
 export default function ActivitiesList() {
   const { activities, deleteActivity } = useActivities();

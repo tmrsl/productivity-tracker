@@ -1,19 +1,18 @@
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
-import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Key from "@mui/icons-material/Key";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Alert from "@mui/material/Alert";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
+import Container from "@mui/material/Container";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
-import { StyledButton } from "../components/styles/Button/Button.styled";
-
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { StyledButton } from "../components/styles/Button/Button.styled";
 
 import { useAuth } from "../context/AuthContext";
 
@@ -101,7 +100,6 @@ const SignIn = () => {
             fullWidth
             required
             autoComplete="email"
-            autoFocus
             value={email}
             onChange={enteredEmailHandler}
           />

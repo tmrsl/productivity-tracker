@@ -1,12 +1,12 @@
-import { Outlet } from "react-router-dom";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Box, Drawer, Toolbar, CssBaseline, Button } from "@mui/material";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/styles/Navbar/Navbar";
 import Sidebar from "../components/styles/Sidebar/Sidebar";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import { useAuth } from "../context/AuthContext";
 import { useColorMode } from "../context/ColorModeContext";
-import { useState } from "react";
 import { useActivities } from "../context/UserActivitiesContext";
 
 const drawerWidth = 240;
@@ -41,7 +41,7 @@ export default function MainLayout() {
           width: drawerWidth,
           display: { xs: "none", md: "flex" },
           flexShrink: 0,
-          [`& .MuiDrawer-paper`]: {
+          ["& .MuiDrawer-paper"]: {
             width: drawerWidth,
             boxSizing: "border-box",
           },
@@ -62,7 +62,7 @@ export default function MainLayout() {
           width: drawerWidth,
           display: { xs: "flex", md: "none" },
           flexShrink: 0,
-          [`& .MuiDrawer-paper`]: {
+          ["& .MuiDrawer-paper"]: {
             width: drawerWidth,
             boxSizing: "border-box",
           },
@@ -101,9 +101,7 @@ export default function MainLayout() {
             height: "100%",
           }}
         >
-          {/* <AlbumProvider> */}
           <Outlet />
-          {/* </AlbumProvider> */}
         </Box>
       </Box>
     </Box>

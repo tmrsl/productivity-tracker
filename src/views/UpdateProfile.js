@@ -1,19 +1,18 @@
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
-import CssBaseline from "@mui/material/CssBaseline";
-import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import Key from "@mui/icons-material/Key";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Alert from "@mui/material/Alert";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
-
+import { Link } from "react-router-dom";
 import { StyledButton } from "../components/styles/Button/Button.styled";
 import { AccountCircleIcon } from "../components/styles/Icons/Icons.styled";
+import { useAuth } from "../context/AuthContext";
 
 export default function UpdateProfile() {
   const [displayName, setDisplayName] = useState("");
@@ -45,7 +44,7 @@ export default function UpdateProfile() {
       .then(() => {
         setSuccessMsg(true);
       })
-      .catch((err) => setError("Sommething went wrong"))
+      .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }
 
@@ -96,7 +95,6 @@ export default function UpdateProfile() {
             type="text"
             variant="standard"
             fullWidth
-            autoFocus
             value={displayName}
             required
             onInput={(evt) => setDisplayName(evt.target.value)}
@@ -111,7 +109,6 @@ export default function UpdateProfile() {
             variant="standard"
             fullWidth
             autoComplete="email"
-            autoFocus
             value={email}
             required
             onInput={(evt) => setEmail(evt.target.value)}
