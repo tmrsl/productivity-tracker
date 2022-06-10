@@ -1,14 +1,11 @@
-// import { Container } from "@mui/material";
-// import Box from "@mui/material/Box";
-// import Typography from "@mui/material/Typography";
-// import Fab from "@mui/material/Fab";
-// import { Link } from "react-router-dom";
-// import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
-import { Box, Fab } from "@mui/material";
 import React from "react";
 
 import EmptyActivitiesList from "../components/styles/Activities/EmptyActivitiestList/EmptyActivitiesList";
+import {
+  StyledHomeBox,
+  StyledFab,
+} from "../components/styles/Home/Home.styled";
+import { StyledAddIcon } from "../components/styles/Icons/Icons.styled";
 import {
   StyledModal,
   StyledModalBlock,
@@ -24,13 +21,7 @@ const Home = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box
-      sx={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <StyledHomeBox>
       {activities.length === 0 && <EmptyActivitiesList />}
       <img
         src="/home-page.svg"
@@ -40,25 +31,16 @@ const Home = () => {
         style={{ width: 600, height: 700, alignSelf: "center" }}
       />
       <StyledTooltip title="Add new activity" onClick={handleOpen}>
-        <Fab
-          sx={{
-            position: "absolute",
-            bottom: (theme) => theme.spacing(2),
-            right: (theme) => theme.spacing(2),
-          }}
-          size="large"
-          color="primary"
-          aria-label="add"
-        >
-          <AddIcon />
-        </Fab>
+        <StyledFab size="large" color="primary" aria-label="add">
+          <StyledAddIcon />
+        </StyledFab>
       </StyledTooltip>
       <StyledModal open={open} onClose={handleClose}>
         <StyledModalBlock>
           <AddActivity onClose={() => setOpen(false)} />
         </StyledModalBlock>
       </StyledModal>
-    </Box>
+    </StyledHomeBox>
   );
 };
 

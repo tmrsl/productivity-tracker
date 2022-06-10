@@ -16,11 +16,12 @@ import {
   CurrentTimeIndicator,
   AllDayPanel,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { Paper } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
-import { useActivities } from "../../../context/UserActivitiesContext";
-import { StyledTitle } from "../Activities/ActivitiesList/ActivitiesList.styled";
+import {
+  StyledCalendarBox,
+  StyledPaper,
+} from "../components/styles/Calendar/Calendar.styled";
+import { useActivities } from "../context/UserActivitiesContext";
 
 export default function Calendar() {
   const { activities, updateActivities, deleteActivity, addActivity } =
@@ -52,28 +53,8 @@ export default function Calendar() {
   };
 
   return (
-    <Box
-      sx={{
-        mt: 2,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        bgcolor: "background.paper",
-        gap: 4,
-      }}
-    >
-      <StyledTitle
-        variant="h5"
-        sx={{
-          display: { xs: "inline-block", md: "none" },
-          mb: 4,
-        }}
-      >
-        Calendar
-      </StyledTitle>
-      <Paper>
+    <StyledCalendarBox>
+      <StyledPaper>
         <Scheduler height={850} data={activities}>
           <ViewState />
           <WeekView startDayHour={9} endDayHour={19} />
@@ -89,7 +70,7 @@ export default function Calendar() {
           <AllDayPanel />
           <CurrentTimeIndicator />
         </Scheduler>
-      </Paper>
-    </Box>
+      </StyledPaper>
+    </StyledCalendarBox>
   );
 }

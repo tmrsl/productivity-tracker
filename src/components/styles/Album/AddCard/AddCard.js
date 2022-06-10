@@ -1,19 +1,19 @@
-import { Box, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useAlbum } from "../../../context/AlbumContext";
 import {
+  StyledFormBlock,
   StyledMainBlock,
   StyledTitleBlock,
-} from "../Activities/AddActivity/AddActivity.styled";
-import { StyledAvatar } from "../Avatar/Avatar.styled";
-import { StyledButton } from "../Button/Button.styled";
-import { StyledTextField } from "../Form/TextField/TextField.styled";
-import { StyledAddActivityIcon } from "../Icons/Icons.styled";
-import { StyledTypography } from "../Typography/Typography.styled";
+} from "./AddCard.styled";
+import { useAlbum } from "../../../../context/AlbumContext";
+import { StyledAvatar } from "../../Avatar/Avatar.styled";
+import { StyledButton } from "../../Button/Button.styled";
+import { StyledTextField } from "../../Form/TextField/TextField.styled";
+import { StyledAddActivityIcon } from "../../Icons/Icons.styled";
+import { StyledTypography } from "../../Typography/Typography.styled";
 
 const initialVal = {
   title: "",
@@ -57,7 +57,7 @@ export default function AddCard({ onClose }) {
           Add Photo
         </StyledTypography>
       </StyledTitleBlock>
-      <Box component="form" onSubmit={handleSubmit}>
+      <StyledFormBlock component="form" onSubmit={handleSubmit}>
         <StyledTextField
           id="title"
           label="Enter Title"
@@ -83,7 +83,7 @@ export default function AddCard({ onClose }) {
           error={touched.notes && Boolean(errors.notes)}
           helperText={touched.notes && errors.notes}
         />
-        <TextField
+        <StyledTextField
           id="imgFile"
           label="Image Upload"
           name="file"
@@ -100,10 +100,10 @@ export default function AddCard({ onClose }) {
           error={touched.imgFile && Boolean(errors.imgFile)}
           helperText={touched.imgFile && errors.imgFile}
         />
-        <StyledButton type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
+        <StyledButton type="submit" fullWidth sx={{ mb: 2 }}>
           Add
         </StyledButton>
-      </Box>
+      </StyledFormBlock>
     </StyledMainBlock>
   );
 }

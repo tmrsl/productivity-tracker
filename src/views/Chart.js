@@ -13,11 +13,16 @@ import { isThisWeek } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-import { StyledButtonBox, StyledChartBox } from "./Chart.styled";
-import { DAYS, MONTHS, WEEK, MONTH } from "../../../app.consts";
-import { useActivities } from "../../../context/UserActivitiesContext";
-import { StyledTitle } from "../Activities/ActivitiesList/ActivitiesList.styled";
-import { StyledButton, StyledButtonGroup } from "../Button/Button.styled";
+import { DAYS, MONTHS, WEEK, MONTH } from "../app.consts";
+import {
+  StyledButton,
+  StyledButtonGroup,
+} from "../components/styles/Button/Button.styled";
+import {
+  StyledButtonBox,
+  StyledChartBox,
+} from "../components/styles/Chart/Chart.styled";
+import { useActivities } from "../context/UserActivitiesContext";
 
 ChartJS.register(
   CategoryScale,
@@ -27,7 +32,7 @@ ChartJS.register(
   PointElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
 export const options = {
@@ -73,7 +78,7 @@ function buildDataForWeek(dIndex, activities) {
     .filter(
       (activity) =>
         dIndex === new Date(activity.startDate).getDay() &&
-        isThisWeek(new Date(activity.startDate), { weekStartsOn: 1 }),
+        isThisWeek(new Date(activity.startDate), { weekStartsOn: 1 })
     )
     .reduce(calcTotalHours, 0);
 }
@@ -115,8 +120,6 @@ export default function Chart() {
 
   return (
     <StyledChartBox>
-      <StyledTitle variant="h5">Chart</StyledTitle>
-
       {chartData && <Line options={options} data={chartData} />}
 
       <StyledButtonBox>

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import AddIcon from "@mui/icons-material/Add";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -75,3 +76,5 @@ export const StyledCancelIcon = styled(CancelIcon)``;
 export const StyledChartIcon = styled(BarChartIcon)``;
 
 export const StyledAlbumIcon = styled(PhotoLibraryIcon)``;
+
+export const StyledAddIcon = styled(AddIcon)``;

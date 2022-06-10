@@ -17,26 +17,30 @@ import { StyledAddActivityIcon } from "../components/styles/Icons/Icons.styled";
 import { StyledTypography } from "../components/styles/Typography/Typography.styled";
 import { useActivities } from "../context/UserActivitiesContext";
 
+const initialVal = {
+  startDate: new Date(),
+  endDate: new Date(),
+  title: "",
+  notes: "",
+};
+
+const validation = Yup.object({
+  title: Yup.string().required("Required"),
+  notes: Yup.string()
+    .max(20, "Must be 20 characters or less")
+    .required("Required"),
+  startDate: Yup.date().required("Required"),
+  endDate: Yup.date().required("Required"),
+});
+
 export default function AddActivity({ onClose }) {
   const { addActivity } = useActivities();
   const navigate = useNavigate();
 
   const { values, errors, touched, handleSubmit, handleChange, setFieldValue } =
     useFormik({
-      initialValues: {
-        startDate: new Date(),
-        endDate: new Date(),
-        title: "",
-        notes: "",
-      },
-      validationSchema: Yup.object({
-        title: Yup.string().required("Required"),
-        notes: Yup.string()
-          .max(20, "Must be 20 characters or less")
-          .required("Required"),
-        startDate: Yup.date().required("Required"),
-        endDate: Yup.date().required("Required"),
-      }),
+      initialValues: initialVal,
+      validationSchema: validation,
       onSubmit: async (values) => {
         await addActivity(values);
         onClose();
