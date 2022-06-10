@@ -14,7 +14,7 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:testing-library/react",
   ],
-  parser: "@babel/eslint-parser",
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     requireConfigFile: false,
     ecmaFeatures: {
