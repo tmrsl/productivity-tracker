@@ -18,38 +18,67 @@ const getImageObject = async (imageRef) => {
   return {
     imgUrl,
     ...customMetadata,
+  } as IAlbumItem;
+};
+
+interface IAlbumItemRaw {
+  imgUrl: string;
+  title: string;
+  notes: string;
+}
+
+interface IAddAlbumCardPayload {
+  imgFile: File;
+  title: string;
+  notes: string;
+}
+
+interface IAlbumItem extends IAlbumItemRaw {
+  id: string;
+}
+
+// eslint-disable-next-line
+type TAddAlbumCard = (albumCard: IAddAlbumCardPayload) => Promise<void>;
+
+interface IAlbumContext {
+  album: IAlbumItem[],
+  addAlbumCard: TAddAlbumCard;
+}
+
+const buildRefPath = ({ albumCard, currentUser }) => {
+  const id = uid();
+  const { imgFile, title, notes } = albumCard;
+
+  const path = `${USERS}/${currentUser.uid}/images/${id}_${imgFile.name}`;
+  const customMetadata = {
+    title,
+    notes,
+    id,
+  };
+
+  return {
+    path,
+    meta: { customMetadata },
+    imgFile
   };
 };
 
-const AlbumContext = React.createContext();
+const AlbumContext = React.createContext<IAlbumContext>(null);
 
 export default function AlbumProvider({ children }) {
   const { currentUser } = useAuth();
-  const [album, setAlbum] = useState([]);
+  const [album, setAlbum] = useState<IAlbumItem[]>([]);
 
-  const addAlbumCard = async (albumCard) => {
-    const { imgFile, title, notes } = albumCard;
-
-    const id = uid();
-    const path = `${USERS}/${currentUser.uid}/images/${id}_${imgFile.name}`;
-
-    const customMetadata = {
-      title,
-      notes,
-      id,
-    };
-
-    const metadataToSet = {
-      customMetadata,
-    };
+  const addAlbumCard = async (albumCard: IAddAlbumCardPayload) => {
+    const { path, imgFile, meta } = buildRefPath({ albumCard, currentUser });
 
     try {
       const imgRef = ref(storage, path);
-      await uploadBytes(imgRef, imgFile, metadataToSet);
+      await uploadBytes(imgRef, imgFile, meta);
 
       const imgUrl = await getDownloadURL(imgRef);
-      const newAlbumCard = { ...customMetadata, imgUrl };
-      setAlbum((curAlbum) => [newAlbumCard, ...curAlbum]);
+      const newAlbumCard = { ...meta, imgUrl };
+      setAlbum((curAlbum) => [newAlbumCard, ...curAlbum] as IAlbumItem[]);
     } catch (error) {
       console.log("error: ", error);
     }
