@@ -9,7 +9,7 @@ import AuthProvider from "./context/AuthContext";
 
 import { ColorModeContextProvider } from "./context/ColorModeContext";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
     <LocalizationProvider dateAdapter={AdapterDateFns}>

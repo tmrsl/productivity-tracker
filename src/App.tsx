@@ -1,7 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Album from "./components/styles/Album/Album";
-import Calendar from "./components/styles/Calendar/Calendar";
-import Chart from "./components/styles/Chart/Chart";
+
 import AlbumProvider from "./context/AlbumContext";
 import { useAuth } from "./context/AuthContext";
 import UserActivitiesProvider from "./context/UserActivitiesContext";
@@ -9,6 +7,9 @@ import UserActivitiesProvider from "./context/UserActivitiesContext";
 import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/MainLayout";
 import ActivitiesList from "./views/ActivitiesList";
+import Album from "./views/Album";
+import Calendar from "./views/Calendar";
+import Chart from "./views/Chart";
 import ForgotPassword from "./views/ForgotPassword";
 import Home from "./views/Home";
 import Main from "./views/Main";
@@ -42,7 +43,7 @@ function App() {
               </UserActivitiesProvider>
             }
           >
-            <Route exact path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
             <Route path="/list" element={<ActivitiesList />} />
             <Route path="/calendar" element={<Calendar />} />
