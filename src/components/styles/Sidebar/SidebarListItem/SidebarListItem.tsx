@@ -9,7 +9,12 @@ import {
 
 import { StyledFolderIcon, StyledDeleteIcon } from "../../Icons/Icons.styled";
 
-const SidebarListItem = (props) => {
+interface ISidebarLIProps {
+  name: string,
+  date: string,
+}
+
+const SidebarListItem = ({ name, date }: ISidebarLIProps) => {
   return (
     <ListItem>
       <Tooltip title="Details">
@@ -19,7 +24,7 @@ const SidebarListItem = (props) => {
           </Avatar>
         </IconButton>
       </Tooltip>
-      <ListItemText primary={props.name} secondary={props.date} />
+      <ListItemText primary={name} secondary={date} />
       <Tooltip title="Delete">
         <IconButton edge="end" aria-label="delete">
           <StyledDeleteIcon />

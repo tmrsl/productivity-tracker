@@ -1,6 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import { User } from "firebase/auth";
 import {
   Divider,
   IconButton,
@@ -15,6 +16,7 @@ import {
   StyledListItemAvatar,
   StyledTypography,
 } from "./AccountSettings.styled";
+import { TLogOut } from "../../../../context/AuthContext";
 import {
   EditProfileIcon,
   LogoutIcon,
@@ -22,12 +24,20 @@ import {
   SettingsIcon,
 } from "../../Icons/Icons.styled";
 
-export default function AccountSettings({ currentUser, onLogout }) {
+interface IAccountSettingsProps {
+  currentUser: User;
+  onLogout: TLogOut;
+}
+
+export const AccountSettings = ({
+  currentUser,
+  onLogout,
+}: IAccountSettingsProps) => {
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const open = Boolean(anchorEl);
+  const isOpen = Boolean(anchorEl);
 
   const goToHomePageHandler = () => {
     navigate("/");
@@ -58,7 +68,7 @@ export default function AccountSettings({ currentUser, onLogout }) {
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
-        open={open}
+        open={isOpen}
         onClose={onCloseHandler}
         onClick={onCloseHandler}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
@@ -100,4 +110,4 @@ export default function AccountSettings({ currentUser, onLogout }) {
       </Menu>
     </AccountSettingsBlock>
   );
-}
+};

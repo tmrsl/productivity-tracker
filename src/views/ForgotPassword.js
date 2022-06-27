@@ -1,5 +1,6 @@
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { Button } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -9,11 +10,9 @@ import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import { StyledButton } from "../components/styles/Button/Button.styled";
 import { useAuth } from "../context/AuthContext";
 
-export default function ForgotPassword() {
+export const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [confirmMesasge, setConfirmMesasge] = useState(false);
@@ -98,9 +97,14 @@ export default function ForgotPassword() {
               onChange={enteredEmailHandler}
             />
           </Box>
-          <StyledButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+          <Button
+            variant="contained"
+            fullWidth
+            disabled={loading}
+            sx={{ mt: 3, mb: 2 }}
+          >
             Reset Password
-          </StyledButton>
+          </Button>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Link to="/sign-in" variant="body2" underline="hover">
               Sign In
@@ -113,4 +117,4 @@ export default function ForgotPassword() {
       )}
     </Container>
   );
-}
+};

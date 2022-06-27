@@ -18,8 +18,13 @@ import {
   StyledKey,
   TitleBlock,
 } from "./SignInPage.styled";
+import { TSignIn } from "../../../context/AuthContext";
 
-export const SignInPage = ({ signIn }) => {
+interface ISignInProps {
+  signIn: TSignIn,
+}
+
+export const SignInPage = ({ signIn }: ISignInProps ) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   // eslint-disable-next-line no-unused-vars

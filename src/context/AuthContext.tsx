@@ -22,11 +22,11 @@ interface IAuthContext {
 }
 
 // eslint-disable-next-line no-unused-vars
-type TSignUp = (email: string, pass: string) => Promise<UserCredential>;
+export type TSignUp = (email: string, pass: string) => Promise<UserCredential>;
 // eslint-disable-next-line
 export type TSignIn = (email: string, pass: string) => Promise<UserCredential>;
 // eslint-disable-next-line
-type TLogOut = () => Promise<void>;
+export type TLogOut = () => Promise<void>;
 // eslint-disable-next-line
 type TResetPassword = (email: string) => Promise<void>;
 // eslint-disable-next-line
@@ -34,13 +34,13 @@ type TUpdateUserCredentials = (args: { email: string, password: string}) => Prom
 
 const AuthContext = React.createContext<IAuthContext>(null);
 
-export function useAuth() {
+export const useAuth = () => {
   return useContext(AuthContext);
-}
+};
 
-export default function AuthProvider({ children }) {
+const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User>(null);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const signUp: TSignUp = (email, pass) => {
     return createUserWithEmailAndPassword(auth, email, pass);
@@ -75,7 +75,7 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      setLoading(false);
+      setIsLoading(false);
     });
 
     return unsubscribe;
@@ -92,7 +92,9 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {!isLoading && children}
     </AuthContext.Provider>
   );
-}
+};
+
+export default AuthProvider;

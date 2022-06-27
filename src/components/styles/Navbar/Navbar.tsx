@@ -1,13 +1,20 @@
 import React from "react";
 
-import AccountSettings from "./AccountSettings/AccountSettings";
+import { User } from "firebase/auth";
+import { AccountSettings } from "./AccountSettings/AccountSettings";
 import { Logo } from "./Logo/Logo";
 import { MobileLogo } from "./Logo/MobileLogo/MobileLogo";
 import { StyledNavbar, StyledToolbar } from "./Navbar.styled";
 import { MobileNavigation } from "./Navigation/MobileNavigation/MobileNavigation";
 import { Navigation } from "./Navigation/Navigation";
+import { TLogOut } from "../../../context/AuthContext";
 
-export const Navbar = ({ currentUser, onLogout }) => {
+interface INavbarProps {
+  currentUser: User,
+  onLogout: TLogOut,
+}
+
+export const Navbar = ({ currentUser, onLogout }: INavbarProps) => {
   return (
     <StyledNavbar>
       <StyledToolbar>

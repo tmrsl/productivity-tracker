@@ -1,8 +1,5 @@
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Container } from "@mui/material";
-import Alert from "@mui/material/Alert";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
@@ -11,19 +8,27 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { StyledButton } from "../components/styles/Button/Button.styled";
-import { useAuth } from "../context/AuthContext";
+import {
+  FormBlock,
+  TitleBlock,
+  StyledButton,
+  StyledAvatar,
+} from "./SignUpPage.styled";
+import { TSignUp } from "../../../context/AuthContext";
 
-const SignUp = () => {
+interface ISignUpProps {
+  signUp: TSignUp,
+}
+
+export const SignUpPage = ({ signUp }: ISignUpProps) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const { signUp } = useAuth();
 
   const navigate = useNavigate();
 
@@ -61,17 +66,17 @@ const SignUp = () => {
       navigate("/");
     } catch (e) {
       switch (e.code) {
-      case "auth/credential-already-in-use":
-        setError("Account already exist");
-        break;
-      case "auth/invalid-email":
-        setError("Invalid email");
-        break;
-      case "auth/weak-password":
-        setError("Weak-password");
-        break;
-      default:
-        setError("Failed to create an account");
+        case "auth/credential-already-in-use":
+          setError("Account already exist");
+          break;
+        case "auth/invalid-email":
+          setError("Invalid email");
+          break;
+        case "auth/weak-password":
+          setError("Weak-password");
+          break;
+        default:
+          setError("Failed to create an account");
       }
     }
     setLoading(false);
@@ -84,31 +89,16 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "primary.main" }} variant="circular">
+      <TitleBlock>
+        {/* @ts-ignore*/}
+        <StyledAvatar variant="circular">
           <LockOutlinedIcon></LockOutlinedIcon>
-        </Avatar>
+        </StyledAvatar>
         <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
           Sign up
         </Typography>
-      </Box>
-      {error && (
-        <Alert
-          onClose={() => {
-            setError("");
-          }}
-          severity="error"
-        >
-          {error}
-        </Alert>
-      )}
-      <Box component="form" sx={{ mt: 3 }} onSubmit={submitHandler}>
+      </TitleBlock>
+      <FormBlock component="form" onSubmit={submitHandler}>
         <TextField
           sx={{ mb: 1 }}
           id="firstName"
@@ -117,7 +107,6 @@ const SignUp = () => {
           variant="standard"
           fullWidth
           required
-          autoComplete="given-name"
           value={firstName}
           onChange={enteredFirstNameHandler}
         />
@@ -129,7 +118,6 @@ const SignUp = () => {
           variant="standard"
           fullWidth
           required
-          autoComplete="given-name"
           value={lastName}
           onChange={enteredLastNameHandler}
         />
@@ -141,7 +129,6 @@ const SignUp = () => {
           variant="standard"
           fullWidth
           required
-          autoComplete="email"
           value={email}
           onChange={enteredEmailHandler}
         />
@@ -173,18 +160,17 @@ const SignUp = () => {
         />
         <StyledButton
           type="submit"
+          variant="contained"
           fullWidth
           disabled={loading}
-          sx={{ mt: 3, mb: 2 }}
         >
           Sign Up
         </StyledButton>
+        {/* @ts-ignore*/}
         <Link to="/sign-in" variant="body2" underline="hover">
           Already have an account? Sign in
         </Link>
-      </Box>
+      </FormBlock>
     </Container>
   );
 };
-
-export default SignUp;
