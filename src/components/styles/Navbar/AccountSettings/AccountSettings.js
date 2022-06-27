@@ -1,20 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AccountSettingsBlock } from "./AccountSettings.styled";
-import { StyledAvatar, StyledListItemAvatar } from "../../Avatar/Avatar.styled";
-import { StyledIconButton } from "../../Button/Button.styled";
-import { StyledDivider } from "../../Divider/Divider.styled";
+import {
+  Divider,
+  IconButton,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Tooltip,
+} from "@mui/material";
+import {
+  AccountSettingsBlock,
+  StyledAvatar,
+  StyledListItemAvatar,
+  StyledTypography,
+} from "./AccountSettings.styled";
 import {
   EditProfileIcon,
   LogoutIcon,
   PersonAddIcon,
   SettingsIcon,
 } from "../../Icons/Icons.styled";
-import { StyledListItemIcon } from "../../List/List.styled";
-import { StyledMenu, StyledMenuItem } from "../../Menu/Menu.styled";
-import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
-import { StyledTypography } from "../../Typography/Typography.styled";
 
 export default function AccountSettings({ currentUser, onLogout }) {
   const navigate = useNavigate();
@@ -40,25 +46,16 @@ export default function AccountSettings({ currentUser, onLogout }) {
   };
   return (
     <AccountSettingsBlock>
-      <StyledTypography
-        sx={{
-          color: "text.secondary",
-          display: { xs: "none", md: "block" },
-          fontWeight: 600,
-        }}
-        component="h5"
-      >
-        {currentUser.email}
-      </StyledTypography>
-      <StyledTooltip title="Account settings">
-        <StyledIconButton onClick={onClickHandler}>
+      <StyledTypography component="h5">{currentUser.email}</StyledTypography>
+      <Tooltip title="Account settings">
+        <IconButton onClick={onClickHandler}>
           <StyledAvatar>
             {currentUser.email.slice(0, 1).toUpperCase()}
           </StyledAvatar>
-        </StyledIconButton>
-      </StyledTooltip>
+        </IconButton>
+      </Tooltip>
 
-      <StyledMenu
+      <Menu
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
@@ -67,40 +64,40 @@ export default function AccountSettings({ currentUser, onLogout }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <StyledMenuItem onClick={goToHomePageHandler}>
+        <MenuItem onClick={goToHomePageHandler}>
           <StyledListItemAvatar>
             <StyledAvatar>
               {currentUser.email.slice(0, 1).toUpperCase()}
             </StyledAvatar>
           </StyledListItemAvatar>
           My account
-        </StyledMenuItem>
-        <StyledDivider />
-        <StyledMenuItem>
-          <StyledListItemIcon>
+        </MenuItem>
+        <Divider />
+        <MenuItem>
+          <ListItemIcon>
             <PersonAddIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           Add another account
-        </StyledMenuItem>
-        <StyledMenuItem onClick={editProfileHandler}>
-          <StyledListItemIcon>
+        </MenuItem>
+        <MenuItem onClick={editProfileHandler}>
+          <ListItemIcon>
             <EditProfileIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           Update profile
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <StyledListItemIcon>
+        </MenuItem>
+        <MenuItem>
+          <ListItemIcon>
             <SettingsIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           Settings
-        </StyledMenuItem>
-        <StyledMenuItem onClick={onLogout}>
-          <StyledListItemIcon>
+        </MenuItem>
+        <MenuItem onClick={onLogout}>
+          <ListItemIcon>
             <LogoutIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           Logout
-        </StyledMenuItem>
-      </StyledMenu>
+        </MenuItem>
+      </Menu>
     </AccountSettingsBlock>
   );
 }
