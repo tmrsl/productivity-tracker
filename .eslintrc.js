@@ -30,19 +30,15 @@ module.exports = {
     // "comma-dangle": ["warn", "always-multiline"],
     "eol-last": "error",
     "import/order": [
-      "warn",
+      1,
       {
-        alphabetize: {
-          caseInsensitive: true,
-          order: "asc",
-        },
         groups: [
-          "builtin",
           "external",
-          "index",
+          "builtin",
+          "internal",
           "sibling",
           "parent",
-          "internal",
+          "index",
         ],
       },
     ],

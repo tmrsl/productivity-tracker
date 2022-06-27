@@ -20,5 +20,5 @@
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx"
-  ]
+, "src/components/stories/Button/ButtonGroup.stories.jsx", "src/context/ColorModeContext.tsx"  ]
 }
