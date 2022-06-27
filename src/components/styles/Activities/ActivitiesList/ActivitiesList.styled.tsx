@@ -11,7 +11,7 @@ export const StyledListBox = styled(Box).attrs({
     width: "100%",
     bgcolor: "background.paper",
   },
-})``;
+})`` as typeof Box;
 
 export const StyledTitle = styled(Typography).attrs({
   sx: {
@@ -20,7 +20,7 @@ export const StyledTitle = styled(Typography).attrs({
     textAlign: "center",
     color: "text.secondary",
   },
-})``;
+})``as typeof Typography;
 
 export const StyledActivitiesList = styled(List).attrs({
   sx: {
@@ -32,11 +32,11 @@ export const StyledActivitiesList = styled(List).attrs({
     width: "100%",
     justifySelf: "center",
   },
-})``;
+})``as typeof List;
 
 export const StyledTitleBox = styled(Box).attrs({
   sx: {
     display: "flex",
     flexDirection: "column",
   },
-})``;
+})``as typeof Box;

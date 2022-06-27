@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Avatar, Box, Button, Container, Typography } from "@mui/material";
 import styled from "styled-components";
 
 export const StyledMainBlock = styled(Container)``;
@@ -20,3 +20,24 @@ export const StyledDateBlock = styled(Box).attrs({
 })``;
 
 export const StyledFormBlock = styled(Box)``;
+
+export const StyledButton = styled(Button).attrs({
+  sx: {
+    mt: 3,
+    mb: 2,
+  },
+})``;
+
+export const StyledAvatar = styled(Avatar).attrs({
+  sx: {
+    mb: 1,
+    bgcolor: "primary.main",
+  },
+})``;
+
+export const StyledTypography = styled(Typography).attrs({
+  sx: {
+    mb: 3,
+  },
+})``;
+

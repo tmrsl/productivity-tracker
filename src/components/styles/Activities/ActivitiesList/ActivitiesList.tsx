@@ -4,13 +4,16 @@ import {
   StyledListBox,
   StyledTitle,
   StyledTitleBox,
-} from "../components/styles/Activities/ActivitiesList/ActivitiesList.styled";
-import ActivityListItem from "../components/styles/Activities/ActivityListItem/ActivityListItem";
-import { useActivities } from "../context/UserActivitiesContext";
+} from "./ActivitiesList.styled";
+import { ActivityListItem } from "../ActivityListItem/ActivityListItem";
+import { IActivityItem, TDeleteActivity } from "../../../../context/UserActivitiesContext";
 
-export default function ActivitiesList() {
-  const { activities, deleteActivity } = useActivities();
+interface IActivitiesListProps {
+  activities: IActivityItem[],
+  deleteActivity: TDeleteActivity,
+}
 
+export const ActivitiesList = ({ activities, deleteActivity }: IActivitiesListProps) => {
   return (
     <StyledListBox>
       {activities.length === 0 ? (
@@ -46,4 +49,4 @@ export default function ActivitiesList() {
       )}
     </StyledListBox>
   );
-}
+};

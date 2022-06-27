@@ -1,21 +1,22 @@
-import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 import * as Yup from "yup";
+
+import { DateTimePicker } from "@mui/lab";
+import { TextField } from "@mui/material";
 import {
   StyledFormBlock,
   StyledMainBlock,
   StyledTitleBlock,
   StyledDateBlock,
-} from "../components/styles/Activities/AddActivity/AddActivity.styled";
-import { StyledAvatar } from "../components/styles/Avatar/Avatar.styled";
-import { StyledButton } from "../components/styles/Button/Button.styled";
+  StyledButton,
+  StyledAvatar,
+  StyledTypography,
+} from "./AddActivityForm.styled";
 
-import { StyledDateTimePicker } from "../components/styles/Form/DateTimePicker/DateTimePicker.styled";
-import { StyledTextField } from "../components/styles/Form/TextField/TextField.styled";
-import { StyledAddActivityIcon } from "../components/styles/Icons/Icons.styled";
-import { StyledTypography } from "../components/styles/Typography/Typography.styled";
-import { useActivities } from "../context/UserActivitiesContext";
+import { StyledAddActivityIcon } from "../../Icons/Icons.styled";
+import { TAddActivity } from "../../../../context/UserActivitiesContext";
 
 const initialVal = {
   startDate: new Date(),
@@ -33,8 +34,12 @@ const validation = Yup.object({
   endDate: Yup.date().required("Required"),
 });
 
-export default function AddActivity({ onClose }) {
-  const { addActivity } = useActivities();
+interface IAddActivityFromProps {
+  addActivity: TAddActivity,
+  onClose: () => void,
+}
+
+export const AddActivityFrom = ({ onClose, addActivity }: IAddActivityFromProps) => {
   const navigate = useNavigate();
 
   const { values, errors, touched, handleSubmit, handleChange, setFieldValue } =
@@ -52,17 +57,16 @@ export default function AddActivity({ onClose }) {
     <StyledMainBlock component="main" maxWidth="xs">
       <StyledTitleBlock>
         <StyledAvatar
-          sx={{ mb: 1, bgcolor: "primary.main" }}
           variant="circular"
         >
           <StyledAddActivityIcon />
         </StyledAvatar>
-        <StyledTypography component="h1" variant="h5" sx={{ mb: 3 }}>
+        <StyledTypography component="h1" variant="h5">
           Add Activity
         </StyledTypography>
       </StyledTitleBlock>
       <StyledFormBlock component="form" onSubmit={handleSubmit}>
-        <StyledTextField
+        <TextField
           id="title"
           label="Enter Title"
           type="text"
@@ -74,7 +78,7 @@ export default function AddActivity({ onClose }) {
           error={touched.title && Boolean(errors.title)}
           helperText={touched.title && errors.title}
         />
-        <StyledTextField
+        <TextField
           id="notes"
           label="Enter Note"
           type="text"
@@ -88,32 +92,34 @@ export default function AddActivity({ onClose }) {
           helperText={touched.notes && errors.notes}
         />
         <StyledDateBlock>
-          <StyledDateTimePicker
+          <DateTimePicker
             label="Start"
-            renderInput={(params) => <StyledTextField {...params} />}
+            renderInput={(params) => <TextField {...params} />}
             value={values.startDate}
-            onChange={(value) => {
+            onChange={(value: Date) => {
               setFieldValue("startDate", new Date(value));
             }}
+            // @ts-ignore
             error={touched.startDate && Boolean(errors.startDate)}
             helperText={touched.startDate && errors.startDate}
           />
-          <StyledDateTimePicker
+          <DateTimePicker
             label="End"
-            renderInput={(params) => <StyledTextField {...params} />}
+            renderInput={(params) => <TextField {...params} />}
             value={values.endDate}
-            onChange={(value) => {
+            onChange={(value: Date) => {
               setFieldValue("endDate", new Date(value));
             }}
+            // @ts-ignore
             error={touched.endDate && Boolean(errors.endDate)}
             helperText={touched.endDate && errors.endDate}
           />
         </StyledDateBlock>
 
-        <StyledButton type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
+        <StyledButton type="submit" fullWidth>
           Add
         </StyledButton>
       </StyledFormBlock>
     </StyledMainBlock>
   );
-}
+};

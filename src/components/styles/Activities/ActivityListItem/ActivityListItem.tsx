@@ -1,7 +1,7 @@
-
-import { format } from "date-fns";
 import React, { useState } from "react";
+import { format } from "date-fns";
 
+import { Divider, ListItem, ListItemIcon, Typography } from "@mui/material";
 import {
   StyledAccordion,
   StyledAccordionDetails,
@@ -12,9 +12,10 @@ import {
   StyledTitle,
   StyledNote,
   StyledNoteBox,
+  StyledTooltip,
 } from "./ActivityListItem.styled";
+import { IActivityItem, TDeleteActivity } from "../../../../context/UserActivitiesContext";
 import { StyledIconButton } from "../../Button/Button.styled";
-import { StyledDivider } from "../../Divider/Divider.styled";
 import {
   StyledExpandMoreIcon,
   StyledAssignmentIcon,
@@ -22,32 +23,34 @@ import {
   StyledNoteIcon,
   StyledCancelIcon,
 } from "../../Icons/Icons.styled";
-import { StyledListItem, StyledListItemIcon } from "../../List/List.styled";
-import { StyledTooltip } from "../../Tooltip/Tooltip.styled";
-import { StyledTypography } from "../../Typography/Typography.styled";
-import DeleteActivityModal from "../DeleteActivityModal/DeleteActivityModal";
+import { DeleteActivityModal } from "../DeleteActivityModal/DeleteActivityModal";
 
-export default function ActivityListItem({ activity, deleteActivity }) {
-  const [expanded, setExpanded] = useState("");
+interface IActivityListItemProps {
+  activity: IActivityItem,
+  deleteActivity: TDeleteActivity,
+}
 
-  const [open, setOpen] = useState(false);
+export const  ActivityListItem = ({ activity, deleteActivity }: IActivityListItemProps) => {
+  const [activeItem, setActiveItem] = useState<null | string>(null);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setIsOpen(true); 
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setIsOpen(false);
   };
 
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+    setActiveItem(isExpanded ? panel : null);
   };
 
   return (
-    <StyledListItem>
+    <ListItem>
       <StyledAccordion
-        expanded={expanded === activity.id}
+        expanded={activeItem === activity.id}
         onChange={handleChange(activity.id)}
       >
         <StyledAccordionSummary
@@ -56,52 +59,52 @@ export default function ActivityListItem({ activity, deleteActivity }) {
           id={activity.id}
         >
           <StyledTitle>
-            <StyledListItemIcon>
+            <ListItemIcon>
               <StyledAssignmentIcon />
-            </StyledListItemIcon>
+            </ListItemIcon>
             {activity.title}
           </StyledTitle>
         </StyledAccordionSummary>
 
-        <StyledDivider variant="inset" />
+        <Divider variant="inset" />
 
         <StyledAccordionDetails>
           <StyledNoteBox>
-            <StyledListItemIcon>
+            <ListItemIcon>
               <StyledNoteIcon />
-            </StyledListItemIcon>
+            </ListItemIcon>
 
             <StyledNote>
               {"Note:"}
-              <StyledTypography color="text.secondary" variant="body2">
+              <Typography color="text.secondary" variant="body2">
                 {activity.notes}
-              </StyledTypography>
+              </Typography>
             </StyledNote>
           </StyledNoteBox>
 
           <StyledDateBox>
-            <StyledListItemIcon>
+            <ListItemIcon>
               <StyledScheduleIcon />
-            </StyledListItemIcon>
+            </ListItemIcon>
 
             <StyledDateStart>
-              <StyledTypography variant="body2">{"Start:"}</StyledTypography>
-              <StyledTypography>
+              <Typography variant="body2">{"Start:"}</Typography>
+              <Typography>
                 {format(activity.startDate, "H:mm, MMM d")}
-              </StyledTypography>
+              </Typography>
             </StyledDateStart>
 
             <StyledDateEnd>
-              <StyledTypography variant="body2">{"End:"}</StyledTypography>
-              <StyledTypography>
+              <Typography variant="body2">{"End:"}</Typography>
+              <Typography>
                 {format(activity.endDate, "H:mm, MMM d")}
-              </StyledTypography>
+              </Typography>
             </StyledDateEnd>
           </StyledDateBox>
         </StyledAccordionDetails>
       </StyledAccordion>
 
-      <StyledTooltip title="Delete" sx={{ ml: { xs: "4px", md: "8px" } }}>
+      <StyledTooltip title="Delete">
         <StyledIconButton
           edge="end"
           aria-label="delete"
@@ -114,9 +117,9 @@ export default function ActivityListItem({ activity, deleteActivity }) {
       <DeleteActivityModal
         activity={activity}
         deleteActivity={deleteActivity}
-        open={open}
+        isOpen={isOpen}
         handleClose={handleClose}
       />
-    </StyledListItem>
+    </ListItem>
   );
-}
+};
