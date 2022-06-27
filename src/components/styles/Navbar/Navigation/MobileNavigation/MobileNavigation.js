@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { MobileMenuBlock } from "./MobileNavigation.styled";
 import { StyledIconButton } from "../../../Button/Button.styled";
 import {
@@ -9,10 +10,8 @@ import {
   StyledViewIcon,
   StyledChartIcon,
 } from "../../../Icons/Icons.styled";
-import { StyledListItemIcon } from "../../../List/List.styled";
-import { StyledMenu, StyledMenuItem } from "../../../Menu/Menu.styled";
 
-export default function Navigation() {
+export const MobileNavigation = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate();
 
@@ -29,7 +28,7 @@ export default function Navigation() {
       <StyledIconButton onClick={handleOpenNavMenu}>
         <StyledViewIcon />
       </StyledIconButton>
-      <StyledMenu
+      <Menu
         id="menu-appbar"
         anchorEl={anchorElNav}
         anchorOrigin={{
@@ -44,25 +43,25 @@ export default function Navigation() {
         open={Boolean(anchorElNav)}
         onClick={handleCloseNavMenu}
       >
-        <StyledMenuItem onClick={() => navigate("/list")}>
-          <StyledListItemIcon>
+        <MenuItem onClick={() => navigate("/list")}>
+          <ListItemIcon>
             <StyledListIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           List
-        </StyledMenuItem>
-        <StyledMenuItem onClick={() => navigate("/chart")}>
-          <StyledListItemIcon>
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/chart")}>
+          <ListItemIcon>
             <StyledChartIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           Charts
-        </StyledMenuItem>
-        <StyledMenuItem onClick={() => navigate("/calendar")}>
-          <StyledListItemIcon>
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/calendar")}>
+          <ListItemIcon>
             <StyledCalendarMonthIcon />
-          </StyledListItemIcon>
+          </ListItemIcon>
           Calendar
-        </StyledMenuItem>
-      </StyledMenu>
+        </MenuItem>
+      </Menu>
     </MobileMenuBlock>
   );
-}
+};

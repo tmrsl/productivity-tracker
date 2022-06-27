@@ -1,11 +1,9 @@
 import { Button, ButtonGroup, IconButton } from "@mui/material";
 import styled from "styled-components";
 
-export const StyledButton = styled(Button).attrs({
-  variant: "contained",
-})``;
+export const StyledButton = styled(Button)`` as typeof Button;
 
-export const StyledIconButton = styled(IconButton)``;
+export const StyledIconButton = styled(IconButton)`` as typeof IconButton;
 
 export const StyledButtonGroup = styled(ButtonGroup).attrs({
   sx: {
@@ -13,4 +11,4 @@ export const StyledButtonGroup = styled(ButtonGroup).attrs({
     ariaLabel: "outlined primary button group",
     color: "primary",
   },
-})``;
+})``as typeof ButtonGroup;

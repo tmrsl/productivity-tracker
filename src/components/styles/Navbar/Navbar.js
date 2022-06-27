@@ -1,13 +1,13 @@
 import React from "react";
 
 import AccountSettings from "./AccountSettings/AccountSettings";
-import Logo from "./Logo/Logo";
-import MobileLogo from "./Logo/MobileLogo/MobileLogo";
+import { Logo } from "./Logo/Logo";
+import { MobileLogo } from "./Logo/MobileLogo/MobileLogo";
 import { StyledNavbar, StyledToolbar } from "./Navbar.styled";
-import MobileNavigation from "./Navigation/MobileNavigation/MobileNavigation";
-import Navigation from "./Navigation/Navigation";
+import { MobileNavigation } from "./Navigation/MobileNavigation/MobileNavigation";
+import { Navigation } from "./Navigation/Navigation";
 
-export default function Navbar({ currentUser, onLogout }) {
+export const Navbar = ({ currentUser, onLogout }) => {
   return (
     <StyledNavbar>
       <StyledToolbar>
@@ -19,4 +19,4 @@ export default function Navbar({ currentUser, onLogout }) {
       </StyledToolbar>
     </StyledNavbar>
   );
-}
+};

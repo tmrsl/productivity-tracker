@@ -10,7 +10,3 @@ export const StyledToolbar = styled(Toolbar)`
   display: flex;
   align-items: center;
 `;
-
-// export const StyledPageButton = styled(Button).attrs({
-//   sx: { color: "white", display: "flex", fontWeight: 600 },
-// })``;

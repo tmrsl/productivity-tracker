@@ -1,15 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Divider } from "@mui/material";
 import { MenuBlock, StyledPageButton } from "./Navigation.styled";
-import { StyledDivider } from "../../Divider/Divider.styled";
 import {
   StyledChartIcon,
   StyledListIcon,
   StyledCalendarMonthIcon,
 } from "../../Icons/Icons.styled";
 
-export default function Menu() {
+export const Navigation = () => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +22,7 @@ export default function Menu() {
         List
       </StyledPageButton>
 
-      <StyledDivider orientation="vertical" variant="middle" flexItem />
+      <Divider orientation="vertical" variant="middle" flexItem />
       <StyledPageButton
         onClick={() => navigate("/chart")}
         value="board"
@@ -30,7 +30,7 @@ export default function Menu() {
       >
         Charts
       </StyledPageButton>
-      <StyledDivider orientation="vertical" variant="middle" flexItem />
+      <Divider orientation="vertical" variant="middle" flexItem />
 
       <StyledPageButton
         onClick={() => navigate("/calendar")}
@@ -41,4 +41,4 @@ export default function Menu() {
       </StyledPageButton>
     </MenuBlock>
   );
-}
+};

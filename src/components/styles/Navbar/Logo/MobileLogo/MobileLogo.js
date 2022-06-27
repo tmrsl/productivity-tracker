@@ -4,7 +4,7 @@ import { MobileLogoBlock } from "./MobileLogo.styled";
 import { StyledIconButton } from "../../../Button/Button.styled";
 import { LogoIcon } from "../../../Icons/Icons.styled";
 
-export default function MobileLogo() {
+export const MobileLogo = () => {
   return (
     <MobileLogoBlock>
       <StyledIconButton>
@@ -12,4 +12,4 @@ export default function MobileLogo() {
       </StyledIconButton>
     </MobileLogoBlock>
   );
-}
+};

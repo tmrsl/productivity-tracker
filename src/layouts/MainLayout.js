@@ -2,7 +2,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Box, Drawer, Toolbar, CssBaseline, Button } from "@mui/material";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/styles/Navbar/Navbar";
+import { Navbar } from "../components/styles/Navbar/Navbar";
 import Sidebar from "../components/styles/Sidebar/Sidebar";
 
 import { useAuth } from "../context/AuthContext";
