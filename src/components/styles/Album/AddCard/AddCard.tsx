@@ -3,17 +3,17 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { TextField } from "@mui/material";
 import {
   StyledFormBlock,
   StyledMainBlock,
   StyledTitleBlock,
+  StyledButton,
+  StyledAvatar,
+  StyledTypography,
 } from "./AddCard.styled";
 import { useAlbum } from "../../../../context/AlbumContext";
-import { StyledAvatar } from "../../Avatar/Avatar.styled";
-import { StyledButton } from "../../Button/Button.styled";
-import { StyledTextField } from "../../Form/TextField/TextField.styled";
 import { StyledAddActivityIcon } from "../../Icons/Icons.styled";
-import { StyledTypography } from "../../Typography/Typography.styled";
 
 const initialVal = {
   title: "",
@@ -29,7 +29,7 @@ const validation = Yup.object({
   imgFile: Yup.mixed().required("File is required"),
 });
 
-export default function AddCard({ onClose }) {
+export const AddCard = ({ onClose }) => {
   const { addAlbumCard } = useAlbum();
   const navigate = useNavigate();
 
@@ -48,17 +48,16 @@ export default function AddCard({ onClose }) {
     <StyledMainBlock component="main" maxWidth="xs">
       <StyledTitleBlock>
         <StyledAvatar
-          sx={{ mb: 1, bgcolor: "primary.main" }}
           variant="circular"
         >
           <StyledAddActivityIcon />
         </StyledAvatar>
-        <StyledTypography component="h1" variant="h5" sx={{ mb: 3 }}>
+        <StyledTypography component="h1" variant="h5">
           Add Photo
         </StyledTypography>
       </StyledTitleBlock>
       <StyledFormBlock component="form" onSubmit={handleSubmit}>
-        <StyledTextField
+        <TextField
           id="title"
           label="Enter Title"
           type="text"
@@ -70,7 +69,7 @@ export default function AddCard({ onClose }) {
           error={touched.title && Boolean(errors.title)}
           helperText={touched.title && errors.title}
         />
-        <StyledTextField
+        <TextField
           id="notes"
           label="Enter Note"
           type="text"
@@ -83,7 +82,7 @@ export default function AddCard({ onClose }) {
           error={touched.notes && Boolean(errors.notes)}
           helperText={touched.notes && errors.notes}
         />
-        <StyledTextField
+        <TextField
           id="imgFile"
           label="Image Upload"
           name="file"
@@ -95,15 +94,16 @@ export default function AddCard({ onClose }) {
           }}
           variant="outlined"
           onChange={(event) => {
+            // @ts-ignore
             setFieldValue("imgFile", event.target.files[0]);
           }}
           error={touched.imgFile && Boolean(errors.imgFile)}
           helperText={touched.imgFile && errors.imgFile}
         />
-        <StyledButton type="submit" fullWidth sx={{ mb: 2 }}>
+        <StyledButton type="submit" fullWidth>
           Add
         </StyledButton>
       </StyledFormBlock>
     </StyledMainBlock>
   );
-}
+};
