@@ -12,8 +12,8 @@ export const StyledChartBox = styled(Box).attrs({
     bgcolor: "background.paper",
     gap: 4,
   },
-})``;
+})``as typeof Box;
 
 export const StyledButtonBox = styled(Box).attrs({
   sx: { display: "flex", justifyContent: "center", mt: "20px" },
-})``;
+})`` as typeof Box;

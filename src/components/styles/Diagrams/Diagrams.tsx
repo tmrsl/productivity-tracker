@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,19 +12,22 @@ import {
   PointElement,
 } from "chart.js";
 import { isThisWeek } from "date-fns";
-import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-import { DAYS, MONTHS, WEEK, MONTH } from "../app.consts";
+import { DAYS, MONTHS, WEEK, MONTH } from "../../../app.consts";
 import {
   StyledButton,
   StyledButtonGroup,
-} from "../components/styles/Button/Button.styled";
+} from "../Button/Button.styled";
 import {
   StyledButtonBox,
   StyledChartBox,
-} from "../components/styles/Chart/Chart.styled";
-import { useActivities } from "../context/UserActivitiesContext";
+} from "../Diagrams/Diagrams.styled";
+import { IActivityItem } from "../../../context/UserActivitiesContext";
+
+interface IDiagramsProps {
+  activities: IActivityItem[],
+}
 
 ChartJS.register(
   CategoryScale,
@@ -44,16 +49,16 @@ export const options = {
   },
 };
 
-function calcTotalHours(acc, cur) {
+const calcTotalHours = (acc, cur) => {
   const totalTime =
     new Date(cur.endDate).getTime() - new Date(cur.startDate).getTime();
 
   const hours = Math.round(totalTime / 60000 / 60);
 
   return hours + acc;
-}
+};
 
-function makeCharTemplate(lables, label, data) {
+const makeCharTemplate = (lables, label, data) => {
   return {
     labels: lables,
     datasets: [
@@ -65,15 +70,15 @@ function makeCharTemplate(lables, label, data) {
       },
     ],
   };
-}
+};
 
-function buildDataForMonth(mIndex, activities) {
+const buildDataForMonth = (mIndex, activities) => {
   return activities
     .filter((activity) => new Date(activity.startDate).getMonth() === mIndex)
     .reduce(calcTotalHours, 0);
-}
+};
 
-function buildDataForWeek(dIndex, activities) {
+const buildDataForWeek = (dIndex, activities) => {
   return activities
     .filter(
       (activity) =>
@@ -81,9 +86,9 @@ function buildDataForWeek(dIndex, activities) {
         isThisWeek(new Date(activity.startDate), { weekStartsOn: 1 })
     )
     .reduce(calcTotalHours, 0);
-}
+};
 
-function getData(activities, period = MONTH) {
+const getData = (activities, period = MONTH) => {
   if (period === MONTH) {
     const data = MONTHS.map((m, index) => buildDataForMonth(index, activities));
 
@@ -95,10 +100,9 @@ function getData(activities, period = MONTH) {
 
     return makeCharTemplate(DAYS, "Activities time", data);
   }
-}
+};
 
-export default function Chart() {
-  const { activities } = useActivities();
+export const Diagrams = ({ activities }: IDiagramsProps) => {
   const [selectedBtn, setSelectedBtn] = React.useState(1);
   const [chartData, setChartData] = useState(null);
   const [chartView, setChartView] = useState(MONTH);
@@ -120,6 +124,7 @@ export default function Chart() {
 
   return (
     <StyledChartBox>
+      {/*@ts-ignore */}
       {chartData && <Line options={options} data={chartData} />}
 
       <StyledButtonBox>
@@ -140,4 +145,4 @@ export default function Chart() {
       </StyledButtonBox>
     </StyledChartBox>
   );
-}
+};
