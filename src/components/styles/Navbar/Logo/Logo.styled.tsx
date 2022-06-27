@@ -12,7 +12,7 @@ export const LogoBlock = styled(Box).attrs({
       gap: "4px",
     },
   },
-})``;
+})`` as typeof Box;
 
 export const StyledTypography = styled(Typography).attrs({
   sx: {
@@ -20,4 +20,4 @@ export const StyledTypography = styled(Typography).attrs({
     color: "text.secondary",
     textDecoration: "none",
   },
-})``;
+})``as typeof Typography;

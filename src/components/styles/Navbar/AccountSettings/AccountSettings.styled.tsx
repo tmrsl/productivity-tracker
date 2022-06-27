@@ -8,7 +8,7 @@ export const AccountSettingsBlock = styled(Box)`
   align-items: center;
   margin-left: auto;
   gap: 8px;
-`;
+` as typeof Box;
 
 export const StyledTypography = styled(Typography).attrs({
   sx: {
@@ -16,8 +16,8 @@ export const StyledTypography = styled(Typography).attrs({
     display: { xs: "none", md: "block" },
     fontWeight: 600,
   },
-})``;
+})``as typeof Typography;
 
-export const StyledAvatar = styled(Avatar)``;
+export const StyledAvatar = styled(Avatar)``as typeof Avatar;
 
-export const StyledListItemAvatar = styled(ListItemAvatar)``;
+export const StyledListItemAvatar = styled(ListItemAvatar)``as typeof ListItemAvatar;

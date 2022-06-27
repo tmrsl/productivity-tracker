@@ -1,15 +1,15 @@
 import React from "react";
 
+import { IconButton } from "@mui/material";
 import { MobileLogoBlock } from "./MobileLogo.styled";
-import { StyledIconButton } from "../../../Button/Button.styled";
 import { LogoIcon } from "../../../Icons/Icons.styled";
 
 export const MobileLogo = () => {
   return (
     <MobileLogoBlock>
-      <StyledIconButton>
+      <IconButton>
         <LogoIcon />
-      </StyledIconButton>
+      </IconButton>
     </MobileLogoBlock>
   );
 };

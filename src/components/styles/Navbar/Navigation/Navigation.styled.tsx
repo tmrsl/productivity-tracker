@@ -11,8 +11,8 @@ export const MenuBlock = styled(Box).attrs({
     },
     ml: 8,
   },
-})``;
+})`` as typeof Box;
 
 export const StyledPageButton = styled(Button).attrs({
   sx: { color: "white", display: "flex", fontWeight: 600 },
-})``;
+})`` as typeof Button;

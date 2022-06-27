@@ -12,7 +12,7 @@ import {
   Switch,
 } from "@mui/material";
 import {
-  SidebarBlock,
+  SidebarBlock, SidebarList,
 } from "./Sidebar.styled";
 import SidebarListItem from "./SidebarListItem/SidebarListItem";
 import {
@@ -43,8 +43,7 @@ const SideBar = ({ mode, onToggle, activities }) => {
 
   return (
     <SidebarBlock>
-      <List
-        sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+      <SidebarList
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
@@ -68,7 +67,7 @@ const SideBar = ({ mode, onToggle, activities }) => {
           </ListItemIcon>
           <ListItemText primary="Album" />
         </ListItemButton>
-      </List>
+      </SidebarList>
       <ListItem>
         <ListItemIcon>
           {mode === "dark" ? (

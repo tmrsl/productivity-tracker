@@ -1,5 +1,6 @@
 import Key from "@mui/icons-material/Key";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { Button } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -10,7 +11,6 @@ import Typography from "@mui/material/Typography";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { StyledButton } from "../components/styles/Button/Button.styled";
 import { AccountCircleIcon } from "../components/styles/Icons/Icons.styled";
 import { useAuth } from "../context/AuthContext";
 
@@ -141,9 +141,14 @@ export const UpdateProfile = () => {
             onInput={(evt) => setPassConfrim(evt.target.value)}
           />
         </Box>
-        <StyledButton fullWidth disabled={loading} sx={{ mt: 3, mb: 2 }}>
+        <Button
+          variant="contained"
+          fullWidth
+          disabled={loading}
+          sx={{ mt: 3, mb: 2 }}
+        >
           Update
-        </StyledButton>
+        </Button>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Link to="/" variant="body2" underline="hover">
             Cancel

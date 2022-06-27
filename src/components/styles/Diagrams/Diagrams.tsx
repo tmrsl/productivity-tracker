@@ -16,12 +16,10 @@ import { Line } from "react-chartjs-2";
 
 import { DAYS, MONTHS, WEEK, MONTH } from "../../../app.consts";
 import {
-  StyledButton,
-  StyledButtonGroup,
-} from "../Button/Button.styled";
-import {
   StyledButtonBox,
   StyledChartBox,
+  StyledButtonGroup,
+  StyledButton,
 } from "../Diagrams/Diagrams.styled";
 import { IActivityItem } from "../../../context/UserActivitiesContext";
 

@@ -5,4 +5,4 @@ export const StyledFab = styled(Fab).attrs({
   size: "small",
   color: "default",
   ariaLabel: "edit",
-})``;
+})`` as typeof Fab;

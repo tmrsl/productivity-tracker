@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ListItemIcon, Menu, MenuItem } from "@mui/material";
+import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { MobileMenuBlock } from "./MobileNavigation.styled";
-import { StyledIconButton } from "../../../Button/Button.styled";
 import {
   StyledCalendarMonthIcon,
   StyledListIcon,
@@ -12,7 +11,7 @@ import {
 } from "../../../Icons/Icons.styled";
 
 export const MobileNavigation = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null>(null);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -25,9 +24,9 @@ export const MobileNavigation = () => {
 
   return (
     <MobileMenuBlock>
-      <StyledIconButton onClick={handleOpenNavMenu}>
+      <IconButton onClick={handleOpenNavMenu}>
         <StyledViewIcon />
-      </StyledIconButton>
+      </IconButton>
       <Menu
         id="menu-appbar"
         anchorEl={anchorElNav}

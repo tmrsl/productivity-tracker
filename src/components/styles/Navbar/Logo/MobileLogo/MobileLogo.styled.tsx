@@ -10,4 +10,4 @@ export const MobileLogoBlock = styled(Box).attrs({
       md: "none",
     },
   },
-})``;
+})`` as typeof Box;

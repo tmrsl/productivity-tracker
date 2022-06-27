@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { format } from "date-fns";
 
-import { Divider, ListItem, ListItemIcon, Typography } from "@mui/material";
+import { Divider, IconButton, ListItem, ListItemIcon, Typography } from "@mui/material";
 import {
   StyledAccordion,
   StyledAccordionDetails,
@@ -15,7 +15,6 @@ import {
   StyledTooltip,
 } from "./ActivityListItem.styled";
 import { IActivityItem, TDeleteActivity } from "../../../../context/UserActivitiesContext";
-import { StyledIconButton } from "../../Button/Button.styled";
 import {
   StyledExpandMoreIcon,
   StyledAssignmentIcon,
@@ -105,13 +104,13 @@ export const  ActivityListItem = ({ activity, deleteActivity }: IActivityListIte
       </StyledAccordion>
 
       <StyledTooltip title="Delete">
-        <StyledIconButton
+        <IconButton
           edge="end"
           aria-label="delete"
           onClick={handleClickOpen}
         >
           <StyledCancelIcon />
-        </StyledIconButton>
+        </IconButton>
       </StyledTooltip>
 
       <DeleteActivityModal
