@@ -14,7 +14,7 @@ import { StyledButton } from "../components/styles/Button/Button.styled";
 import { AccountCircleIcon } from "../components/styles/Icons/Icons.styled";
 import { useAuth } from "../context/AuthContext";
 
-export default function UpdateProfile() {
+export const UpdateProfile = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ export default function UpdateProfile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function submitHandler(e) {
+  const submitHandler = (e) => {
     e.preventDefault();
 
     if (password !== passConfrim) {
@@ -46,7 +46,7 @@ export default function UpdateProfile() {
       })
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
-  }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -152,4 +152,4 @@ export default function UpdateProfile() {
       </Box>
     </Container>
   );
-}
+};
