@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
   ViewState,
   EditingState,
@@ -16,18 +18,37 @@ import {
   CurrentTimeIndicator,
   AllDayPanel,
 } from "@devexpress/dx-react-scheduler-material-ui";
-import React from "react";
+
 import {
   StyledCalendarBox,
   StyledPaper,
-} from "../components/styles/Calendar/Calendar.styled";
-import { useActivities } from "../context/UserActivitiesContext";
+} from "./Calendar.styled";
+import {
+  IActivityItem,
+  TUpdateActivity,
+  TDeleteActivity,
+  TAddActivity } from "../../../context/UserActivitiesContext";
 
-export default function Calendar() {
-  const { activities, updateActivities, deleteActivity, addActivity } =
-    useActivities();
+interface IChangeSet {
+  added: IActivityItem,
+  changed: IActivityItem,
+  deleted: string,
+}
 
-  const commitChanges = ({ changed, deleted, added }) => {
+interface ICalendarProps {
+  activities: IActivityItem[],
+  updateActivities: TUpdateActivity,
+  deleteActivity: TDeleteActivity,
+  addActivity: TAddActivity,
+}
+
+export const Calendar: React.FC<ICalendarProps> = ({
+  activities,
+  updateActivities,
+  deleteActivity,
+  addActivity
+}) => {
+  const commitChanges = ({ changed, deleted, added }: IChangeSet) => {
     if (added) {
       addActivity(added);
     }
@@ -55,6 +76,7 @@ export default function Calendar() {
   return (
     <StyledCalendarBox>
       <StyledPaper>
+        {/*@ts-ignore*/}
         <Scheduler height={850} data={activities}>
           <ViewState />
           <WeekView startDayHour={9} endDayHour={19} />
@@ -73,4 +95,4 @@ export default function Calendar() {
       </StyledPaper>
     </StyledCalendarBox>
   );
-}
+};

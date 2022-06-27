@@ -12,6 +12,6 @@ export const StyledCalendarBox = styled(Box).attrs({
     bgcolor: "background.paper",
     gap: 4,
   },
-})``;
+})`` as typeof Box;
 
-export const StyledPaper = styled(Paper)``;
+export const StyledPaper = styled(Paper)`` as typeof Paper;
