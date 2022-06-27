@@ -10,7 +10,7 @@ import { List } from "./views/List";
 import { Album } from "./views/Album";
 import { Scheduler } from "./views/Scheduler";
 import { Chart } from "./views/Chart";
-import ForgotPassword from "./views/ForgotPassword";
+import { ForgotPassword } from "./views/ForgotPassword";
 import { Home } from "./views/Home";
 import { Main } from "./views/Main";
 import SignIn from "./views/SignIn";
