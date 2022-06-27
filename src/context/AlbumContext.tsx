@@ -1,3 +1,4 @@
+import React, { useContext, useEffect, useState } from "react";
 import {
   ref,
   uploadBytes,
@@ -5,7 +6,7 @@ import {
   getDownloadURL,
   getMetadata,
 } from "firebase/storage";
-import React, { useContext, useEffect, useState } from "react";
+
 import { v4 as uid } from "uuid";
 import { useAuth } from "./AuthContext";
 import { USERS } from "../app.consts";
@@ -28,12 +29,11 @@ interface IAlbumItemRaw {
 }
 
 interface IAddAlbumCardPayload {
-  imgFile: File;
+  imgFile: string;
   title: string;
   notes: string;
 }
-
-interface IAlbumItem extends IAlbumItemRaw {
+export interface IAlbumItem extends IAlbumItemRaw {
   id: string;
 }
 

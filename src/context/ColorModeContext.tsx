@@ -1,7 +1,12 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React, { useState, useMemo, useContext } from "react";
 
-export const ColorModeContext = React.createContext({
+interface IColorModeContext {
+  toggleColorMode: () => void,
+  mode: string,
+}
+
+export const ColorModeContext = React.createContext<IColorModeContext>({
   toggleColorMode: () => {},
   mode: "light",
 });
@@ -16,13 +21,14 @@ export const ColorModeContextProvider = ({ children }) => {
       },
       mode,
     }),
-    [mode],
+    [mode]
   );
 
   const theme = React.useMemo(
     () =>
       createTheme({
         palette: {
+          // @ts-ignore
           mode,
           primary: {
             main: "#7a9dff",
@@ -32,7 +38,7 @@ export const ColorModeContextProvider = ({ children }) => {
           },
         },
       }),
-    [mode],
+    [mode]
   );
 
   return (

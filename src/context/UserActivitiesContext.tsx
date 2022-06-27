@@ -12,14 +12,45 @@ import { useAuth } from "./AuthContext";
 import { USERS, ACTIVITIES } from "../app.consts";
 import { db } from "../firebase";
 
-const UserActivitiesContext = React.createContext();
+export interface IActivityItemRaw {
+  title: string,
+  notes: string,
+  startDate: Date,
+  endDate: Date,
+}
+
+export interface IActivityItem extends IActivityItemRaw {
+  id: string,
+}
+
+// eslint-disable-next-line
+export type TAddActivity = (activity: IActivityItemRaw) => Promise<void>;
+// eslint-disable-next-line
+export type TUpdateActivity = (args: IUpdateActivity) => Promise<void>;
+// eslint-disable-next-line
+export type TDeleteActivity = (args: string) => Promise<void>;
+
+interface IActivitiesContext {
+  activities: IActivityItem[],
+  addActivity: TAddActivity,
+  updateActivities: TUpdateActivity,
+  deleteActivity: TDeleteActivity,
+}
+
+interface IUpdateActivity {
+  id: string,
+  updatedFields: { [x: string]: string },
+  updatedActivities: IActivityItem[]
+}
+
+const UserActivitiesContext = React.createContext<IActivitiesContext>(null);
 
 export default function UserActivitiesProvider({ children }) {
   const { currentUser } = useAuth();
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState<IActivityItem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const addActivity = async (activity) => {
+  const addActivity = async (activity: IActivityItemRaw) => {
     setLoading(true);
     try {
       const userActivitiesRef = collection(
@@ -32,7 +63,7 @@ export default function UserActivitiesProvider({ children }) {
 
       const newActivity = { ...activity, id };
 
-      setActivities((curActivities) => [...curActivities, newActivity]);
+      setActivities((curActivities: IActivityItem[]) => [...curActivities, newActivity]);
     } catch (error) {
       console.log("error: ", error);
     } finally {
@@ -40,7 +71,7 @@ export default function UserActivitiesProvider({ children }) {
     }
   };
 
-  const updateActivities = async ({ id, updatedFields, updatedActivities }) => {
+  const updateActivities = async ({ id, updatedFields, updatedActivities }: IUpdateActivity) => {
     setLoading(true);
     try {
       const activityRef = doc(db, USERS, currentUser.uid, ACTIVITIES, id);
@@ -54,7 +85,7 @@ export default function UserActivitiesProvider({ children }) {
     }
   };
 
-  const deleteActivity = async (deletedId) => {
+  const deleteActivity = async (deletedId: string) => {
     setLoading(true);
     try {
       const activityRef = doc(
@@ -66,7 +97,7 @@ export default function UserActivitiesProvider({ children }) {
       );
       await deleteDoc(activityRef);
 
-      const newActivities = activities.filter(
+      const newActivities: IActivityItem[] = activities.filter(
         (activity) => activity.id !== deletedId
       );
       setActivities(newActivities);
@@ -98,21 +129,7 @@ export default function UserActivitiesProvider({ children }) {
         setLoading(false);
       }
     }
-
-    // const unsubscribe = onSnapshot(q, (snapshot) => {
-    //   const list = snapshot.docs.map((doc) => ({
-    //     id: doc.id,
-    //     title: doc.get("title"),
-    //     notes: doc.get("notes"),
-    //     startDate: doc.get("startDate").toDate(),
-    //     endDate: doc.get("endDate").toDate(),
-    //   }));
-
-    //   setActivities(list);
-    //   setLoading(false);
-    // });
-
-    // return unsubscribe;
+    
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

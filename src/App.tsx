@@ -6,16 +6,16 @@ import UserActivitiesProvider from "./context/UserActivitiesContext";
 
 import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/MainLayout";
-import ActivitiesList from "./views/ActivitiesList";
-import Album from "./views/Album";
-import Calendar from "./views/Calendar";
-import Chart from "./views/Chart";
+import { List } from "./views/List";
+import { Album } from "./views/Album";
+import { Scheduler } from "./views/Scheduler";
+import { Chart } from "./views/Chart";
 import ForgotPassword from "./views/ForgotPassword";
-import Home from "./views/Home";
-import Main from "./views/Main";
+import { Home } from "./views/Home";
+import { Main } from "./views/Main";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
-import UpdateProfile from "./views/UpdateProfile";
+import { UpdateProfile } from "./views/UpdateProfile";
 
 function App() {
   const { currentUser } = useAuth();
@@ -45,8 +45,8 @@ function App() {
           >
             <Route path="/" element={<Home />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
-            <Route path="/list" element={<ActivitiesList />} />
-            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/calendar" element={<Scheduler />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/album" element={<Album />} />
           </Route>

@@ -6,38 +6,59 @@ import {
   signOut,
   updateEmail,
   updatePassword,
-  updateProfile,
+  User,
+  UserCredential,
 } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
 
-const AuthContext = React.createContext();
+interface IAuthContext {
+  currentUser: User,
+  signUp: TSignUp,
+  signIn: TSignIn,
+  logOut: TLogOut,
+  resetPassword: TResetPassword,
+  updateUserCredentials: TUpdateUserCredentials,
+}
+
+// eslint-disable-next-line no-unused-vars
+type TSignUp = (email: string, pass: string) => Promise<UserCredential>;
+// eslint-disable-next-line
+export type TSignIn = (email: string, pass: string) => Promise<UserCredential>;
+// eslint-disable-next-line
+type TLogOut = () => Promise<void>;
+// eslint-disable-next-line
+type TResetPassword = (email: string) => Promise<void>;
+// eslint-disable-next-line
+type TUpdateUserCredentials = (args: { email: string, password: string}) => Promise<void[]>;
+
+const AuthContext = React.createContext<IAuthContext>(null);
 
 export function useAuth() {
   return useContext(AuthContext);
 }
 
 export default function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<User>(null);
   const [loading, setLoading] = useState(true);
 
-  const signUp = (email, pass) => {
+  const signUp: TSignUp = (email, pass) => {
     return createUserWithEmailAndPassword(auth, email, pass);
   };
 
-  const signIn = (email, pass) => {
+  const signIn: TSignIn = (email, pass) => {
     return signInWithEmailAndPassword(auth, email, pass);
   };
 
-  const logOut = async () => {
+  const logOut: TLogOut = async () => {
     return signOut(auth);
   };
 
-  const resetPassword = (email) => {
+  const resetPassword: TResetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  const updateUserCredentials = ({ email, password, displayName }) => {
+  const updateUserCredentials: TUpdateUserCredentials = ({ email, password }) => {
     const promises = [];
 
     if (email) {
@@ -46,10 +67,6 @@ export default function AuthProvider({ children }) {
 
     if (password) {
       promises.push(updatePassword(currentUser, password));
-    }
-
-    if (displayName) {
-      promises.push(updateProfile(currentUser, { displayName }));
     }
 
     return Promise.all(promises);
