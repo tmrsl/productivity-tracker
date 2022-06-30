@@ -1,24 +1,31 @@
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import React, { useState } from "react";
+
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { Button } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import {
+  EmailBlock,
+  FormBlock,
+  HelpersBlock,
+  StyledAccountCircle,
+  StyledAvatar,
+  StyledButton,
+  StyledTitle,
+  TitleBox
+} from "./ForgotPassword.styled";
+import { TResetPassword } from "../../../context/AuthContext";
 
-export const ForgotPassword = () => {
+interface IForgotPasswordProps {
+  resetPassword: TResetPassword,
+}
+
+export const ForgotPasswordPage = ({ resetPassword }: IForgotPasswordProps) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [confirmMesasge, setConfirmMesasge] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const { resetPassword } = useAuth();
 
   const enteredEmailHandler = (e) => {
     setEmail(e.target.value);
@@ -43,20 +50,14 @@ export const ForgotPassword = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "primary.main" }} variant="circular">
+      <TitleBox>
+        <StyledAvatar variant="circular">
           <LockOutlinedIcon></LockOutlinedIcon>
-        </Avatar>
-        <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
+        </StyledAvatar>
+        <StyledTitle component="h1" variant="h5">
           Password Reset
-        </Typography>
-      </Box>
+        </StyledTitle>
+      </TitleBox>
       {error && (
         <Alert
           onClose={() => {
@@ -77,14 +78,15 @@ export const ForgotPassword = () => {
           >
             Check your inbox for further instructions
           </Alert>
+          {/* @ts-ignore*/}
           <Link to="/sign-in" variant="body2" underline="hover">
             Sign In
           </Link>
         </>
       ) : (
-        <Box component="form" sx={{ mt: 3 }} onSubmit={submitHandler}>
-          <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-            <AccountCircle sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+        <FormBlock component="form" onSubmit={submitHandler}>
+          <EmailBlock>
+            <StyledAccountCircle />
             <TextField
               id="email"
               label="E-mail"
@@ -96,24 +98,25 @@ export const ForgotPassword = () => {
               value={email}
               onChange={enteredEmailHandler}
             />
-          </Box>
-          <Button
+          </EmailBlock>
+          <StyledButton
             variant="contained"
             fullWidth
             disabled={loading}
-            sx={{ mt: 3, mb: 2 }}
           >
             Reset Password
-          </Button>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          </StyledButton>
+          <HelpersBlock>
+            {/* @ts-ignore*/}
             <Link to="/sign-in" variant="body2" underline="hover">
               Sign In
             </Link>
+            {/* @ts-ignore*/}
             <Link to="/sign-up" variant="body2" underline="hover">
               Need an account? Sign Up
             </Link>
-          </Box>
-        </Box>
+          </HelpersBlock>
+        </FormBlock>
       )}
     </Container>
   );
