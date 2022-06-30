@@ -43,9 +43,13 @@ interface IUpdateActivity {
   updatedActivities: IActivityItem[]
 }
 
+interface IUserActivitiesProviderProps {
+  children: React.ReactNode,
+}
+
 const UserActivitiesContext = React.createContext<IActivitiesContext>(null);
 
-export default function UserActivitiesProvider({ children }) {
+export const UserActivitiesProvider = ({ children }: IUserActivitiesProviderProps) => {
   const { currentUser } = useAuth();
   const [activities, setActivities] = useState<IActivityItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -146,6 +150,6 @@ export default function UserActivitiesProvider({ children }) {
       {!loading && children}
     </UserActivitiesContext.Provider>
   );
-}
+};
 
 export const useActivities = () => useContext(UserActivitiesContext);

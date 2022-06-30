@@ -5,31 +5,23 @@ import {
   listAll,
   getDownloadURL,
   getMetadata,
+  StorageReference,
 } from "firebase/storage";
+
+import { User } from "firebase/auth";
 
 import { v4 as uid } from "uuid";
 import { useAuth } from "./AuthContext";
 import { USERS } from "../app.consts";
 import { storage } from "../firebase";
-
-const getImageObject = async (imageRef) => {
-  const imgUrl = await getDownloadURL(imageRef);
-  const { customMetadata } = await getMetadata(imageRef);
-
-  return {
-    imgUrl,
-    ...customMetadata,
-  } as IAlbumItem;
-};
-
 interface IAlbumItemRaw {
   imgUrl: string;
   title: string;
   notes: string;
 }
 
-interface IAddAlbumCardPayload {
-  imgFile: string;
+export interface IAddAlbumCardPayload {
+  imgFile: File;
   title: string;
   notes: string;
 }
@@ -40,12 +32,40 @@ export interface IAlbumItem extends IAlbumItemRaw {
 // eslint-disable-next-line
 type TAddAlbumCard = (albumCard: IAddAlbumCardPayload) => Promise<void>;
 
+// eslint-disable-next-line
+type TBuildRefPath = (payload: { albumCard: IAddAlbumCardPayload, currentUser: User } ) => IBuildRefPath;
+
 interface IAlbumContext {
   album: IAlbumItem[],
   addAlbumCard: TAddAlbumCard;
 }
 
-const buildRefPath = ({ albumCard, currentUser }) => {
+interface IAlbumProviderProps {
+  children: React.ReactNode,
+}
+
+interface IBuildRefPath {
+  path: string,
+  meta: {
+    customMetadata: {
+      [key: string]: string,
+    }
+  }
+  imgFile: File,
+}
+
+const getImageObject = async (imageRef: StorageReference): Promise<IAlbumItem> => {
+
+  const imgUrl = await getDownloadURL(imageRef);
+  const { customMetadata } = await getMetadata(imageRef);
+
+  return {
+    imgUrl,
+    ...customMetadata,
+  } as IAlbumItem;
+};
+
+const buildRefPath: TBuildRefPath = ({ albumCard, currentUser }) => {
   const id = uid();
   const { imgFile, title, notes } = albumCard;
 
@@ -65,7 +85,7 @@ const buildRefPath = ({ albumCard, currentUser }) => {
 
 const AlbumContext = React.createContext<IAlbumContext>(null);
 
-export default function AlbumProvider({ children }) {
+export const AlbumProvider = ({ children }: IAlbumProviderProps) => {
   const { currentUser } = useAuth();
   const [album, setAlbum] = useState<IAlbumItem[]>([]);
 
@@ -113,6 +133,6 @@ export default function AlbumProvider({ children }) {
   return (
     <AlbumContext.Provider value={value}>{children}</AlbumContext.Provider>
   );
-}
+};
 
 export const useAlbum = () => useContext(AlbumContext);

@@ -6,12 +6,16 @@ interface IColorModeContext {
   mode: string,
 }
 
+interface IColorModeProviderProps {
+  children: React.ReactNode,
+}
+
 export const ColorModeContext = React.createContext<IColorModeContext>({
   toggleColorMode: () => {},
   mode: "light",
 });
 
-export const ColorModeContextProvider = ({ children }) => {
+export const ColorModeContextProvider = ({ children }: IColorModeProviderProps) => {
   const [mode, setMode] = useState("light");
 
   const colorMode = useMemo(

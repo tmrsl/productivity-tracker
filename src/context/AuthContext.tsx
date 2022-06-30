@@ -21,6 +21,10 @@ interface IAuthContext {
   updateUserCredentials: TUpdateUserCredentials,
 }
 
+interface IAuthProviderProps {
+  children: React.ReactNode,
+}
+
 // eslint-disable-next-line no-unused-vars
 export type TSignUp = (email: string, pass: string) => Promise<UserCredential>;
 // eslint-disable-next-line
@@ -28,9 +32,9 @@ export type TSignIn = (email: string, pass: string) => Promise<UserCredential>;
 // eslint-disable-next-line
 export type TLogOut = () => Promise<void>;
 // eslint-disable-next-line
-type TResetPassword = (email: string) => Promise<void>;
+export type TResetPassword = (email: string) => Promise<void>;
 // eslint-disable-next-line
-type TUpdateUserCredentials = (args: { email: string, password: string}) => Promise<void[]>;
+export type TUpdateUserCredentials = (args: { email: string, password: string}) => Promise<void[]>;
 
 const AuthContext = React.createContext<IAuthContext>(null);
 
@@ -38,7 +42,7 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }: IAuthProviderProps) => {
   const [currentUser, setCurrentUser] = useState<User>(null);
   const [isLoading, setIsLoading] = useState(true);
 
