@@ -1,20 +1,31 @@
-import Key from "@mui/icons-material/Key";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { User } from "firebase/auth";
+
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { Button } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import {
+  FormBlock,
+  HelpersBlock,
+  InputlBlock,
+  StyledAccountCircle,
+  StyledAvatar,
+  StyledButton,
+  StyledKey,
+  TitleBlock
+} from "./UpdateProfilePage.styled";
+import { TUpdateUserCredentials } from "../../../context/AuthContext";
 
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { AccountCircleIcon } from "../components/styles/Icons/Icons.styled";
-import { useAuth } from "../context/AuthContext";
+interface IUpdateProfileProps {
+  currentUser: User,
+  updateUserCredentials: TUpdateUserCredentials,
+}
 
-export const UpdateProfile = () => {
+export const UpdateProfilePage = ({ currentUser, updateUserCredentials }: IUpdateProfileProps) => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,8 +33,6 @@ export const UpdateProfile = () => {
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const { currentUser, updateUserCredentials } = useAuth();
 
   useEffect(() => {
     setEmail(currentUser.email);
@@ -40,7 +49,7 @@ export const UpdateProfile = () => {
     }
 
     setLoading(true);
-    updateUserCredentials({ email, password, displayName })
+    updateUserCredentials({ email, password })
       .then(() => {
         setSuccessMsg(true);
       })
@@ -51,21 +60,15 @@ export const UpdateProfile = () => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 2,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "primary.main" }} variant="circular">
+      <TitleBlock>
+        {/* @ts-ignore*/}
+        <StyledAvatar variant="circular">
           <LockOutlinedIcon></LockOutlinedIcon>
-        </Avatar>
+        </StyledAvatar>
         <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
           Update Profile
         </Typography>
-      </Box>
+      </TitleBlock>
       {error && (
         <Alert
           onClose={() => {
@@ -86,9 +89,9 @@ export const UpdateProfile = () => {
           Successfully update
         </Alert>
       )}
-      <Box component="form" sx={{ mt: 3 }} onSubmit={submitHandler}>
-        <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-          <AccountCircleIcon sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+      <FormBlock onSubmit={submitHandler}>
+        <InputlBlock>
+          <StyledAccountCircle />
           <TextField
             id="displayName"
             label="Full name"
@@ -97,11 +100,12 @@ export const UpdateProfile = () => {
             fullWidth
             value={displayName}
             required
+           // @ts-ignore
             onInput={(evt) => setDisplayName(evt.target.value)}
           />
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-          <AccountCircleIcon sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+        </InputlBlock>
+        <InputlBlock>
+          <StyledAccountCircle />
           <TextField
             id="email"
             label="E-mail"
@@ -111,11 +115,12 @@ export const UpdateProfile = () => {
             autoComplete="email"
             value={email}
             required
+            // @ts-ignore
             onInput={(evt) => setEmail(evt.target.value)}
           />
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-          <Key sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+        </InputlBlock>
+        <InputlBlock>
+          <StyledKey />
           <TextField
             id="password"
             label="Password"
@@ -124,11 +129,12 @@ export const UpdateProfile = () => {
             fullWidth
             placeholder="Leave blank to keep the same"
             value={password}
+             // @ts-ignore
             onInput={(evt) => setPassword(evt.target.value)}
           />
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "flex-end", mb: 1 }}>
-          <Key sx={{ color: "primary.main", mr: 1, my: 0.5 }} />
+        </InputlBlock>
+        <InputlBlock>
+          <StyledKey />
           <TextField
             sx={{ mb: 1 }}
             id="confirmPassword"
@@ -138,23 +144,24 @@ export const UpdateProfile = () => {
             fullWidth
             placeholder="Leave blank to keep the same"
             value={passConfrim}
+            // @ts-ignore
             onInput={(evt) => setPassConfrim(evt.target.value)}
           />
-        </Box>
-        <Button
+        </InputlBlock>
+        <StyledButton
           variant="contained"
           fullWidth
           disabled={loading}
-          sx={{ mt: 3, mb: 2 }}
         >
           Update
-        </Button>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        </StyledButton>
+        <HelpersBlock>
+          {/* @ts-ignore*/}
           <Link to="/" variant="body2" underline="hover">
             Cancel
           </Link>
-        </Box>
-      </Box>
+        </HelpersBlock>
+      </FormBlock>
     </Container>
   );
 };
