@@ -1,11 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import AlbumProvider from "./context/AlbumContext";
+import { AlbumProvider } from "./context/AlbumContext";
 import { useAuth } from "./context/AuthContext";
-import UserActivitiesProvider from "./context/UserActivitiesContext";
+import { UserActivitiesProvider } from "./context/UserActivitiesContext";
 
-import AuthLayout from "./layouts/AuthLayout";
-import MainLayout from "./layouts/MainLayout";
+import { AuthLayout } from "./layouts/AuthLayout";
+import { MainLayout } from "./layouts/MainLayout";
 import { List } from "./views/List";
 import { Album } from "./views/Album";
 import { Scheduler } from "./views/Scheduler";
@@ -13,8 +13,8 @@ import { Chart } from "./views/Chart";
 import { ForgotPassword } from "./views/ForgotPassword";
 import { Home } from "./views/Home";
 import { Main } from "./views/Main";
-import SignIn from "./views/SignIn";
-import SignUp from "./views/SignUp";
+import { SignIn } from "./views/SignIn";
+import { SignUp } from "./views/SignUp";
 import { UpdateProfile } from "./views/UpdateProfile";
 
 function App() {
