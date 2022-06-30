@@ -12,8 +12,12 @@ import {
   StyledAvatar,
   StyledTypography,
 } from "./AddCard.styled";
-import { useAlbum } from "../../../../context/AlbumContext";
+import { IAddAlbumCardPayload, useAlbum } from "../../../../context/AlbumContext";
 import { StyledAddActivityIcon } from "../../Icons/Icons.styled";
+
+interface IAddCardProps {
+  onClose: () => void,
+}
 
 const initialVal = {
   title: "",
@@ -26,10 +30,10 @@ const validation = Yup.object({
   notes: Yup.string()
     .max(20, "Must be 20 characters or less")
     .required("Required"),
-  imgFile: Yup.mixed().required("File is required"),
+  imgFile: Yup.mixed<File>().required("File is required"),
 });
 
-export const AddCard = ({ onClose }) => {
+export const AddCard = ({ onClose }: IAddCardProps) => {
   const { addAlbumCard } = useAlbum();
   const navigate = useNavigate();
 
@@ -37,7 +41,8 @@ export const AddCard = ({ onClose }) => {
     useFormik({
       initialValues: initialVal,
       validationSchema: validation,
-      onSubmit: async (values) => {
+      // @ts-ignore
+      onSubmit: async (values: IAddAlbumCardPayload) => {
         await addAlbumCard(values);
         onClose();
         navigate("/album");

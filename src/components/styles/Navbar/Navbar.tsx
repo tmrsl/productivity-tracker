@@ -11,10 +11,10 @@ import { TLogOut } from "../../../context/AuthContext";
 
 interface INavbarProps {
   currentUser: User,
-  onLogout: TLogOut,
+  logOut: TLogOut,
 }
 
-export const Navbar = ({ currentUser, onLogout }: INavbarProps) => {
+export const Navbar = ({ currentUser, logOut }: INavbarProps) => {
   return (
     <StyledNavbar>
       <StyledToolbar>
@@ -22,7 +22,7 @@ export const Navbar = ({ currentUser, onLogout }: INavbarProps) => {
         <MobileNavigation />
         <MobileLogo />
         <Navigation />
-        <AccountSettings onLogout={onLogout} currentUser={currentUser} />
+        <AccountSettings onLogout={logOut} currentUser={currentUser} />
       </StyledToolbar>
     </StyledNavbar>
   );

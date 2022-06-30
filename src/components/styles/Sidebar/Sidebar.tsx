@@ -22,6 +22,13 @@ import {
   StyledHomeIcon,
   StyledLightModeIcon,
 } from "../Icons/Icons.styled";
+import { IActivityItem } from "../../../context/UserActivitiesContext";
+
+interface ISidebarProps {
+  mode: string,
+  toggleColorMode: () => void,
+  activities: IActivityItem[],
+}
 
 const folders = [
   {
@@ -38,7 +45,7 @@ const folders = [
   },
 ];
 
-const SideBar = ({ mode, onToggle, activities }) => {
+export const SideBar = ({ mode, toggleColorMode, activities }: ISidebarProps) => {
   const navigate = useNavigate(); 
 
   return (
@@ -77,7 +84,7 @@ const SideBar = ({ mode, onToggle, activities }) => {
           )}
         </ListItemIcon>
         <ListItemText primary={mode === "dark" ? "Light Mode" : "Dark Mode"} />
-        <Switch checked={mode === "dark"} onChange={onToggle} />
+        <Switch checked={mode === "dark"} onChange={toggleColorMode} />
       </ListItem>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folder">
@@ -94,5 +101,3 @@ const SideBar = ({ mode, onToggle, activities }) => {
     </SidebarBlock>
   );
 };
-
-export default SideBar;
