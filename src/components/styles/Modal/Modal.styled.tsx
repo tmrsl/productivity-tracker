@@ -1,7 +1,7 @@
 import { Box, Modal } from "@mui/material";
 import styled from "styled-components";
 
-export const StyledModal = styled(Modal)``;
+export const StyledModal = styled(Modal)``as typeof Modal;
 
 export const StyledModalBlock = styled(Box).attrs({
   sx: {
@@ -21,4 +21,4 @@ export const StyledModalBlock = styled(Box).attrs({
       md: 4,
     },
   },
-})``;
+})`` as typeof Box;
