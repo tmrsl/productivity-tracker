@@ -25,6 +25,7 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "source-map-explorer": "^2.5.2",
     "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
@@ -38,7 +39,8 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": {
     "production": [
