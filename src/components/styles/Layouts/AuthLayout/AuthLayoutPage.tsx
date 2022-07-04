@@ -1,12 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-
 import {
   StyledContentBox,
   StyledImgBox,
   StyledMainBox,
   StyledOutletBox,
 } from "./AuthLayoutPage.styled";
+import { imgSrc } from "../../../../utils/utils";
+
 
 export const AuthLayoutPage = () => {
   return (
@@ -17,7 +18,7 @@ export const AuthLayoutPage = () => {
         </StyledOutletBox>
 
         <StyledImgBox>
-          <img src="/start-page.svg" alt="start-page-icon" loading="lazy" />
+          <img src={imgSrc("/start-page.svg")} alt="start-page-icon" loading="lazy" />
         </StyledImgBox>
       </StyledContentBox>
     </StyledMainBox>

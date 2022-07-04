@@ -13,6 +13,7 @@ import {
 } from "../Modal/Modal.styled";
 import { AddActivity } from "../../../views/AddActivity";
 import { IActivityItem } from "../../../context/UserActivitiesContext";
+import { imgSrc } from "../../../utils/utils";
 
 interface IHomePageProps {
   activities: IActivityItem[],
@@ -28,7 +29,7 @@ export const HomePage = ({ activities }: IHomePageProps) => {
       {activities.length === 0 && <EmptyActivitiesList />}
       {activities.length > 0 && (
         <img
-          src="/home-page.svg"
+          src={imgSrc("/home-page.svg")}
           srcSet=""
           alt=""
           loading="lazy"

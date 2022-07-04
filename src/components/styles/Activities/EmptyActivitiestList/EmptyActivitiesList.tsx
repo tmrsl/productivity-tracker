@@ -2,6 +2,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import { EmptyActivitiesListBox, StyledTypography } from "./EmptyActivitiesList.styled";
 import { Logo } from "../../Navbar/Logo/Logo";
+import { imgSrc } from "../../../../utils/utils";
 
 export const EmptyActivitiesList = () => {
   return (
@@ -17,7 +18,7 @@ export const EmptyActivitiesList = () => {
       </Box>
 
       <img
-        src="/undraw_fitness_stats_sht6.svg"
+        src={imgSrc("/undraw_fitness_stats_sht6.svg")}
         srcSet=""
         alt=""
         loading="lazy"

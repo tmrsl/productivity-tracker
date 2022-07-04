@@ -7,6 +7,7 @@ import {
 } from "./ActivitiesList.styled";
 import { ActivityListItem } from "../ActivityListItem/ActivityListItem";
 import { IActivityItem, TDeleteActivity } from "../../../../context/UserActivitiesContext";
+import { imgSrc } from "../../../../utils/utils";
 
 interface IActivitiesListProps {
   activities: IActivityItem[],
@@ -23,7 +24,7 @@ export const ActivitiesList = ({ activities, deleteActivity }: IActivitiesListPr
           </StyledTitle>
           <img
             style={{ width: "400px", height: "500px" }}
-            src="/empty-list.svg"
+            src={imgSrc("/empty-list.svg")}
             srcSet=""
             alt=""
             loading="lazy"
