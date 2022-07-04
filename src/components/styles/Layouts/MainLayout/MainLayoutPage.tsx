@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { User } from "firebase/auth";
 
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { Toolbar, CssBaseline, Button } from "@mui/material";
+import { Toolbar, CssBaseline, Button, Box } from "@mui/material";
 import {
   PermanentDrawer,
   StyledMainBox,
@@ -63,7 +63,7 @@ export const MainLayoutPage = ({
         />
       </TemporaryDrawer>
 
-      <StyledMenuBox component="main">
+      <Box sx={{ width: "100%" }} component="main">
         <StyledMenuBox>
           <Toolbar />
           <Button onClick={handleDrawerToggle}>
@@ -75,7 +75,7 @@ export const MainLayoutPage = ({
         <StyledOutletBox>
           <Outlet />
         </StyledOutletBox>
-      </StyledMenuBox>
+      </Box>
     </StyledMainBox>
   );
 };
