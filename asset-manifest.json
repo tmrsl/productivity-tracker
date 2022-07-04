@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/productivity-tracker/static/css/main.ee9ac28f.css",
+    "main.js": "/productivity-tracker/static/js/main.8d0b56be.js",
+    "index.html": "/productivity-tracker/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.ee9ac28f.css",
+    "static/js/main.8d0b56be.js"
+  ]
+}
