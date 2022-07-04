@@ -1,3 +1,4 @@
+import React, { useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -9,7 +10,6 @@ import {
   User,
   UserCredential,
 } from "firebase/auth";
-import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
 
 interface IAuthContext {

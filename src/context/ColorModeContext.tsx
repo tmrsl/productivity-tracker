@@ -28,7 +28,7 @@ export const ColorModeContextProvider = ({ children }: IColorModeProviderProps) 
     [mode]
   );
 
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
