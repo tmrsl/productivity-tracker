@@ -2,7 +2,7 @@
   "name": "productivity-tracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tmrsl.github.io/productivity-tracker",
+  "homepage": ".",
   "dependencies": {
     "@date-io/date-fns": "^2.14.0",
     "@devexpress/dx-react-core": "^3.0.3",
