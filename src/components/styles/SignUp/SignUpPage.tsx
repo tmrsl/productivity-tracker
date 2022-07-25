@@ -6,7 +6,8 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import {
   FormBlock,
@@ -30,7 +31,7 @@ export const SignUpPage = ({ signUp }: ISignUpProps) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   const enteredFirstNameHandler = (e) => {
     setFirstName(e.target.value);
@@ -63,7 +64,7 @@ export const SignUpPage = ({ signUp }: ISignUpProps) => {
       setError("");
       setLoading(true);
       await signUp(email, pass);
-      navigate("/");
+      navigate.replace("/");
     } catch (e) {
       switch (e.code) {
         case "auth/credential-already-in-use":
@@ -167,7 +168,7 @@ export const SignUpPage = ({ signUp }: ISignUpProps) => {
           Sign Up
         </StyledButton>
         {/* @ts-ignore*/}
-        <Link to="/sign-in" variant="body2" underline="hover">
+        <Link href="/sign-in" variant="body2" underline="hover">
           Already have an account? Sign in
         </Link>
       </FormBlock>

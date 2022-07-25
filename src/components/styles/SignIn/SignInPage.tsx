@@ -6,7 +6,8 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   EmailBlock,
   FormBlock,
@@ -31,7 +32,7 @@ export const SignInPage = ({ signIn }: ISignInProps ) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   const enteredEmailHandler = (e) => {
     setEmail(e.target.value);
@@ -48,7 +49,7 @@ export const SignInPage = ({ signIn }: ISignInProps ) => {
       setError("");
       setLoading(true);
       await signIn(email, pass);
-      navigate("/");
+      navigate.replace("/");
     } catch (e) {
       switch (e.code) {
         case "auth/invalid-credential":
@@ -123,11 +124,11 @@ export const SignInPage = ({ signIn }: ISignInProps ) => {
         </StyledButton>
         <HelpersBlock>
           {/* @ts-ignore*/}
-          <Link to="/forgot-password" variant="body2" underline="hover">
+          <Link href="/forgot-password" variant="body2" underline="hover">
             Forgot password?
           </Link>
           {/* @ts-ignore*/}
-          <Link to="/sign-up" variant="body2" underline="hover">
+          <Link href="/sign-up" variant="body2" underline="hover">
             Sign Up
           </Link>
         </HelpersBlock>

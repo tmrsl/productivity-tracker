@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { StyledFlexBox, StyledMainPageBox, StyledTitle, StyledButton } from "./MainPage.styled";
 import { LogoIcon } from "../Icons/Icons.styled";
 
 export const MainPage = () => {
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   return (
     <StyledMainPageBox>
@@ -20,7 +20,7 @@ export const MainPage = () => {
       </StyledFlexBox>
 
       <StyledButton
-        onClick={() => navigate("/sign-in")}
+        onClick={() => navigate.replace("/sign-in")}
       >
         Get started
       </StyledButton>

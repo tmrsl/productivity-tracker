@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { User } from "firebase/auth";
 
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -157,7 +157,7 @@ export const UpdateProfilePage = ({ currentUser, updateUserCredentials }: IUpdat
         </StyledButton>
         <HelpersBlock>
           {/* @ts-ignore*/}
-          <Link to="/" variant="body2" underline="hover">
+          <Link href="/" variant="body2" underline="hover">
             Cancel
           </Link>
         </HelpersBlock>

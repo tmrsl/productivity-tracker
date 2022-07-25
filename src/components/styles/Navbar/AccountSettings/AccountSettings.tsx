@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { User } from "firebase/auth";
 import {
   Divider,
@@ -33,18 +33,18 @@ export const AccountSettings = ({
   currentUser,
   onLogout,
 }: IAccountSettingsProps) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const isOpen = Boolean(anchorEl);
 
   const goToHomePageHandler = () => {
-    navigate("/");
+    router.push("/");
   };
 
   const editProfileHandler = () => {
-    navigate("/update-profile");
+    router.push("/update-profile");
   };
 
   const onClickHandler = (event) => {

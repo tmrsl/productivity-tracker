@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import { Divider } from "@mui/material";
 import { MenuBlock, StyledPageButton } from "./Navigation.styled";
@@ -10,12 +10,12 @@ import {
 } from "../../Icons/Icons.styled";
 
 export const Navigation = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <MenuBlock>
       <StyledPageButton
-        onClick={() => navigate("/list")}
+        onClick={() => router.push("/list")}
         value="list"
         startIcon={<StyledListIcon />}
       >
@@ -24,7 +24,7 @@ export const Navigation = () => {
 
       <Divider orientation="vertical" variant="middle" flexItem />
       <StyledPageButton
-        onClick={() => navigate("/chart")}
+        onClick={() => router.push("/chart")}
         value="board"
         startIcon={<StyledChartIcon />}
       >
@@ -33,7 +33,7 @@ export const Navigation = () => {
       <Divider orientation="vertical" variant="middle" flexItem />
 
       <StyledPageButton
-        onClick={() => navigate("/calendar")}
+        onClick={() => router.push("/calendar")}
         value="calendar"
         startIcon={<StyledCalendarMonthIcon />}
       >

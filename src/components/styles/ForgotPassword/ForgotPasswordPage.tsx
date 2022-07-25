@@ -4,7 +4,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Alert from "@mui/material/Alert";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   EmailBlock,
   FormBlock,
@@ -108,11 +108,11 @@ export const ForgotPasswordPage = ({ resetPassword }: IForgotPasswordProps) => {
           </StyledButton>
           <HelpersBlock>
             {/* @ts-ignore*/}
-            <Link to="/sign-in" variant="body2" underline="hover">
+            <Link href="/sign-in" variant="body2" underline="hover">
               Sign In
             </Link>
             {/* @ts-ignore*/}
-            <Link to="/sign-up" variant="body2" underline="hover">
+            <Link href="/sign-up" variant="body2" underline="hover">
               Need an account? Sign Up
             </Link>
           </HelpersBlock>

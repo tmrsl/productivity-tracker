@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -40,7 +40,7 @@ interface IAddActivityFromProps {
 }
 
 export const AddActivityFrom = ({ onClose, addActivity }: IAddActivityFromProps) => {
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   const { values, errors, touched, handleSubmit, handleChange, setFieldValue } =
     useFormik({
@@ -49,7 +49,7 @@ export const AddActivityFrom = ({ onClose, addActivity }: IAddActivityFromProps)
       onSubmit: async (values) => {
         await addActivity(values);
         onClose();
-        navigate("/list");
+        navigate.replace("/list");
       },
     });
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import {
   Badge,
   Divider,
@@ -46,7 +46,7 @@ const folders = [
 ];
 
 export const SideBar = ({ mode, toggleColorMode, activities }: ISidebarProps) => {
-  const navigate = useNavigate(); 
+  const router = useRouter(); 
 
   return (
     <SidebarBlock>
@@ -54,13 +54,13 @@ export const SideBar = ({ mode, toggleColorMode, activities }: ISidebarProps) =>
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <ListItemButton onClick={() => navigate("/")} component="a">
+        <ListItemButton onClick={() => router.push("/")} component="a">
           <ListItemIcon>
             <StyledHomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
-        <ListItemButton onClick={() => navigate("/list")}>
+        <ListItemButton onClick={() => router.push("/list")}>
           <ListItemIcon>
             <Badge badgeContent={activities.length} color="primary">
               <StyledGoalsIcon />
@@ -68,7 +68,7 @@ export const SideBar = ({ mode, toggleColorMode, activities }: ISidebarProps) =>
           </ListItemIcon>
           <ListItemText primary="Tasks" />
         </ListItemButton>
-        <ListItemButton onClick={() => navigate("/album")}>
+        <ListItemButton onClick={() => router.push("/album")}>
           <ListItemIcon>
             <StyledAlbumIcon />
           </ListItemIcon>

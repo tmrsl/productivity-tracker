@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import * as Yup from "yup";
 import { TextField } from "@mui/material";
 import {
@@ -35,7 +35,7 @@ const validation = Yup.object({
 
 export const AddCard = ({ onClose }: IAddCardProps) => {
   const { addAlbumCard } = useAlbum();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const { values, errors, touched, handleSubmit, handleChange, setFieldValue } =
     useFormik({
@@ -45,7 +45,7 @@ export const AddCard = ({ onClose }: IAddCardProps) => {
       onSubmit: async (values: IAddAlbumCardPayload) => {
         await addAlbumCard(values);
         onClose();
-        navigate("/album");
+        router.push("/album");
       },
     });
 

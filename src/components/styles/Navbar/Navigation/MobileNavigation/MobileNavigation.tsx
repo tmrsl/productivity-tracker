@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 import { IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material";
 import { MobileMenuBlock } from "./MobileNavigation.styled";
@@ -12,7 +12,7 @@ import {
 
 export const MobileNavigation = () => {
   const [anchorElNav, setAnchorElNav] = useState<null>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,19 +42,19 @@ export const MobileNavigation = () => {
         open={Boolean(anchorElNav)}
         onClick={handleCloseNavMenu}
       >
-        <MenuItem onClick={() => navigate("/list")}>
+        <MenuItem onClick={() => router.push("/list")}>
           <ListItemIcon>
             <StyledListIcon />
           </ListItemIcon>
           List
         </MenuItem>
-        <MenuItem onClick={() => navigate("/chart")}>
+        <MenuItem onClick={() => router.push("/chart")}>
           <ListItemIcon>
             <StyledChartIcon />
           </ListItemIcon>
           Charts
         </MenuItem>
-        <MenuItem onClick={() => navigate("/calendar")}>
+        <MenuItem onClick={() => router.push("/calendar")}>
           <ListItemIcon>
             <StyledCalendarMonthIcon />
           </ListItemIcon>
