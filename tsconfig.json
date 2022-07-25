@@ -2,7 +2,11 @@
   "compilerOptions": {
     "outDir": "./built",
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,10 +19,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/layouts/*": ["layouts/*"],
+      "@/components/*": ["components/*"],
+    }
   },
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx"
-, "src/components/stories/Button/ButtonGroup.stories.jsx", "src/context/ColorModeContext.tsx", "src/layouts/AuthLayout.tsx", "src/components/styles/Layouts/AuthLayout/AuthLayoutPage.styled.js"  ]
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
