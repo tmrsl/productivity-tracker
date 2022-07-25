@@ -85,7 +85,7 @@ const buildRefPath: TBuildRefPath = ({ albumCard, currentUser }) => {
 
 const AlbumContext = React.createContext<IAlbumContext>(null);
 
-export const AlbumProvider = ({ children }: IAlbumProviderProps) => {
+const AlbumProvider = ({ children }: IAlbumProviderProps) => {
   const { currentUser } = useAuth();
   const [album, setAlbum] = useState<IAlbumItem[]>([]);
 
@@ -136,3 +136,4 @@ export const AlbumProvider = ({ children }: IAlbumProviderProps) => {
 };
 
 export const useAlbum = () => useContext(AlbumContext);
+export default AlbumProvider;

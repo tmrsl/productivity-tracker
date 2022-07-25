@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Fab, Tooltip } from "@mui/material";
 import { FeedBox } from "./Feed.styled";
-import { AddActivity } from "../../../views/AddActivity";
+import AddActivity from "../../../pages-old/AddActivity";
 import { ActivitiesList } from "../Activities/ActivitiesList/ActivitiesList";
 import { StyledModal, StyledModalBlock } from "../Modal/Modal.styled";
 import { IActivityItem, TDeleteActivity } from "../../../context/UserActivitiesContext";

@@ -49,7 +49,7 @@ interface IUserActivitiesProviderProps {
 
 const UserActivitiesContext = React.createContext<IActivitiesContext>(null);
 
-export const UserActivitiesProvider = ({ children }: IUserActivitiesProviderProps) => {
+const UserActivitiesProvider = ({ children }: IUserActivitiesProviderProps) => {
   const { currentUser } = useAuth();
   const [activities, setActivities] = useState<IActivityItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -153,3 +153,4 @@ export const UserActivitiesProvider = ({ children }: IUserActivitiesProviderProp
 };
 
 export const useActivities = () => useContext(UserActivitiesContext);
+export default UserActivitiesProvider;

@@ -11,7 +11,7 @@ import {
   StyledModal,
   StyledModalBlock,
 } from "../Modal/Modal.styled";
-import { AddActivity } from "../../../views/AddActivity";
+import AddActivity from "../../../pages-old/AddActivity";
 import { IActivityItem } from "../../../context/UserActivitiesContext";
 import { imgSrc } from "../../../utils/utils";
 

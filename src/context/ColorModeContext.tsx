@@ -15,7 +15,7 @@ export const ColorModeContext = React.createContext<IColorModeContext>({
   mode: "light",
 });
 
-export const ColorModeContextProvider = ({ children }: IColorModeProviderProps) => {
+const ColorModeContextProvider = ({ children }: IColorModeProviderProps) => {
   const [mode, setMode] = useState("light");
 
   const colorMode = useMemo(
@@ -53,3 +53,4 @@ export const ColorModeContextProvider = ({ children }: IColorModeProviderProps) 
 };
 
 export const useColorMode = () => useContext(ColorModeContext);
+export default ColorModeContextProvider;
