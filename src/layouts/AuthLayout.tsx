@@ -1,7 +1,24 @@
 import React from "react";
+import {
+  StyledContentBox,
+  StyledImgBox,
+  StyledMainBox,
+  StyledOutletBox,
+} from "./AuthLayoutPage.styled";
+import { imgSrc } from "../utils/utils";
 
-import { AuthLayoutPage } from "../components/styles/Layouts/AuthLayout/AuthLayoutPage";
+export const AuthLayout = (props) => {
+  return (
+    <StyledMainBox>
+      <StyledContentBox>
+        <StyledOutletBox>
+          {props.children}
+        </StyledOutletBox>
 
-export const AuthLayout = () => {
-  return <AuthLayoutPage />;
+        <StyledImgBox>
+          <img src={imgSrc("/start-page.svg")} alt="start-page-icon" loading="lazy" />
+        </StyledImgBox>
+      </StyledContentBox>
+    </StyledMainBox>
+  );
 };
