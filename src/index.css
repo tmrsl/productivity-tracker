@@ -13,11 +13,11 @@ code {
     monospace;
 }
 
-html, body, #root {
+html, body, #__next {
   height: 100%;
 }
 
-#root {
+#__next {
   display: flex;
 }
 
