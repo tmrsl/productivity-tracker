@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
+  getIdToken,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -10,7 +11,9 @@ import {
   User,
   UserCredential,
 } from "firebase/auth";
+import nookies from "nookies";
 import { auth } from "../firebase";
+
 
 interface IAuthContext {
   currentUser: User,
@@ -77,7 +80,13 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const token = await getIdToken(user);
+        nookies.set(undefined, "token", token, { path: "/" });
+      } else {
+        nookies.set(undefined, "token", "", { path: "/" });
+      }
       setCurrentUser(user);
       setIsLoading(false);
     });

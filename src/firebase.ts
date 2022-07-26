@@ -10,7 +10,7 @@ const app = initializeApp({
   messagingSenderId: "346830269958",
   projectId: "userauthenticatio-dev",
   storageBucket: "userauthenticatio-dev.appspot.com",
-});
+}, "client-app");
 
 export const db = getFirestore(app);
 

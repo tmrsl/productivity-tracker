@@ -85,6 +85,23 @@ const buildRefPath: TBuildRefPath = ({ albumCard, currentUser }) => {
 
 const AlbumContext = React.createContext<IAlbumContext>(null);
 
+export const loadAlbum = async (currentUser): Promise<IAlbumItem[]> => {
+  console.log("loadAlbum");
+  const path = `${USERS}/${currentUser.uid}/images`;
+  const userImagesRef = ref(storage, path);
+
+  try {
+    const { items } = await listAll(userImagesRef);
+    const promises = items.map(getImageObject);
+
+    const albumItems = await Promise.all(promises);
+
+    return albumItems;
+  } catch (e) {
+    console.log("e: ", e);
+  }
+};
+
 const AlbumProvider = ({ children }: IAlbumProviderProps) => {
   const { currentUser } = useAuth();
   const [album, setAlbum] = useState<IAlbumItem[]>([]);
@@ -105,23 +122,10 @@ const AlbumProvider = ({ children }: IAlbumProviderProps) => {
   };
 
   useEffect(() => {
-    async function fetchAlbumContent() {
-      const path = `${USERS}/${currentUser.uid}/images`;
-      const userImagesRef = ref(storage, path);
+    loadAlbum(currentUser).then((albumItems) => {
+      setAlbum(albumItems);
+    });
 
-      try {
-        const { items } = await listAll(userImagesRef);
-        const promises = items.map(getImageObject);
-
-        const albumItems = await Promise.all(promises);
-
-        setAlbum(albumItems);
-      } catch (e) {
-        console.log("e: ", e);
-      }
-    }
-
-    fetchAlbumContent();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
