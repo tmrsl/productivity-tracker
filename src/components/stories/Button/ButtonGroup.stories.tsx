@@ -1,10 +1,10 @@
 import React from "react";
-import { StyledGridBox } from "../Box/GridBox.styled";
-import { StyledItemBox } from "../Box/ItemBox.styled";
 
 import { SmallContained, MediumContained, LargeContained } from "./Contained.stories";
 import { SmallOutlined, MediumOutlined, LargeOutlined } from "./Outlined.stories";
 import { SmallText, MediumText, LargeText } from "./Text.stories";
+import { StyledItemBox } from "../Box/ItemBox.styled";
+import { StyledGridBox } from "../Box/GridBox.styled";
 
 export default {
   title: "Button/All",
