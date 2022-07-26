@@ -2,7 +2,8 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { DateTimePicker } from "@mui/lab";
 import { TextField } from "@mui/material";
 import {
@@ -92,28 +93,30 @@ export const AddActivityFrom = ({ onClose, addActivity }: IAddActivityFromProps)
           helperText={touched.notes && errors.notes}
         />
         <StyledDateBlock>
-          <DateTimePicker
-            label="Start"
-            renderInput={(params) => <TextField {...params} />}
-            value={values.startDate}
-            onChange={(value: Date) => {
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DateTimePicker
+              label="Start"
+              renderInput={(params) => <TextField {...params} />}
+              value={values.startDate}
+              onChange={(value: Date) => {
               setFieldValue("startDate", new Date(value));
-            }}
+              }}
             // @ts-ignore
-            error={touched.startDate && Boolean(errors.startDate)}
-            helperText={touched.startDate && errors.startDate}
+              error={touched.startDate && Boolean(errors.startDate)}
+              helperText={touched.startDate && errors.startDate}
           />
-          <DateTimePicker
-            label="End"
-            renderInput={(params) => <TextField {...params} />}
-            value={values.endDate}
-            onChange={(value: Date) => {
+            <DateTimePicker
+              label="End"
+              renderInput={(params) => <TextField {...params} />}
+              value={values.endDate}
+              onChange={(value: Date) => {
               setFieldValue("endDate", new Date(value));
-            }}
+              }}
             // @ts-ignore
-            error={touched.endDate && Boolean(errors.endDate)}
-            helperText={touched.endDate && errors.endDate}
+              error={touched.endDate && Boolean(errors.endDate)}
+              helperText={touched.endDate && errors.endDate}
           />
+          </LocalizationProvider>
         </StyledDateBlock>
 
         <StyledButton type="submit" fullWidth>
