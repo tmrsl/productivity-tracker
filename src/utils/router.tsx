@@ -1,26 +1,26 @@
 import { useRouter } from "next/router";
+
 import { useAuth } from "../context/AuthContext";
 import { AuthLayout } from "../layouts/AuthLayout";
 import MainLayout from "../layouts/MainLayout";
-
-import AuthProvider from "../context/AuthContext";
 import AlbumProvider from "../context/AlbumContext";
 import UserActivitiesProvider from "../context/UserActivitiesContext";
 
-export function withPublic (Component) {
+import { Loader } from "../components/styles/Loader/Loader";
+
+export function withPublic(Component) {
   return function WithPublic (props) {
     const auth = useAuth();
     const router = useRouter();
 
     if (auth.currentUser) {
       router.replace("/");
-      return <div> Loading </div>;
+      return <Loader />;
     }
 
     return (<AuthLayout><Component {...props} /></AuthLayout>);
   };
 }
-
 
 export function withPrivate(Component) {
   return function WithPrivate(props) {
@@ -29,7 +29,7 @@ export function withPrivate(Component) {
 
     if (!auth.currentUser) {
       router.replace("/sign-in");
-      return <div> Loading </div>;
+      return <Loader />;
     }
 
     return (

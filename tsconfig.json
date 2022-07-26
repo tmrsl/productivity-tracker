@@ -30,7 +30,7 @@
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx"
-  ],
+, "src/components/styles/Loader/Loader.js"  ],
   "exclude": [
     "node_modules"
   ]
