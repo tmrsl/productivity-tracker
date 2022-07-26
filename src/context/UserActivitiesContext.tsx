@@ -49,6 +49,25 @@ interface IUserActivitiesProviderProps {
 
 const UserActivitiesContext = React.createContext<IActivitiesContext>(null);
 
+export const loadActivities = async (currentUser): Promise<IActivityItem[]>  => {
+  // console.log("loadActivities");
+  try {
+    const que = query(collection(db, USERS, currentUser.uid, ACTIVITIES));
+    const collectionSnap = await getDocs(que);
+    const activitiesList = collectionSnap.docs.map((doc) => ({
+      id: doc.id,
+      title: doc.get("title"),
+      notes: doc.get("notes"),
+      startDate: doc.get("startDate").toDate(),
+      endDate: doc.get("endDate").toDate(),
+    }));
+
+    return activitiesList;
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
 const UserActivitiesProvider = ({ children }: IUserActivitiesProviderProps) => {
   const { currentUser } = useAuth();
   const [activities, setActivities] = useState<IActivityItem[]>([]);
@@ -113,28 +132,36 @@ const UserActivitiesProvider = ({ children }: IUserActivitiesProviderProps) => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
+    setLoading(true);
+  
+    loadActivities(currentUser).then((activitiesList) => {
+      setActivities(activitiesList);
+    }).finally( () => {
+      setLoading(false);
+    });
 
-      try {
-        const que = query(collection(db, USERS, currentUser.uid, ACTIVITIES));
-        const collectionSnap = await getDocs(que);
-        const list = collectionSnap.docs.map((doc) => ({
-          id: doc.id,
-          title: doc.get("title"),
-          notes: doc.get("notes"),
-          startDate: doc.get("startDate").toDate(),
-          endDate: doc.get("endDate").toDate(),
-        }));
-        setActivities(list);
-      } catch (error) {
-        console.log("error: ", error);
-      } finally {
-        setLoading(false);
-      }
-    }
+    // async function fetchData() {
+    //   setLoading(true);
+
+    //   try {
+    //     const que = query(collection(db, USERS, currentUser.uid, ACTIVITIES));
+    //     const collectionSnap = await getDocs(que);
+    //     const list = collectionSnap.docs.map((doc) => ({
+    //       id: doc.id,
+    //       title: doc.get("title"),
+    //       notes: doc.get("notes"),
+    //       startDate: doc.get("startDate").toDate(),
+    //       endDate: doc.get("endDate").toDate(),
+    //     }));
+    //     setActivities(list);
+    //   } catch (error) {
+    //     console.log("error: ", error);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // }
     
-    fetchData();
+    // fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
