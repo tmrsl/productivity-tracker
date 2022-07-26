@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns" ;
 
 import { Divider, IconButton, ListItem, ListItemIcon, Typography } from "@mui/material";
 import {
@@ -89,14 +89,14 @@ export const  ActivityListItem = ({ activity, deleteActivity }: IActivityListIte
             <StyledDateStart>
               <Typography variant="body2">{"Start:"}</Typography>
               <Typography>
-                {format(activity.startDate, "H:mm, MMM d")}
+                {format(parseISO(activity.startDate.toString()), "H:mm, MMM d")}
               </Typography>
             </StyledDateStart>
 
             <StyledDateEnd>
               <Typography variant="body2">{"End:"}</Typography>
               <Typography>
-                {format(activity.endDate, "H:mm, MMM d")}
+                {format(parseISO(activity.endDate.toString()), "H:mm, MMM d")}
               </Typography>
             </StyledDateEnd>
           </StyledDateBox>
