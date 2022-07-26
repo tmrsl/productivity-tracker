@@ -64,7 +64,7 @@ export const SignUpPage = ({ signUp }: ISignUpProps) => {
       setError("");
       setLoading(true);
       await signUp(email, pass);
-      navigate.replace("/");
+      navigate.push("/");
     } catch (e) {
       switch (e.code) {
         case "auth/credential-already-in-use":

@@ -33,7 +33,7 @@ export const Navigation = () => {
       <Divider orientation="vertical" variant="middle" flexItem />
 
       <StyledPageButton
-        onClick={() => router.push("/calendar")}
+        onClick={() => router.push("/scheduler")}
         value="calendar"
         startIcon={<StyledCalendarMonthIcon />}
       >

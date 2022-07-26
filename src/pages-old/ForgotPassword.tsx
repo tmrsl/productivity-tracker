@@ -6,3 +6,5 @@ export const ForgotPassword = () => {
 
   return <ForgotPasswordPage resetPassword={resetPassword} />;
 };
+
+export default ForgotPassword;

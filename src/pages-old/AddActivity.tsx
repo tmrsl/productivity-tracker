@@ -7,10 +7,12 @@ interface IAddActivityProps {
   onClose: () => void,
 }
 
-export const AddActivity = ({ onClose }: IAddActivityProps) => {
+const AddActivity = ({ onClose }: IAddActivityProps) => {
   const { addActivity } = useActivities();
 
   return (
     <AddActivityFrom addActivity={addActivity} onClose={onClose} />
   );
 };
+
+export default AddActivity;

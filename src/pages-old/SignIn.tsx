@@ -6,3 +6,5 @@ export const SignIn = () => {
 
   return <SignInPage signIn={signIn} />;
 };
+
+export default SignIn;

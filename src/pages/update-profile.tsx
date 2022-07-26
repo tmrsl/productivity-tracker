@@ -1,7 +1,9 @@
+import React from "react";
+import { withPrivate } from "../utils/router";
 import { useAuth } from "../context/AuthContext";
 import { UpdateProfilePage } from "../components/styles/UpdateProfile/UpdateProfilePage";
 
-export const UpdateProfile = () => {
+const UpdateProfile = () => {
   const { currentUser, updateUserCredentials } = useAuth();
 
   return (
@@ -11,3 +13,5 @@ export const UpdateProfile = () => {
     />
   );
 };
+
+export default withPrivate(UpdateProfile);

@@ -8,3 +8,5 @@ export const Home = () => {
 
   return <HomePage activities={activities} />;
 };
+
+export default Home;

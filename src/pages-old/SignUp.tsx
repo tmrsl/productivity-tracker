@@ -6,3 +6,5 @@ export const SignUp = () => {
 
   return <SignUpPage signUp={signUp} />;
 };
+
+export default SignUp;

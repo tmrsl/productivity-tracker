@@ -9,3 +9,5 @@ export const Album = () => {
     <Cards album={album} />
   );
 };
+
+export default Album;

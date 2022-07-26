@@ -11,10 +11,9 @@ import {
   StyledModal,
   StyledModalBlock,
 } from "../Modal/Modal.styled";
-import AddActivity from "../../../pages-old/AddActivity";
-import { IActivityItem } from "../../../context/UserActivitiesContext";
+import { AddActivityFrom } from "../Activities/AddActivity/AddActivityForm";
+import { IActivityItem, useActivities } from "../../../context/UserActivitiesContext";
 import { imgSrc } from "../../../utils/utils";
-
 interface IHomePageProps {
   activities: IActivityItem[],
 }
@@ -23,6 +22,8 @@ export const HomePage = ({ activities }: IHomePageProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
+
+  const { addActivity } = useActivities();
 
   return (
     <StyledHomeBox>
@@ -43,7 +44,7 @@ export const HomePage = ({ activities }: IHomePageProps) => {
       </Tooltip>
       <StyledModal open={isOpen} onClose={handleClose}>
         <StyledModalBlock>
-          <AddActivity onClose={() => setIsOpen(false)} />
+          <AddActivityFrom addActivity={addActivity} onClose={() => setIsOpen(false)} />
         </StyledModalBlock>
       </StyledModal>
     </StyledHomeBox>

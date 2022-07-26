@@ -20,7 +20,7 @@ export const MainPage = () => {
       </StyledFlexBox>
 
       <StyledButton
-        onClick={() => navigate.replace("/sign-in")}
+        onClick={() => navigate.push("/sign-in")}
       >
         Get started
       </StyledButton>

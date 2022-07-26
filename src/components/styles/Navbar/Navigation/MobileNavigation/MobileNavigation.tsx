@@ -54,7 +54,7 @@ export const MobileNavigation = () => {
           </ListItemIcon>
           Charts
         </MenuItem>
-        <MenuItem onClick={() => router.push("/calendar")}>
+        <MenuItem onClick={() => router.push("/scheduler")}>
           <ListItemIcon>
             <StyledCalendarMonthIcon />
           </ListItemIcon>

@@ -15,3 +15,5 @@ export const Scheduler = () => {
       addActivity={addActivity}/>
   );
 };
+
+export default Scheduler;

@@ -49,7 +49,7 @@ export const SignInPage = ({ signIn }: ISignInProps ) => {
       setError("");
       setLoading(true);
       await signIn(email, pass);
-      navigate.replace("/");
+      navigate.push("/");
     } catch (e) {
       switch (e.code) {
         case "auth/invalid-credential":

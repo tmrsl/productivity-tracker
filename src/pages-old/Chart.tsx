@@ -7,3 +7,5 @@ export const Chart = () => {
 
   return <Diagrams activities={activities} />;
 };
+
+export default Chart;

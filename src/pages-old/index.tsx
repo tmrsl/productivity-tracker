@@ -5,3 +5,5 @@ import { MainPage } from "../components/styles/Main/MainPage";
 export const Main = () => {
   return <MainPage />;
 };
+
+export default Main;
