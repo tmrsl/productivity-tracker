@@ -1,12 +1,19 @@
 import React from "react";
+import nookies from "nookies";
+import { GetServerSideProps } from "next";
 import { getAuth } from "firebase-admin/auth";
 import { withPrivate } from "src/utils/router";
-import nookies from "nookies";
-import { useActivities, loadActivities } from "../context/UserActivitiesContext";
-import { ActivitiesList } from "../components/styles/Activities/ActivitiesList/ActivitiesList";
 import firebaseAdmin from "../firebase/firebase.admin";
 
-const List = ({ activitiesList }) => {
+import { useActivities, loadActivities, IActivityItem } from "../context/UserActivitiesContext";
+
+import { ActivitiesList } from "../components/styles/Activities/ActivitiesList/ActivitiesList";
+
+interface IListProps {
+  activitiesList: IActivityItem[],
+}
+
+const List = ({ activitiesList }: IListProps) => {
   const { deleteActivity } = useActivities();
 
   return (
@@ -14,7 +21,7 @@ const List = ({ activitiesList }) => {
   );
 };
 
-export async function getServerSideProps(ctx) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
     const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
@@ -24,7 +31,7 @@ export async function getServerSideProps(ctx) {
   } catch (e) {
     return { props: {} as never };
   }
-}
+};
 
 export default withPrivate(List);
 

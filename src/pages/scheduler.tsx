@@ -1,16 +1,24 @@
 import React from "react";
-import { getAuth } from "firebase-admin/auth";
 import nookies from "nookies";
+import { GetServerSideProps } from "next";
+import { getAuth } from "firebase-admin/auth";
+import { withPrivate } from "src/utils/router";
 import firebaseAdmin from "../firebase/firebase.admin";
 
-import { withPrivate } from "../utils/router";
-import { loadActivities, useActivities } from "../context/UserActivitiesContext";
+import { loadActivities, useActivities, IActivityItem } from "../context/UserActivitiesContext";
 
 import { Calendar } from "../components/styles/Calendar/Calendar";
 
-const Scheduler = ({ activitiesList }) => {
-  const { updateActivities, deleteActivity, addActivity } =
-    useActivities();
+interface ISchedulerProps {
+  activitiesList: IActivityItem[],
+}
+
+const Scheduler = ({ activitiesList }: ISchedulerProps) => {
+  const {
+    updateActivities,
+    deleteActivity,
+    addActivity
+  } = useActivities();
 
   return (
     <Calendar
@@ -21,7 +29,7 @@ const Scheduler = ({ activitiesList }) => {
   );
 };
 
-export async function getServerSideProps(ctx) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
     const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
@@ -31,6 +39,6 @@ export async function getServerSideProps(ctx) {
   } catch (e) {
     return { props: {} as never };
   }
-}
+};
 
 export default withPrivate(Scheduler);

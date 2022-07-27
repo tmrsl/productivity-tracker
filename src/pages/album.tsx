@@ -1,19 +1,25 @@
 import React from "react";
-
+import nookies from "nookies";
+import { GetServerSideProps } from "next";
 import { getAuth } from "firebase-admin/auth";
 import { withPrivate } from "src/utils/router";
-import nookies from "nookies";
-import { Cards } from "../components/styles/Album/Cards";
-import { loadAlbum } from "../context/AlbumContext";
 import firebaseAdmin from "../firebase/firebase.admin";
 
-const Album = ({ album }) => {
+import { loadAlbum, IAlbumItem } from "../context/AlbumContext";
+
+import { Cards } from "../components/styles/Album/Cards";
+
+interface IAlbumProps {
+  album: IAlbumItem[],
+}
+
+const Album = ({ album }: IAlbumProps) => {
   return (
     <Cards album={album} />
   );
 };
 
-export async function getServerSideProps(ctx) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
     const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
@@ -23,6 +29,6 @@ export async function getServerSideProps(ctx) {
   } catch (e) {
     return { props: {} as never };
   }
-}
+};
 
 export default withPrivate(Album);

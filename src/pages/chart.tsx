@@ -1,16 +1,23 @@
 import React from "react";
-import { getAuth } from "firebase-admin/auth";
 import nookies from "nookies";
-import { loadActivities } from "../context/UserActivitiesContext";
+import { GetServerSideProps } from "next";
+import { getAuth } from "firebase-admin/auth";
+import { withPrivate } from "src/utils/router";
 import firebaseAdmin from "../firebase/firebase.admin";
-import { withPrivate } from "../utils/router";
+
+import { loadActivities, IActivityItem } from "../context/UserActivitiesContext";
+
 import { Diagrams } from "../components/styles/Diagrams/Diagrams";
 
-const Chart = ({ activitiesList }) => {
+interface IChartProps {
+  activitiesList: IActivityItem[],
+}
+
+const Chart = ({ activitiesList }: IChartProps) => {
   return <Diagrams activities={activitiesList} />;
 };
 
-export async function getServerSideProps(ctx) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
     const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
@@ -20,6 +27,6 @@ export async function getServerSideProps(ctx) {
   } catch (e) {
     return { props: {} as never };
   }
-}
+};
 
 export default withPrivate(Chart);
