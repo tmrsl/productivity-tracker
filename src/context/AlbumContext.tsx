@@ -86,7 +86,6 @@ const buildRefPath: TBuildRefPath = ({ albumCard, currentUser }) => {
 const AlbumContext = React.createContext<IAlbumContext>(null);
 
 export const loadAlbum = async (currentUser): Promise<IAlbumItem[]> => {
-  console.log("loadAlbum");
   const path = `${USERS}/${currentUser.uid}/images`;
   const userImagesRef = ref(storage, path);
 

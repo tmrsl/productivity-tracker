@@ -9,12 +9,3 @@ const SignIn = () => {
 };
 
 export default withPublic(SignIn);
-
-// export async function getServerSideProps(context) {
-//   console.log("server");
-//   return {
-//     props: {
-//       foo: "bar"
-//     }
-//   };
-// }

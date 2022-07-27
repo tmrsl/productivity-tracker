@@ -1,6 +1,6 @@
-// import { getAuth } from "firebase/auth";
-import { getAuth } from "firebase-admin/auth";
 import React from "react";
+
+import { getAuth } from "firebase-admin/auth";
 import { withPrivate } from "src/utils/router";
 import nookies from "nookies";
 import { Cards } from "../components/styles/Album/Cards";
@@ -14,18 +14,13 @@ const Album = ({ album }) => {
 };
 
 export async function getServerSideProps(ctx) {
-  console.log("[getServerSideProps]");
   try {
     const cookies = nookies.get(ctx);
     const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
     const album = await loadAlbum(user);
-    console.log("album; ", album.length);
   
     return { props: { album } };
   } catch (e) {
-    // ctx.res.writeHead(302, { Location: "/sign-in" });
-    // ctx.res.end();
-
     return { props: {} as never };
   }
 }
