@@ -11,12 +11,10 @@ const Chart = ({ activitiesList }) => {
 };
 
 export async function getServerSideProps(ctx) {
-  console.log("[getServerSidePropsList]");
   try {
     const cookies = nookies.get(ctx);
     const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
     const activitiesList = await loadActivities(user);
-    console.log("activities; ", activitiesList);
   
     return { props: { activitiesList: JSON.parse(JSON.stringify(activitiesList)) } };
   } catch (e) {
