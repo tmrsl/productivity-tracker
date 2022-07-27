@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import {
   StyledActivitiesList,
   StyledListBox,
@@ -22,12 +23,12 @@ export const ActivitiesList = ({ activities, deleteActivity }: IActivitiesListPr
           <StyledTitle variant="h5">
             You haven`t got any activities yet
           </StyledTitle>
-          <img
-            style={{ width: "400px", height: "500px" }}
+          <Image
+            width="400px"
+            height="500px"
+            priority={false}
             src={imgSrc("/empty-list.svg")}
-            srcSet=""
-            alt=""
-            loading="lazy"
+            alt="empty-list"
           />
         </StyledTitleBox>
       ) : (

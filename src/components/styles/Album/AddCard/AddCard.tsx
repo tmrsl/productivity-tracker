@@ -105,7 +105,7 @@ export const AddCard = ({ onClose }: IAddCardProps) => {
           error={touched.imgFile && Boolean(errors.imgFile)}
           helperText={touched.imgFile && errors.imgFile}
         />
-        <StyledButton type="submit" fullWidth>
+        <StyledButton  variant="contained" type="submit" fullWidth>
           Add
         </StyledButton>
       </StyledFormBlock>

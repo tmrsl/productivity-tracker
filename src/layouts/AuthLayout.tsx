@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import {
   StyledContentBox,
   StyledImgBox,
@@ -16,7 +17,12 @@ export const AuthLayout = (props) => {
         </StyledOutletBox>
 
         <StyledImgBox>
-          <img src={imgSrc("/start-page.svg")} alt="start-page-icon" loading="lazy" />
+          <Image
+            width="400px"
+            height="500px"
+            priority={false}
+            src={imgSrc("/start-page.svg")}
+            alt="start-page-icon" />
         </StyledImgBox>
       </StyledContentBox>
     </StyledMainBox>

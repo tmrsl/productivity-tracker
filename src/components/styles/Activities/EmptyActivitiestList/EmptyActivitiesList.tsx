@@ -1,5 +1,6 @@
 import { Box } from "@mui/system";
 import React from "react";
+import Image from "next/image";
 import { EmptyActivitiesListBox, StyledTypography } from "./EmptyActivitiesList.styled";
 import { Logo } from "../../Navbar/Logo/Logo";
 import { imgSrc } from "../../../../utils/utils";
@@ -17,12 +18,13 @@ export const EmptyActivitiesList = () => {
         </StyledTypography>
       </Box>
 
-      <img
+      <Image
         src={imgSrc("/undraw_fitness_stats_sht6.svg")}
-        srcSet=""
-        alt=""
-        loading="lazy"
-        style={{ width: 600, height: 700, alignSelf: "center" }}
+        width="400px"
+        height="500px"
+        priority={false}
+        alt="empty-list"
+        style={{ alignSelf: "center" }}
       />
     </EmptyActivitiesListBox>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Tooltip } from "@mui/material";
+import Image from "next/image";
 import {
   StyledHomeBox,
   StyledFab,
@@ -29,12 +30,13 @@ export const HomePage = ({ activities }: IHomePageProps) => {
     <StyledHomeBox>
       {activities.length === 0 && <EmptyActivitiesList />}
       {activities.length > 0 && (
-        <img
+        <Image
           src={imgSrc("/home-page.svg")}
-          srcSet=""
-          alt=""
-          loading="lazy"
-          style={{ width: 600, height: 700, alignSelf: "center" }}
+          width="400px"
+          height="500px"
+          priority={false}
+          alt="home-page"
+          style={{ alignSelf: "center" }}
         />
       )}
       <Tooltip title="Add new activity" onClick={handleOpen}>

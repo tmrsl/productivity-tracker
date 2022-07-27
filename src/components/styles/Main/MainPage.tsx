@@ -20,6 +20,7 @@ export const MainPage = () => {
       </StyledFlexBox>
 
       <StyledButton
+        variant="contained"
         onClick={() => navigate.push("/sign-in")}
       >
         Get started

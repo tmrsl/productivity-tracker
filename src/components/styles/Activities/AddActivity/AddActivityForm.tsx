@@ -119,7 +119,7 @@ export const AddActivityFrom = ({ onClose, addActivity }: IAddActivityFromProps)
           </LocalizationProvider>
         </StyledDateBlock>
 
-        <StyledButton type="submit" fullWidth>
+        <StyledButton variant="contained" type="submit" fullWidth>
           Add
         </StyledButton>
       </StyledFormBlock>
