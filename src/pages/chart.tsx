@@ -1,9 +1,7 @@
 import React from "react";
-import nookies from "nookies";
 import { GetServerSideProps } from "next";
-import { getAuth } from "firebase-admin/auth";
 import { withPrivate } from "src/utils/router";
-import firebaseAdmin from "../firebase/firebase.admin";
+import { getUser } from "src/utils/ssr-utils";
 
 import { loadActivities, IActivityItem } from "../context/UserActivitiesContext";
 
@@ -19,8 +17,7 @@ const Chart = ({ activitiesList }: IChartProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
-    const cookies = nookies.get(ctx);
-    const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
+    const user = await getUser(ctx);
     const activitiesList = await loadActivities(user);
   
     return { props: { activitiesList: JSON.parse(JSON.stringify(activitiesList)) } };

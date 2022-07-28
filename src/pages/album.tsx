@@ -1,9 +1,7 @@
 import React from "react";
-import nookies from "nookies";
 import { GetServerSideProps } from "next";
-import { getAuth } from "firebase-admin/auth";
 import { withPrivate } from "src/utils/router";
-import firebaseAdmin from "../firebase/firebase.admin";
+import { getUser } from "src/utils/ssr-utils";
 
 import { loadAlbum, IAlbumItem } from "../context/AlbumContext";
 
@@ -21,8 +19,7 @@ const Album = ({ album }: IAlbumProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
-    const cookies = nookies.get(ctx);
-    const user = await getAuth(firebaseAdmin).verifyIdToken(cookies.token);
+    const user = await getUser(ctx);
     const album = await loadAlbum(user);
   
     return { props: { album } };
